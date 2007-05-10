@@ -164,7 +164,13 @@ egnustep_env() {
 			GNUSTEP_INSTALLATION_DOMAIN=\"$(egnustep_install_domain)\" \
 			GNUSTEP_MAKEFILES=\"\${GNUSTEP_SYSTEM_ROOT}\"/Library/Makefiles \
 			TAR_OPTIONS=\"\${TAR_OPTIONS} --no-same-owner\" \
-			-j1" # this is dirty!
+			messages=yes"
+		if ! use debug ; then
+			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} debug=no"
+		fi
+		if use profile; then
+			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} profile=yes"
+		fi
 	else
 		die "gnustep-make not installed!"
 	fi
@@ -209,14 +215,7 @@ egnustep_user_dir() {
 # Make utilizing GNUstep Makefiles
 egnustep_make() {
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-		local gs_make_opts="${1} messages=yes"
-		if ! use debug ; then
-			gs_make_opts="${gs_make_opts} debug=no"
-		fi
-		if use profile; then
-			gs_make_opts="${gs_make_opts} profile=yes"
-		fi
-		eval emake ${__GS_MAKE_EVAL} ${gs_make_opts} all || die "package make failed"
+		eval emake ${__GS_MAKE_EVAL} all || die "package make failed"
 	else
 		die "no Makefile found"
 	fi
@@ -226,14 +225,7 @@ egnustep_make() {
 # Make-install utilizing GNUstep Makefiles
 egnustep_install() {
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-		local gs_make_opts="${1} messages=yes"
-		if ! use debug ; then
-			gs_make_opts="${gs_make_opts} debug=no"
-		fi
-		if use profile; then
-			gs_make_opts="${gs_make_opts} profile=yes"
-		fi
-		eval emake ${__GS_MAKE_EVAL} ${gs_make_opts} install || die "package install failed"
+		eval emake ${__GS_MAKE_EVAL} install || die "package install failed"
 	else
 		die "no Makefile found"
 	fi
@@ -241,20 +233,11 @@ egnustep_install() {
 }
 
 # Make and install docs using GNUstep Makefiles
-# Note: docs installed with this from a GNUMakefile,
-#  not just some files in a Documentation directory
 egnustep_doc() {
 	cd ${S}/Documentation
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-		local gs_make_opts="${1} messages=yes"
-		if ! use debug ; then
-			gs_make_opts="${gs_make_opts} debug=no"
-		fi
-		if use profile; then
-			gs_make_opts="${gs_make_opts} profile=yes"
-		fi
-		eval emake ${__GS_MAKE_EVAL} ${gs_make_opts} all || die "doc make failed"
-		eval emake ${__GS_MAKE_EVAL} ${gs_make_opts} install || die "doc install failed"
+		eval emake ${__GS_MAKE_EVAL} all || die "doc make failed"
+		eval emake ${__GS_MAKE_EVAL} install || die "doc install failed"
 	fi
 	cd ..
 	return 0
