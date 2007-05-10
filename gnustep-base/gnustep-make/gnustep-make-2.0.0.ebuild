@@ -12,7 +12,7 @@ KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 
-IUSE="${IUSE} doc non-flattened"
+IUSE="${IUSE} doc non-flattened verbose"
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=sys-devel/make-3.75"
 RDEPEND="${DEPEND}
@@ -34,25 +34,14 @@ pkg_setup() {
 	egnustep_local_root "/usr/GNUstep/Local"
 	egnustep_network_root "/usr/GNUstep/Network"
 	egnustep_user_dir 'GNUstep'
-
-	elog "GNUstep installation will be laid out as follows:"
-	elog "\tGNUSTEP_SYSTEM_ROOT=`egnustep_system_root`"
-	elog "\tGNUSTEP_LOCAL_ROOT=`egnustep_local_root`"
-	elog "\tGNUSTEP_NETWORK_ROOT=`egnustep_network_root`"
-	elog "\tGNUSTEP_USER_DIR=`egnustep_user_dir`"
 }
 
 src_compile() {
 	cd ${S}
 
-	# gnustep-make ./configure : "prefix" here is going to be where
-	#  "System" is installed -- other correct paths should be set
-	#  by econf
 	local myconf
-	myconf="--prefix=`egnustep_prefix`"
+	myconf="--prefix=`egnustep_prefix` --with-layout=gnustep"
 	use non-flattened && myconf="$myconf --disable-flattened --enable-multi-platform"
-	myconf="$myconf --with-tar=/bin/tar"
-	myconf="$myconf --with-layout=gnustep"
 	econf $myconf || die "configure failed"
 
 	egnustep_make
@@ -61,31 +50,16 @@ src_compile() {
 src_install() {
 	. ${S}/GNUstep.sh
 
-	local make_eval="INSTALL_ROOT=${D} \
-		GNUSTEP_SYSTEM_ROOT=${D}$(egnustep_system_root) \
-		GNUSTEP_NETWORK_ROOT=${D}$(egnustep_network_root) \
-		GNUSTEP_LOCAL_ROOT=${D}$(egnustep_local_root) \
-		GNUSTEP_MAKEFILES=${D}$(egnustep_system_root)/Library/Makefiles \
-		GNUSTEP_USER_ROOT=${TMP} \
-		GNUSTEP_DEFAULTS_ROOT=${TMP}/${__GS_USER_ROOT_POSTFIX} \
-		-j1"
-
-	local docinstall="GNUSTEP_INSTALLATION_DIR=${D}$(egnustep_system_root)"
-
-	make_eval="${make_eval} GNUSTEP_INSTALLATION_DIR=${D}$(egnustep_system_root)"
-
+	local make_eval="-j1"
 	use debug && make_eval="${make_eval} debug=yes"
 	use verbose && make_eval="${make_eval} verbose=yes"
 
-	make ${make_eval} DESTDIR=${D} install \
-		|| die "install has failed"
+	make ${make_eval} DESTDIR=${D} install || die "install has failed"
 
 	if use doc ; then
 		cd Documentation
-		emake ${make_eval} all \
-			|| die "doc make has failed"
-		emake ${make_eval} DESTDIR=${D} ${docinstall} install \
-			|| die "doc install has failed"
+		emake ${make_eval} all || die "doc make has failed"
+		emake ${make_eval} DESTDIR=${D} install || die "doc install has failed"
 		cd ..
 	fi
 
