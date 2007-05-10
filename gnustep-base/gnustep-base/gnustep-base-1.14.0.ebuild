@@ -50,7 +50,7 @@ src_unpack() {
 
 src_compile() {
 	egnustep_env
-	
+
 	local myconf
 	if use gcc-libffi;
 	then

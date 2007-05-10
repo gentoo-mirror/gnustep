@@ -1,4 +1,4 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -50,11 +50,11 @@ src_compile() {
 	myconf="$myconf --enable-graphics=cairo --with-name=cairo"
 	# Seems broken for now
 	#myconf="$myconf `use_enable glitz`"
-	
+
 	econf $myconf || die "configure failed"
 
 	egnustep_make
-	
+
 }
 
 src_install() {
