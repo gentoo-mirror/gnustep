@@ -9,7 +9,7 @@ S=${WORKDIR}/${PN/c/C}
 DESCRIPTION="Camaelon allows you to load theme bundles for GNUstep."
 
 HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Camaelon"
-SRC_URI="http://cafarelli.fr/gentoo/${P}.tar.bz2
+SRC_URI="http://overlays.gentoo.org/svn/proj/gnustep/downloads/${P}.tar.bz2
 	http://brante.dyndns.org/gnustep/download/MaxCurve-0.2.tar.bz2
 	mirror://sourceforge/mpdcon/IndustrialTheme.tar.bz2"
 KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
