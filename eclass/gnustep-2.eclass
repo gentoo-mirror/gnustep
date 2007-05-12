@@ -55,6 +55,10 @@ gnustep-2_pkg_setup() {
 }
 
 gnustep-2_src_compile() {
+	#TODO
+	# Should handle configure
+	# http://devmanual.gentoo.org/ebuild-writing/functions/src_compile/index.html
+	# gnustep-libs/netclasses for example
 	egnustep_env
 	egnustep_make || die
 }
@@ -164,7 +168,7 @@ egnustep_env() {
 			GNUSTEP_INSTALLATION_DOMAIN=\"$(egnustep_install_domain)\" \
 			GNUSTEP_MAKEFILES=\"\${GNUSTEP_SYSTEM_ROOT}\"/Library/Makefiles \
 			TAR_OPTIONS=\"\${TAR_OPTIONS} --no-same-owner\" \
-			messages=yes"
+			messages=yes -j1"
 		if ! use debug ; then
 			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} debug=no"
 		fi
