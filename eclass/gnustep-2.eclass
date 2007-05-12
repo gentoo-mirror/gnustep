@@ -40,7 +40,7 @@ GS_RDEPEND="${GS_DEPEND}
 	${DOC_RDEPEND}"
 
 # Ebuild function overrides
-gnustep2_pkg_setup() {
+gnustep-2_pkg_setup() {
 	if test_version_info 3.3
 	then
 		strip-unsupported-flags
@@ -54,12 +54,12 @@ gnustep2_pkg_setup() {
 	filter-flags -fomit-frame-pointer
 }
 
-gnustep2_src_compile() {
+gnustep-2_src_compile() {
 	egnustep_env
 	egnustep_make || die
 }
 
-gnustep2_src_install() {
+gnustep-2_src_install() {
 	egnustep_env
 	egnustep_install || die
 	if use doc ; then
@@ -74,7 +74,7 @@ gnustep2_src_install() {
 	fi
 }
 
-gnustep2_pkg_postinst() {
+gnustep-2_pkg_postinst() {
 	# Informs user about existence of "convenience script"	
 	if [ -f ${FILESDIR}/config-${PN}.sh ]; then
 		einfo "Make sure to set happy defaults for this package by executing:"

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit gnustep2
+inherit gnustep-2
 
 S=${WORKDIR}/gnustep-back-${PV}
 
@@ -60,7 +60,7 @@ src_compile() {
 src_install() {
 	egnustep_env
 
-	gnustep2_src_install
+	gnustep-2_src_install
 
 	dosym \
 		"$(egnustep_system_root)/Library/Bundles/libgnustep-cairo-012.bundle" \
