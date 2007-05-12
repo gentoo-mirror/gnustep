@@ -55,11 +55,10 @@ gnustep-2_pkg_setup() {
 }
 
 gnustep-2_src_compile() {
-	#TODO
-	# Should handle configure
-	# http://devmanual.gentoo.org/ebuild-writing/functions/src_compile/index.html
-	# gnustep-libs/netclasses for example
 	egnustep_env
+	if [ -x ./configure ]; then
+		econf
+	fi
 	egnustep_make || die
 }
 
