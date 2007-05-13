@@ -20,24 +20,26 @@ fi
 #   + DEPEND="${GS_DEPEND} other/depend ..."
 #   + RDEPEND="${GS_RDEPEND} other/rdepend ..."
 
-# packages needed to build docs
+# packages needed to build (resp view) docs
 DOC_DEPEND="doc? ( virtual/tetex
 	=dev-tex/latex2html-2002*
 	>=app-text/texi2html-1.64 )"
-# packages needed to view docs
 DOC_RDEPEND="doc? ( virtual/man
 	>=sys-apps/texinfo-4.6 )"
+# packages needed to utilize .debug apps
+DEBUG_DEPEND="debug? ( >=sys-devel/gdb-6.0 )"
 # packages needed to build any gnustep package
 GNUSTEP_CORE_DEPEND="virtual/libc
 	>=sys-devel/gcc-3.3.5
 	${DOC_DEPEND}"
-# packages needed to utilize .debug apps
-DEBUG_DEPEND="debug? ( >=sys-devel/gdb-6.0 )"
 
 GS_DEPEND=">=gnustep-base/gnustep-env-0.2"
 GS_RDEPEND="${GS_DEPEND}
 	${DEBUG_DEPEND}
 	${DOC_RDEPEND}"
+
+# Where to install GNUstep
+GNUSTEP_PREFIX="/usr/GNUstep"
 
 # Ebuild function overrides
 gnustep-2_pkg_setup() {
@@ -71,8 +73,8 @@ gnustep-2_src_install() {
 	fi
 	# Copies "convenience scripts"
 	if [ -f ${FILESDIR}/config-${PN}.sh ]; then
-		dodir `egnustep_install_path`/Tools/Gentoo
-		exeinto `egnustep_install_path`/Tools/Gentoo
+		dodir $(egnustep_tools_dir)/Gentoo
+		exeinto $(egnustep_tools_dir)/Gentoo
 		doexe ${FILESDIR}/config-${PN}.sh
 	fi
 }
@@ -81,41 +83,12 @@ gnustep-2_pkg_postinst() {
 	# Informs user about existence of "convenience script"	
 	if [ -f ${FILESDIR}/config-${PN}.sh ]; then
 		einfo "Make sure to set happy defaults for this package by executing:"
-		einfo "  `egnustep_install_path`/Tools/Gentoo/config-${PN}.sh"
+		einfo "  $(egnustep_tools_dir)/Gentoo/config-${PN}.sh"
 		einfo "as the user you will run the package as."
 	fi
 }
 
-
-######################################################################################
-#TODO finish merge
-######################################################################################
-
-# Prints out the dirname of GNUSTEP_SYSTEM_ROOT, i.e., "System" is installed
-#  in egnustep_prefix
-egnustep_prefix() {
-	# Generally, only gnustep-make should be the one setting this value
-	if [ "$1" ]; then
-		__GS_PREFIX="$(dirname $1/prune)"
-		return 0
-	fi
-
-	if [ -f /etc/conf.d/gnustep.env ]; then
-		. /etc/conf.d/gnustep.env
-		if [ -z "${GNUSTEP_SYSTEM_ROOT}" ] || [ "/" != "${GNUSTEP_SYSTEM_ROOT:0:1}" ]; then
-			die "Please check /etc/conf.d/gnustep.env for consistency or remove it."
-		fi
-		__GS_PREFIX=$(dirname ${GNUSTEP_SYSTEM_ROOT})
-	elif [ -z "${__GS_PREFIX}" ]; then
-		__GS_PREFIX="/usr/GNUstep"
-		__GS_SYSTEM_ROOT="/usr/GNUstep/System"
-	fi
-
-	echo "${__GS_PREFIX}"
-}
-
-# Prints/sets the GNUstep install domain; Generally, this will only be
-#  "System" or "Local"
+# Prints/sets the GNUstep install domain (System/Local)
 egnustep_install_domain() {
 	if [ -z "$1" ]; then
 		echo ${__GS_INSTALL_DOMAIN}
@@ -131,32 +104,22 @@ egnustep_install_domain() {
 	fi
 }
 
-# Prints the GNUstep install path
-egnustep_install_path() {
+# Prints the GNUstep domain Tools directory
+egnustep_tools_dir() {
 	if [ "$__GS_INSTALL_DOMAIN" == "SYSTEM" ]; then
-		echo "${__GS_SYSTEM_ROOT}"
+		echo "${GNUSTEP_SYSTEM_TOOLS}"
 	elif [ "$__GS_INSTALL_DOMAIN" == "LOCAL" ]; then
-		echo "${__GS_LOCAL_ROOT}"
+		echo "${GNUSTEP_LOCAL_TOOLS}"
 	fi
 }
 
 # Clean/reset an ebuild to the installed GNUstep environment
 egnustep_env() {
-	GNUSTEP_SYSTEM_ROOT="$(egnustep_prefix)/System"
-	if [ -f ${GNUSTEP_SYSTEM_ROOT}/Library/Makefiles/GNUstep.sh ] ; then
-		. ${GNUSTEP_SYSTEM_ROOT}/Library/Makefiles/GNUstep-reset.sh
-		if [ -f /etc/conf.d/gnustep.env ]; then
-			. /etc/conf.d/gnustep.env
-		else
-			GNUSTEP_SYSTEM_ROOT="/usr/GNUstep/System"
-		fi
-		. ${GNUSTEP_SYSTEM_ROOT}/Library/Makefiles/GNUstep.sh
-
-		__GS_SYSTEM_ROOT=${GNUSTEP_SYSTEM_ROOT}
-		__GS_LOCAL_ROOT=${GNUSTEP_LOCAL_ROOT}
-		__GS_NETWORK_ROOT=${GNUSTEP_NETWORK_ROOT}
-		__GS_USER_DIR=${GNUSTEP_USER_DIR}
-		__GS_USER_DEFAULTS_DIR=${GNUSTEP_USER_DEFAULTS_DIR}
+	# Get additional variables
+	GNUSTEP_SH_EXPORT_ALL_VARIABLES="true"
+	if [ -f ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh ] ; then
+		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep-reset.sh
+		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh
 
 		# Set up common env vars for make operations
 		__GS_MAKE_EVAL=" \
@@ -176,42 +139,6 @@ egnustep_env() {
 		fi
 	else
 		die "gnustep-make not installed!"
-	fi
-}
-
-# Get/Set the GNUstep system root
-egnustep_system_root() {
-	if [ "$1" ]; then
-		__GS_SYSTEM_ROOT="$(dirname $1/prune)"
-	else
-		echo ${__GS_SYSTEM_ROOT}
-	fi
-}
-
-# Get/Set the GNUstep local root
-egnustep_local_root() {
-	if [ "$1" ]; then
-		__GS_LOCAL_ROOT="$(dirname $1/prune)"
-	else
-		echo ${__GS_LOCAL_ROOT}
-	fi
-}
-
-# Get/Set the GNUstep network root
-egnustep_network_root() {
-	if [ "$1" ]; then
-		__GS_NETWORK_ROOT="$(dirname $1/prune)"
-	else
-		echo ${__GS_NETWORK_ROOT}
-	fi
-}
-
-# Get/Set the GNUstep user dir
-egnustep_user_dir() {
-	if [ "$1" ]; then
-		__GS_USER_DIR="$(dirname $1/prune)"
-	else
-		echo ${__GS_USER_DIR}
 	fi
 }
 

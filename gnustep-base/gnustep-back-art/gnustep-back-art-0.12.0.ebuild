@@ -62,7 +62,7 @@ src_compile() {
 	cd Fonts
 	mknfonts /usr/share/fonts/dejavu/*.ttf
 	for fdir in DejaVu*; do
-		mv -v $fdir `echo $fdir | tr -d [:space:]`
+		mv -v "$fdir" `echo $fdir | tr -d [:space:]`
 	done
 }
 
@@ -70,14 +70,12 @@ src_install() {
 	egnustep_env
 
 	gnustep-2_src_install
-	cd ${S}
-	mkdir -p "${D}/$(egnustep_system_root)/Library/Fonts"
-	cp -pPR Fonts/*.nfont "${D}/$(egnustep_system_root)/Library/Fonts"
-
-	rm -rf "${D}/$(egnustep_system_root)/var"
+	
+	mkdir -p "${D}/${GNUSTEP_SYSTEM_LIBRARY}/Fonts"
+	cp -pPR Fonts/*.nfont "${D}/${GNUSTEP_SYSTEM_LIBRARY}/Fonts"
 
 	dosym \
-		"$(egnustep_system_root)/Library/Bundles/libgnustep-art-012.bundle" \
-		"$(egnustep_system_root)/Library/Bundles/libgnustep-art.bundle"
+		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-art-012.bundle" \
+		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-art.bundle"
 }
 

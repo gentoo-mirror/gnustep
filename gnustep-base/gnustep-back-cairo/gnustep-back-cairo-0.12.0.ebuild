@@ -33,7 +33,6 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 
 	>=media-libs/freetype-2.1.9
 	>=x11-libs/cairo-1.2.0
-	gnustep-base/mknfonts
 	!virtual/gnustep-back"
 RDEPEND="${DEPEND}
 	${DEBUG_DEPEND}
@@ -63,7 +62,7 @@ src_install() {
 	gnustep-2_src_install
 
 	dosym \
-		"$(egnustep_system_root)/Library/Bundles/libgnustep-cairo-012.bundle" \
-		"$(egnustep_system_root)/Library/Bundles/libgnustep-cairo.bundle"
+		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-cairo-012.bundle" \
+		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-cairo.bundle"
 }
 

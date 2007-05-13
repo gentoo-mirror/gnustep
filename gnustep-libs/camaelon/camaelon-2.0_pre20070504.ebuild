@@ -26,6 +26,6 @@ src_install() {
 	gnustep-2_src_install || die "install failed"
 
 	# install themes
-	mkdir -p "${D}$(egnustep_system_root)/Library/Themes"
-	cp -R ${WORKDIR}/*theme ${S}/*theme "${D}$(egnustep_system_root)/Library/Themes/"
+	mkdir -p "${D}${GNUSTEP_SYSTEM_LIBRARY}/Themes"
+	cp -R ${WORKDIR}/*theme ${S}/*theme "${D}${GNUSTEP_SYSTEM_LIBRARY}/Themes/"
 }

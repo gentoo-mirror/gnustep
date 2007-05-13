@@ -27,34 +27,27 @@ pkg_setup() {
 		ewarn "gcc must be compiled with Objective-C support! See the objc USE flag."
 		die "ObjC support not available"
 	fi
-
-	# setup defaults here
-	egnustep_prefix "/usr/GNUstep"
-	egnustep_system_root "/usr/GNUstep/System"
-	egnustep_local_root "/usr/GNUstep/Local"
-	egnustep_network_root "/usr/GNUstep/Network"
-	egnustep_user_dir 'GNUstep'
 }
 
 src_compile() {
 	cd ${S}
 
 	local myconf
-	myconf="--prefix=`egnustep_prefix` --with-layout=gnustep"
-	use non-flattened && myconf="$myconf --disable-flattened --enable-multi-platform"
+	myconf="--prefix=${GNUSTEP_PREFIX} --with-layout=gnustep"
+	myconf="$myconf --enable-native-objc-exceptions"
+	use non-flattened && \
+		myconf="$myconf --disable-flattened --enable-multi-platform"
 	econf $myconf || die "configure failed"
 
-	egnustep_make
+	emake
 }
 
 src_install() {
-	. ${S}/GNUstep.sh
-
 	local make_eval="-j1"
 	use debug || make_eval="${make_eval} debug=no"
 	use verbose && make_eval="${make_eval} verbose=yes"
 
-	make ${make_eval} DESTDIR=${D} install || die "install has failed"
+	emake ${make_eval} DESTDIR=${D} install || die "install has failed"
 
 	if use doc ; then
 		cd Documentation
@@ -62,15 +55,6 @@ src_install() {
 		emake ${make_eval} DESTDIR=${D} install || die "doc install has failed"
 		cd ..
 	fi
-
-	dodir /etc/conf.d
-	echo "GNUSTEP_SYSTEM_ROOT=$(egnustep_system_root)" > ${D}/etc/conf.d/gnustep.env
-	echo "GNUSTEP_LOCAL_ROOT=$(egnustep_local_root)" >> ${D}/etc/conf.d/gnustep.env
-	echo "GNUSTEP_NETWORK_ROOT=$(egnustep_network_root)" >> ${D}/etc/conf.d/gnustep.env
-	echo "GNUSTEP_USER_DIR='$(egnustep_user_dir)'" >> ${D}/etc/conf.d/gnustep.env
-
-	insinto /etc/GNUstep
-	doins ${S}/GNUstep.conf
 
 	exeinto /etc/profile.d
 	doexe ${FILESDIR}/gnustep-2.sh

@@ -57,7 +57,7 @@ src_install() {
 	gnustep-2_src_install
 
 	dosym \
-		"$(egnustep_system_root)/Library/Bundles/libgnustep-xlib-012.bundle" \
-		"$(egnustep_system_root)/Library/Bundles/libgnustep-xlib.bundle"
+		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-xlib-012.bundle" \
+		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-xlib.bundle"
 
 }
