@@ -51,7 +51,7 @@ src_install() {
 	. ${S}/GNUstep.sh
 
 	local make_eval="-j1"
-	use debug && make_eval="${make_eval} debug=yes"
+	use debug || make_eval="${make_eval} debug=no"
 	use verbose && make_eval="${make_eval} verbose=yes"
 
 	make ${make_eval} DESTDIR=${D} install || die "install has failed"
@@ -73,7 +73,7 @@ src_install() {
 	doins ${S}/GNUstep.conf
 
 	exeinto /etc/profile.d
-	doexe ${FILESDIR}/gnustep.sh
-	doexe ${FILESDIR}/gnustep.csh
+	doexe ${FILESDIR}/gnustep-2.sh
+	doexe ${FILESDIR}/gnustep-2.csh
 }
 
