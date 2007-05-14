@@ -47,7 +47,7 @@ src_compile() {
 	use opengl && myconf="--enable-glx"
 	myconf="$myconf `use_enable xim`"
 	myconf="$myconf --enable-server=x11"
-	myconf="$myconf --enable-graphics=art --with-name=art"
+	myconf="$myconf --enable-graphics=art"
 	econf $myconf || die "configure failed"
 
 	egnustep_make
@@ -68,9 +68,5 @@ src_install() {
 	
 	mkdir -p "${D}/${GNUSTEP_SYSTEM_LIBRARY}/Fonts"
 	cp -pPR Fonts/*.nfont "${D}/${GNUSTEP_SYSTEM_LIBRARY}/Fonts"
-
-	dosym \
-		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-art-012.bundle" \
-		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-art.bundle"
 }
 

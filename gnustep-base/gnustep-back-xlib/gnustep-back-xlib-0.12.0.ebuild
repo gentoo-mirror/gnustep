@@ -43,19 +43,8 @@ src_compile() {
 	use opengl && myconf="--enable-glx"
 	myconf="$myconf `use_enable xim`"
 	myconf="$myconf --enable-server=x11"
-	myconf="$myconf --enable-graphics=xlib --with-name=xlib"
+	myconf="$myconf --enable-graphics=xlib"
 	econf $myconf || die "configure failed"
 
 	egnustep_make
-}
-
-src_install() {
-	egnustep_env
-
-	gnustep-2_src_install
-
-	dosym \
-		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-xlib-012.bundle" \
-		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-xlib.bundle"
-
 }

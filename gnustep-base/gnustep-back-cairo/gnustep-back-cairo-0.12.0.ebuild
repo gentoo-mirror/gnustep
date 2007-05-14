@@ -44,7 +44,7 @@ src_compile() {
 	use opengl && myconf="--enable-glx"
 	myconf="$myconf `use_enable xim`"
 	myconf="$myconf --enable-server=x11"
-	myconf="$myconf --enable-graphics=cairo --with-name=cairo"
+	myconf="$myconf --enable-graphics=cairo"
 	# Seems broken for now
 	#myconf="$myconf `use_enable glitz`"
 
@@ -53,14 +53,3 @@ src_compile() {
 	egnustep_make
 
 }
-
-src_install() {
-	egnustep_env
-
-	gnustep-2_src_install
-
-	dosym \
-		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-cairo-012.bundle" \
-		"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/libgnustep-cairo.bundle"
-}
-
