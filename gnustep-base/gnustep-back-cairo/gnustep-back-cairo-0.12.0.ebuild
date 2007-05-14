@@ -14,8 +14,6 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="LGPL-2.1"
 
-PROVIDE="virtual/gnustep-back"
-
 IUSE="${IUSE} opengl xim doc glitz"
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	~gnustep-base/gnustep-gui-${PV}

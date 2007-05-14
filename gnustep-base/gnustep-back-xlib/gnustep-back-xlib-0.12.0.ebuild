@@ -10,15 +10,13 @@ DESCRIPTION="Default X11 back-end component for the GNUstep GUI Library"
 
 HOMEPAGE="http://www.gnustep.org"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-${PV}.tar.gz"
-KEYWORDS="~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 SLOT="0"
 LICENSE="LGPL-2.1"
 
-PROVIDE="virtual/gnustep-back"
-
 IUSE="opengl xim"
 DEPEND="${GNUSTEP_CORE_DEPEND}
-	>=gnustep-base/gnustep-gui-0.11.0
+	~gnustep-base/gnustep-gui-${PV}
 	opengl? ( virtual/opengl virtual/glu )
 	x11-libs/libICE
 	x11-libs/libSM

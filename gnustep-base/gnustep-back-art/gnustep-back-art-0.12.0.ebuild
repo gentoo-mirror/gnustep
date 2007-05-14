@@ -14,15 +14,10 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 SLOT="0"
 LICENSE="LGPL-2.1"
 
-PROVIDE="virtual/gnustep-back"
-
 IUSE="${IUSE} opengl xim doc"
-# from http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP
-# gnustep-gui, libICE, libSM, libX11, libXext, libXi, libXmu, libXt,
-# libGL, libXft, libXrender, libexpat, libfontconfig, libfreetype,
-# libart
+
 DEPEND="${GNUSTEP_CORE_DEPEND}
-	>=gnustep-base/gnustep-gui-0.12
+	~gnustep-base/gnustep-gui-${PV}
 	opengl? ( virtual/opengl virtual/glu )
 	x11-libs/libICE
 	x11-libs/libSM
