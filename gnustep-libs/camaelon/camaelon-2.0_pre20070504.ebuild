@@ -25,7 +25,8 @@ egnustep_install_domain "System"
 src_install() {
 	gnustep-2_src_install || die "install failed"
 
-	# install themes
-	mkdir -p "${D}${GNUSTEP_SYSTEM_LIBRARY}/Themes"
-	cp -R ${WORKDIR}/*theme ${S}/*theme "${D}${GNUSTEP_SYSTEM_LIBRARY}/Themes/"
+	#install themes (and link default one)
+	mkdir -p ${D}${GNUSTEP_SYSTEM_LIBRARY}/Themes
+	cp -R ${WORKDIR}/*theme ${D}${GNUSTEP_SYSTEM_LIBRARY}/Themes/
+	ln -s ${GNUSTEP_SYSTEM_LIBRARY}/Bundles/Camaelon.themeEngine/Resources/Nesedah.theme ${D}${GNUSTEP_SYSTEM_LIBRARY}/Themes/
 }
