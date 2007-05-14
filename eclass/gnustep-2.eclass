@@ -59,7 +59,7 @@ gnustep-2_pkg_setup() {
 gnustep-2_src_compile() {
 	egnustep_env
 	if [ -x ./configure ]; then
-		econf
+		econf || die
 	fi
 	egnustep_make || die
 }
