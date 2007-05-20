@@ -14,17 +14,12 @@ KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="${IUSE} pdfkit doc"
+IUSE="${IUSE} pdf doc"
 DEPEND="${GS_DEPEND}
-	pdfkit? ( =gnustep-libs/pdfkit-0.9* )
+	pdf? ( >=gnustep-libs/pdfkit-0.9_pre )
 	gnustep-apps/systempreferences
-	>=dev-db/sqlite-3.2.8
-	!gnustep-apps/desktop
-	!gnustep-apps/recycler"
+	>=dev-db/sqlite-3.2.8"
 RDEPEND="${GS_RDEPEND}
-	pdfkit? ( =gnustep-libs/pdfkit-0.9* )
-	gnustep-apps/systempreferences
-	>=dev-db/sqlite-3.2.8
 	!gnustep-apps/desktop
 	!gnustep-apps/recycler"
 
@@ -38,7 +33,9 @@ src_unpack() {
 }
 
 src_compile() {
-	gnustep-2_src_compile
+	egnustep_env
+	econf --with-inotify 
+	egnustep_make
 
 	cd ${S}/GWMetadata
 	econf || die "GWMetadata configure failed"

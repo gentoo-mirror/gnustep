@@ -1,0 +1,4 @@
+# New working version of popplerkit from Etoile project
+# And unmasking vindaloo
+gnustep-apps/vindaloo
+>gnustep-libs/popplerkit-0.0.0
