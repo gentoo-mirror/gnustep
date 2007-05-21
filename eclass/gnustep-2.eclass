@@ -121,6 +121,9 @@ egnustep_env() {
 		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep-reset.sh
 		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh
 
+		# Needed to run installed GNUstep apps in sandbox
+		addpredict "/root/GNUstep"
+
 		# Set up common env vars for make operations
 		__GS_MAKE_EVAL=" \
 			HOME=\"\${T}\" \
