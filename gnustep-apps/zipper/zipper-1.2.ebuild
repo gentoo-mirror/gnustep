@@ -13,15 +13,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-IUSE="rar"
+IUSE=""
 DEPEND="${GS_DEPEND}
 	gnustep-libs/renaissance"
-#	gnustep-libs/objcunit"
-RDEPEND="${GS_RDEPEND}
-	app-arch/tar
-	app-arch/unzip
-	app-arch/lha
-	app-arch/unlzx
-	rar? ( app-arch/unrar )"
+RDEPEND="${GS_RDEPEND}"
 
 egnustep_install_domain "System"
+
+pkg_postinst() {
+	gnustep-2_pkg_postinst
+
+	elog "Optional archives programs zipper can use:"
+	elog "app-arch/unzip	(ZIP files)"
+	elog "app-arch/lha		(LZH archives)"
+	elog "app-arch/unlzx	(Amiga LZX archives)"
+	elog "app-arch/rar		(RAR files)"
+}
