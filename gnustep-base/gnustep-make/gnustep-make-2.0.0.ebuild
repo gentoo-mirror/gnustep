@@ -12,7 +12,7 @@ KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 
-IUSE="${IUSE} doc non-flattened verbose"
+IUSE=""
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=sys-devel/make-3.75"
 RDEPEND="${DEPEND}
@@ -35,8 +35,6 @@ src_compile() {
 	local myconf
 	myconf="--prefix=${GNUSTEP_PREFIX} --with-layout=gnustep"
 	myconf="$myconf --enable-native-objc-exceptions"
-	use non-flattened && \
-		myconf="$myconf --disable-flattened --enable-multi-platform"
 	econf $myconf || die "configure failed"
 
 	emake
@@ -45,7 +43,7 @@ src_compile() {
 src_install() {
 	local make_eval="-j1"
 	use debug || make_eval="${make_eval} debug=no"
-	use verbose && make_eval="${make_eval} verbose=yes"
+	make_eval="${make_eval} verbose=yes"
 
 	emake ${make_eval} DESTDIR=${D} install || die "install has failed"
 

@@ -117,6 +117,7 @@ egnustep_tools_dir() {
 egnustep_env() {
 	# Get additional variables
 	GNUSTEP_SH_EXPORT_ALL_VARIABLES="true"
+
 	if [ -f ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh ] ; then
 		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep-reset.sh
 		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh
@@ -134,12 +135,25 @@ egnustep_env() {
 			GNUSTEP_MAKEFILES=\"\${GNUSTEP_SYSTEM_ROOT}\"/Library/Makefiles \
 			TAR_OPTIONS=\"\${TAR_OPTIONS} --no-same-owner\" \
 			messages=yes -j1"
+
 		if ! use debug ; then
 			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} debug=no"
 		fi
 		if use profile; then
 			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} profile=yes"
 		fi
+
+		case ${CHOST} in
+			*-linux-gnu|*-solaris*)
+				append-ldflags \
+					-Wl,-rpath="${GNUSTEP_SYSTEM_LIBRARIES}" \
+					-L"${GNUSTEP_SYSTEM_LIBRARIES}"
+			;;
+			*)
+				append-ldflags \
+					-L"${GNUSTEP_SYSTEM_LIBRARIES}"
+			;;
+		esac
 	else
 		die "gnustep-make not installed!"
 	fi
