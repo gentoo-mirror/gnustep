@@ -70,23 +70,10 @@ src_compile() {
 	econf $myconf || die "configure failed"
 
 	egnustep_make || die
-
-	if use doc;
-	then
-		cd ${S}/Documentation
-		egnustep_make || die
-	fi
 }
 
 src_install() {
-	egnustep_env
-	egnustep_install DESTDIR=${D} || die
-
-	if use doc;
-	then
-		cd ${S}/Documentation
-		egnustep_install || die
-	fi
+	gnustep-2_src_install
 
 	use gsnd && newinitd ${FILESDIR}/gsnd.initd gsnd
 }
