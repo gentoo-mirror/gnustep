@@ -31,10 +31,12 @@ src_compile() {
 
 src_install() {
 	egnustep_env
-	newenvd ${FILESDIR}/gnustep.env-${PV} 99gnustep
-	dosed "s:XXX_GNUSTEP_USER_ROOT_XXX:~/${GNUSTEP_USER_DIR}:g" /etc/env.d/99gnustep
-	dosed "s:XXX_GNUSTEP_LOCAL_ROOT_XXX:${GNUSTEP_LOCAL_ROOT}:g" /etc/env.d/99gnustep
-	dosed "s:XXX_GNUSTEP_NETWORK_ROOT_XXX:${GNUSTEP_NETWORK_ROOT}:g" /etc/env.d/99gnustep
-	dosed "s:XXX_GNUSTEP_SYSTEM_ROOT_XXX:${GNUSTEP_SYSTEM_ROOT}:g" /etc/env.d/99gnustep
+
+	dodir /etc/env.d
+	cat <<- EOF > "${D}"/etc/env.d/99gnustep
+MANPATH="${GNUSTEP_LOCAL_DOC_MAN}:${GNUSTEP_NETWORK_DOC_MAN}:${GNUSTEP_SYSTEM_DOC_MAN}"
+INFOPATH="${GNUSTEP_LOCAL_DOC_INFO}:${GNUSTEP_NETWORK_DOC_INFO}:${GNUSTEP_SYSTEM_DOC_INFO}"
+INFODIR="${GNUSTEP_LOCAL_DOC_INFO}:${GNUSTEP_NETWORK_DOC_INFO}:${GNUSTEP_SYSTEM_DOC_INFO}"
+EOF
 }
 
