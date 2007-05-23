@@ -8,10 +8,9 @@ DESCRIPTION="eclass for GNUstep Apps, Frameworks, and Bundles build"
 
 # IUSE variables across all GNUstep packages
 # "debug"	- enable code for debugging; also nostrip
-# "profile"	- enable code for profiling; also nostrip
 # "doc" - build and install documentation, if available
-IUSE="debug profile doc"
-if use debug || use profile; then
+IUSE="debug doc"
+if use debug; then
 	RESTRICT="nostrip"
 fi
 
@@ -137,9 +136,6 @@ egnustep_env() {
 
 		if ! use debug ; then
 			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} debug=no"
-		fi
-		if use profile; then
-			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} profile=yes"
 		fi
 
 		case ${CHOST} in
