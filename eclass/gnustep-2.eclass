@@ -30,7 +30,6 @@ DOC_RDEPEND="doc? ( virtual/man
 DEBUG_DEPEND="debug? ( >=sys-devel/gdb-6.0 )"
 # packages needed to build any gnustep package
 GNUSTEP_CORE_DEPEND="virtual/libc
-	>=sys-devel/gcc-3.3.5
 	${DOC_DEPEND}"
 
 GS_DEPEND=">=gnustep-base/gnustep-env-0.2"
