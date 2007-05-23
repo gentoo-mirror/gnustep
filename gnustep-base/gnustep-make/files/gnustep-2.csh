@@ -1,22 +1,11 @@
 #!/bin/csh
 
-if ( -e /etc/GNUstep/GNUstep.conf ) then
-    eval `sed -e '/^[^#=][^#=]*=.*$/\\!d' -e 's/^\([^#=][^#=]*\)=\(.*\)$/setenv \1 \2;/' /etc/GNUstep/GNUstep.conf`
-else
-    setenv GNUSTEP_MAKEFILES /usr/GNUstep/System/Library/Makefiles
+setenv GNUSTEP_SYSTEM_TOOLS /usr/GNUstep/System/Tools
+
+if ( -x $GNUSTEP_SYSTEM_TOOLS/make_services ) then
+    $GNUSTEP_SYSTEM_TOOLS}/make_services
 endif
 
-source $GNUSTEP_MAKEFILES/GNUstep.csh
-
-if ( "$GNUSTEP_IS_FLATTENED" == "no" ) then
-    set TDIR=${GNUSTEP_SYSTEM_TOOLS}/${GNUSTEP_HOST_CPU}/${GNUSTEP_HOST_OS}/${LIBRARY_COMBO}
-else
-    set TDIR=${GNUSTEP_SYSTEM_TOOLS}
+if ( -x $GNUSTEP_SYSTEM_TOOLS/gdnc ) then
+    $GNUSTEP_SYSTEM_TOOLS/gdnc
 endif
-
-if ( -x $TDIR/make_services ) then
-    $TDIR/make_services
-endif
-
-unset TDIR
-
