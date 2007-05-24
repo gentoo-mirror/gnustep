@@ -130,7 +130,6 @@ egnustep_env() {
 			GNUSTEP_USER_DEFAULTS_DIR=\"\${T}\"/Defaults \
 			DESTDIR=\"\${D}\" \
 			GNUSTEP_INSTALLATION_DOMAIN=\"$(egnustep_install_domain)\" \
-			GNUSTEP_MAKEFILES=\"\${GNUSTEP_SYSTEM_ROOT}\"/Library/Makefiles \
 			TAR_OPTIONS=\"\${TAR_OPTIONS} --no-same-owner\" \
 			messages=yes -j1"
 
