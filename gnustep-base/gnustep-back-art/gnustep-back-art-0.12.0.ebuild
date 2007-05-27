@@ -39,8 +39,6 @@ RDEPEND="${DEPEND}
 	${DEBUG_DEPEND}
 	${DOC_RDEPEND}"
 
-egnustep_install_domain "System"
-
 src_compile() {
 	egnustep_env
 

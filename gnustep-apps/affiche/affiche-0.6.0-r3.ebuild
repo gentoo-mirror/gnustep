@@ -16,5 +16,3 @@ LICENSE="GPL-2"
 IUSE=""
 DEPEND="${GS_DEPEND}"
 RDEPEND="${GS_RDEPEND}"
-
-egnustep_install_domain "System"

@@ -21,8 +21,6 @@ DEPEND="${GS_DEPEND}
 	gnustep-libs/iconkit"
 RDEPEND="${GS_RDEPEND}"
 
-egnustep_install_domain "System"
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}

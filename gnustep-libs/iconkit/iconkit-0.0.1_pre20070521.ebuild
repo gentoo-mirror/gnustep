@@ -17,8 +17,6 @@ IUSE=""
 DEPEND="${GS_DEPEND}"
 RDEPEND="${GS_RDEPEND}"
 
-egnustep_install_domain "System"
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}

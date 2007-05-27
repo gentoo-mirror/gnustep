@@ -20,8 +20,6 @@ DEPEND="${GS_DEPEND}
 	gnustep-libs/ogrekit"
 RDEPEND="${GS_RDEPEND}"
 
-egnustep_install_domain "System"
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}

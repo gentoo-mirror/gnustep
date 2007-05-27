@@ -19,8 +19,6 @@ DEPEND=">=gnustep-base/gnustep-make-2.0
 	>=virtual/gnustep-back-0.12"
 RDEPEND="${DEPEND}"
 
-egnustep_install_domain="System"
-
 src_unpack() {
 	echo "nothing to unpack"
 }

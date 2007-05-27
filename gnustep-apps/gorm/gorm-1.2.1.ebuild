@@ -17,8 +17,6 @@ DEPEND="${GS_DEPEND}
 	doc? ( sys-apps/sed )"
 RDEPEND="${GS_RDEPEND}"
 
-egnustep_install_domain "System"
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}

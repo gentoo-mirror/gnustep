@@ -19,5 +19,3 @@ RDEPEND="${GS_RDEPEND}
 	net-misc/rdesktop"
 
 S=${WORKDIR}/${MY_P}
-
-egnustep_install_domain "System"

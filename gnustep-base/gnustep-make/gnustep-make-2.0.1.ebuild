@@ -18,8 +18,6 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 RDEPEND="${DEPEND}
 	${DOC_RDEPEND}"
 
-egnustep_install_domain "System"
-
 pkg_setup() {
 	gnustep-2_pkg_setup
 

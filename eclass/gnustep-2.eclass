@@ -71,8 +71,8 @@ gnustep-2_src_install() {
 	fi
 	# Copies "convenience scripts"
 	if [ -f ${FILESDIR}/config-${PN}.sh ]; then
-		dodir $(egnustep_tools_dir)/Gentoo
-		exeinto $(egnustep_tools_dir)/Gentoo
+		dodir ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
+		exeinto ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
 		doexe ${FILESDIR}/config-${PN}.sh
 	fi
 }
@@ -81,33 +81,8 @@ gnustep-2_pkg_postinst() {
 	# Informs user about existence of "convenience script"	
 	if [ -f ${FILESDIR}/config-${PN}.sh ]; then
 		einfo "Make sure to set happy defaults for this package by executing:"
-		einfo "  $(egnustep_tools_dir)/Gentoo/config-${PN}.sh"
+		einfo "  ${GNUSTEP_SYSTEM_TOOLS}/Gentoo/config-${PN}.sh"
 		einfo "as the user you will run the package as."
-	fi
-}
-
-# Prints/sets the GNUstep install domain (System/Local)
-egnustep_install_domain() {
-	if [ -z "$1" ]; then
-		echo ${__GS_INSTALL_DOMAIN}
-		return 0
-	fi
-
-	if [ "$1" == "System" ]; then
-		__GS_INSTALL_DOMAIN="SYSTEM"
-	elif [ "$1" == "Local" ]; then
-		__GS_INSTALL_DOMAIN="LOCAL"
-	else
-		die "An invalid parameter has been passed to ${FUNCNAME}"
-	fi
-}
-
-# Prints the GNUstep domain Tools directory
-egnustep_tools_dir() {
-	if [ "$__GS_INSTALL_DOMAIN" == "SYSTEM" ]; then
-		echo "${GNUSTEP_SYSTEM_TOOLS}"
-	elif [ "$__GS_INSTALL_DOMAIN" == "LOCAL" ]; then
-		echo "${GNUSTEP_LOCAL_TOOLS}"
 	fi
 }
 
@@ -129,7 +104,7 @@ egnustep_env() {
 			GNUSTEP_USER_DIR=\"\${T}\" \
 			GNUSTEP_USER_DEFAULTS_DIR=\"\${T}\"/Defaults \
 			DESTDIR=\"\${D}\" \
-			GNUSTEP_INSTALLATION_DOMAIN=\"$(egnustep_install_domain)\" \
+			GNUSTEP_INSTALLATION_DOMAIN=SYSTEM \
 			TAR_OPTIONS=\"\${TAR_OPTIONS} --no-same-owner\" \
 			messages=yes -j1"
 

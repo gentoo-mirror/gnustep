@@ -19,8 +19,6 @@ DEPEND="${GS_DEPEND}
 	>=media-libs/freetype-2"
 RDEPEND="${GS_RDEPEND}"
 
-egnustep_install_domain "System"
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}

@@ -21,8 +21,6 @@ DEPEND="${GS_DEPEND}
 RDEPEND="${GS_RDEPEND}
 	>=gnustep-libs/netclasses-1.05"
 
-egnustep_install_domain "System"
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}

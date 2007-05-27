@@ -18,8 +18,6 @@ DEPEND="${GS_DEPEND}
 	gnustep-libs/renaissance"
 RDEPEND="${GS_RDEPEND}"
 
-egnustep_install_domain "System"
-
 pkg_postinst() {
 	gnustep-2_pkg_postinst
 

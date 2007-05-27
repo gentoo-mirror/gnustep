@@ -17,8 +17,6 @@ DEPEND="gnustep-base/gnustep-gui
 	>=media-libs/freetype-2.1"
 RDEPEND="${DEPEND}"
 
-egnustep_install_domain "System"
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}

@@ -23,8 +23,6 @@ RDEPEND="${GS_RDEPEND}
 	!gnustep-apps/desktop
 	!gnustep-apps/recycler"
 
-egnustep_install_domain "System"
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}

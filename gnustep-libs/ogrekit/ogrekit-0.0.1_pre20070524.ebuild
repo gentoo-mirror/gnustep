@@ -18,8 +18,6 @@ DEPEND="${GS_DEPEND}
 	>=dev-libs/oniguruma-5.7.0"
 RDEPEND="${GS_RDEPEND}"
 
-egnustep_install_domain "System"
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}

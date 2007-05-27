@@ -20,8 +20,6 @@ IUSE=""
 DEPEND="${GS_DEPEND}"
 RDEPEND="${GS_RDEPEND}"
 
-egnustep_install_domain "System"
-
 src_install() {
 	gnustep-2_src_install || die "install failed"
 
