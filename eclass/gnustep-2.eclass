@@ -26,14 +26,14 @@ DOC_DEPEND="doc? ( virtual/tetex
 DOC_RDEPEND="doc? ( virtual/man
 	>=sys-apps/texinfo-4.6 )"
 # packages needed to utilize .debug apps
-DEBUG_DEPEND="debug? ( >=sys-devel/gdb-6.0 )"
+DEBUG_RDEPEND="debug? ( >=sys-devel/gdb-6.0 )"
 # packages needed to build any gnustep package
 GNUSTEP_CORE_DEPEND="virtual/libc
 	${DOC_DEPEND}"
 
 GS_DEPEND=">=gnustep-base/gnustep-env-0.2"
 GS_RDEPEND="${GS_DEPEND}
-	${DEBUG_DEPEND}
+	${DEBUG_RDEPEND}
 	${DOC_RDEPEND}"
 
 # Where to install GNUstep

@@ -26,7 +26,7 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	sys-apps/sed
 	${DOC_DEPEND}"
 RDEPEND="${DEPEND}
-	${DEBUG_DEPEND} 
+	${DEBUG_DEPEND}
 	${DOC_RDEPEND}"
 
 src_compile() {

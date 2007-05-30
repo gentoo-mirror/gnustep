@@ -1,4 +1,4 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/gnustep-apps/zipper/zipper-1.1.ebuild,v 1.1 2006/03/26 09:18:32 grobian Exp $
 

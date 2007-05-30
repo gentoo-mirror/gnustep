@@ -32,7 +32,7 @@ src_unpack() {
 
 src_compile() {
 	egnustep_env
-	econf --with-inotify 
+	econf --with-inotify
 	egnustep_make
 
 	cd ${S}/GWMetadata

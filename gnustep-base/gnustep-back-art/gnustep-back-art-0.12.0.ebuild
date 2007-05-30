@@ -64,7 +64,7 @@ src_install() {
 	egnustep_env
 
 	gnustep-2_src_install
-	
+
 	mkdir -p "${D}/${GNUSTEP_SYSTEM_LIBRARY}/Fonts"
 	cp -pPR Fonts/*.nfont "${D}/${GNUSTEP_SYSTEM_LIBRARY}/Fonts"
 }
