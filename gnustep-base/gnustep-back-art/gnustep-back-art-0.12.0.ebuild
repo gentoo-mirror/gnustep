@@ -54,8 +54,9 @@ src_compile() {
 	einfo "Generating nfonts support files"
 	cd Fonts
 	mknfonts $(fc-list : file|grep -v '\.gz'|cut -d: -f1)
-	for fdir in */; do
-		mv -v "$fdir" `echo $fdir | tr -d [:space:]`
+	# Trim whitepsaces
+	for fdir in *\ */; do
+		mv "$fdir" `echo $fdir | tr -d [:space:]`
 	done
 }
 
