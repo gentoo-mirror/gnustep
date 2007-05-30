@@ -51,10 +51,10 @@ src_compile() {
 	egnustep_make
 
 	# Create font lists for DejaVu
-	einfo "Installing DejaVu fonts in GNUstep"
+	einfo "Generating nfonts support files"
 	cd Fonts
-	mknfonts /usr/share/fonts/dejavu/*.ttf
-	for fdir in DejaVu*; do
+	mknfonts $(fc-list : file|grep -v '\.gz'|cut -d: -f1)
+	for fdir in */; do
 		mv -v "$fdir" `echo $fdir | tr -d [:space:]`
 	done
 }
