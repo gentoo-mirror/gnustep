@@ -1,6 +1,6 @@
 diff -Naur Cenon.orig/GNUmakefile Cenon/GNUmakefile
---- Cenon.orig/GNUmakefile	2007-05-31 15:23:33.000000000 +0200
-+++ Cenon/GNUmakefile	2007-05-31 15:24:05.000000000 +0200
+--- Cenon.orig/GNUmakefile	2007-05-31 15:53:12.000000000 +0200
++++ Cenon/GNUmakefile	2007-05-31 15:53:18.000000000 +0200
 @@ -23,7 +23,6 @@
  # eMail: info@vhf.de
  # http://www.vhf.de
@@ -10,18 +10,20 @@ diff -Naur Cenon.orig/GNUmakefile Cenon/GNUmakefile
  
  include $(GNUSTEP_MAKEFILES)/common.make
 diff -Naur Cenon.orig/GNUmakefile.postamble Cenon/GNUmakefile.postamble
---- Cenon.orig/GNUmakefile.postamble	2007-05-31 15:23:33.000000000 +0200
-+++ Cenon/GNUmakefile.postamble	2007-05-31 15:24:25.000000000 +0200
-@@ -21,9 +21,10 @@
- after-install::
- 	# copy library
- 	#rm -R $(GNUSTEP_INSTALLATION_DIR)/Library/$(APP_NAME)
+--- Cenon.orig/GNUmakefile.postamble	2007-05-31 15:53:12.000000000 +0200
++++ Cenon/GNUmakefile.postamble	2007-05-31 15:54:10.000000000 +0200
+@@ -18,13 +18,7 @@
+ # before-install::
+ 
+ # Things to do after installing
+-after-install::
+-	# copy library
+-	#rm -R $(GNUSTEP_INSTALLATION_DIR)/Library/$(APP_NAME)
 -	cp -R Library/$(APP_NAME)/ $(GNUSTEP_INSTALLATION_DIR)/Library/
-+	mkdir -p $(GNUSTEP_SYSTEM_LIBRARY)/
-+	cp -R Library $(DESTDIR)/$(GNUSTEP_SYSTEM_LIBRARY)/
- 	# set permissions (rrr)
+-	# set permissions (rrr)
 -	chmod -R ugo+rX $(GNUSTEP_APPS)/$(APP_NAME).*
-+	#chmod -R ugo+rX $(GNUSTEP_APPS)/$(APP_NAME).*
- 	#chmod -R ugo+rX $(GNUSTEP_INSTALLATION_DIR)/Library/$(APP_NAME)
+-	#chmod -R ugo+rX $(GNUSTEP_INSTALLATION_DIR)/Library/$(APP_NAME)
++#after-install::
  
  # Things to do before uninstalling
+ # before-uninstall::
