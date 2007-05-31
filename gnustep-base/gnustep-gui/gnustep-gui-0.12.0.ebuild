@@ -15,7 +15,6 @@ LICENSE="LGPL-2.1"
 IUSE="${IUSE} jpeg gif png gsnd doc cups"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
-	>=gnustep-base/gnustep-make-2.0.0
 	>=gnustep-base/gnustep-base-1.14.0
 	|| (
 		( x11-libs/libXt )

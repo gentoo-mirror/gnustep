@@ -31,7 +31,8 @@ DEBUG_RDEPEND="debug? ( >=sys-devel/gdb-6.0 )"
 GNUSTEP_CORE_DEPEND="virtual/libc
 	${DOC_DEPEND}"
 
-GS_DEPEND=">=gnustep-base/gnustep-env-0.2"
+GS_DEPEND=">=gnustep-base/gnustep-make-2.0
+	virtual/gnustep-back"
 GS_RDEPEND="${GS_DEPEND}
 	${DEBUG_RDEPEND}
 	${DOC_RDEPEND}"

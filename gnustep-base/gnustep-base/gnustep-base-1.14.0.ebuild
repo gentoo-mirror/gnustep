@@ -15,7 +15,6 @@ LICENSE="GPL-2 LGPL-2.1"
 IUSE="${IUSE} doc gcc-libffi"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
-	>=gnustep-base/gnustep-make-2.0.0
 	!gcc-libffi? ( dev-libs/ffcall )
 	gcc-libffi? ( >=sys-devel/gcc-3.3.5 )
 	>=dev-libs/libxml2-2.6
