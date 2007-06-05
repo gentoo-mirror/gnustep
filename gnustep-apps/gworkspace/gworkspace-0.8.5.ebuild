@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gworkspace/gworkspace-0.8.3.ebuild,v 1.2 2007/01/05 07:07:47 flameeyes Exp $
 
-inherit gnustep-2
+inherit autotools gnustep-2
 
 S=${WORKDIR}/${P/gw/GW}
 
@@ -16,7 +16,7 @@ SLOT="0"
 
 IUSE="${IUSE} pdf doc"
 DEPEND="${GS_DEPEND}
-	pdf? ( >=gnustep-libs/pdfkit-0.9_pre )
+	pdf? ( >=gnustep-libs/popplerkit-0.0.1_pre )
 	gnustep-apps/systempreferences
 	>=dev-db/sqlite-3.2.8"
 RDEPEND="${GS_RDEPEND}
@@ -28,6 +28,10 @@ src_unpack() {
 	cd ${S}
 
 	epatch ${FILESDIR}/${P}-rpath.patch
+	epatch ${FILESDIR}/${P}-popplerkit.patch
+
+	cd Inspector
+	eautoreconf || die "failed running autoreconf"
 }
 
 src_compile() {
