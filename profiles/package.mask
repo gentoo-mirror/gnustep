@@ -1,0 +1,2 @@
+=gnustep-libs/pantomime-1.2.0.2*
+=gnustep-apps/gnumail-1.2.0.2*
