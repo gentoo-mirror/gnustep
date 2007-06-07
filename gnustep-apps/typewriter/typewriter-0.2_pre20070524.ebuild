@@ -15,9 +15,8 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-DEPEND="${GS_DEPEND}
-	gnustep-libs/ogrekit"
-RDEPEND="${GS_RDEPEND}"
+DEPEND="gnustep-libs/ogrekit"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}

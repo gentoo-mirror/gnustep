@@ -13,9 +13,7 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="Cenon"
 
-DEPEND="${GS_DEPEND}"
-RDEPEND="${GS_RDEPEND}
-	>=gnustep-libs/cenonlibrary-3.82"
+RDEPEND=">=gnustep-libs/cenonlibrary-3.82"
 
 src_unpack() {
 	unpack ${A}

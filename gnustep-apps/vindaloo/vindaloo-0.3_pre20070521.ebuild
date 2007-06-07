@@ -15,10 +15,9 @@ LICENSE="GPL-2"
 KEYWORDS="~ppc ~x86 ~amd64"
 SLOT="0"
 
-DEPEND="${GS_DEPEND}
-	gnustep-libs/popplerkit
+DEPEND="gnustep-libs/popplerkit
 	gnustep-libs/iconkit"
-RDEPEND="${GS_RDEPEND}"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/talksoup/talksoup-1.0_alpha1.ebuild,v 1.1 2006/06/25 14:16:27 grobian Exp $
+# $Header: $
 
 inherit gnustep-2
 
@@ -15,10 +15,8 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-1"
 
-DEPEND="${GS_DEPEND}
-	>=gnustep-libs/netclasses-1.05"
-RDEPEND="${GS_RDEPEND}
-	>=gnustep-libs/netclasses-1.05"
+DEPEND=">=gnustep-libs/netclasses-1.05"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}

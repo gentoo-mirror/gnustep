@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gworkspace/gworkspace-0.8.3.ebuild,v 1.2 2007/01/05 07:07:47 flameeyes Exp $
+# $Header: $
 
 inherit autotools gnustep-2
 
@@ -15,12 +15,10 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="pdf"
-DEPEND="${GS_DEPEND}
-	pdf? ( >=gnustep-libs/popplerkit-0.0.1_pre )
+DEPEND="pdf? ( >=gnustep-libs/popplerkit-0.0.1_pre )
 	gnustep-apps/systempreferences
 	>=dev-db/sqlite-3.2.8"
-RDEPEND="${GS_RDEPEND}
-	!gnustep-apps/desktop
+RDEPEND="!gnustep-apps/desktop
 	!gnustep-apps/recycler"
 
 src_unpack() {

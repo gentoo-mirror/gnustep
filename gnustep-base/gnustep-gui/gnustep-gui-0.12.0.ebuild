@@ -1,8 +1,8 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-gui/gnustep-gui-0.11.0.ebuild,v 1.1 2006/12/05 20:22:42 grobian Exp $
+# $Header: $
 
-inherit gnustep-2
+inherit gnustep-base
 
 DESCRIPTION="Library of GUI classes written in Obj-C"
 HOMEPAGE="http://www.gnustep.org/"
@@ -31,13 +31,10 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	app-text/aspell"
 # gsnd needs a recent portaudio that's not unmasked in the tree yet
 #		=media-libs/portaudio-19*
-RDEPEND="${DEPEND}
-	${DEBUG_DEPEND}
-	${DOC_RDEPEND}"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
-
 	cd ${S}
 
 #	if use gsnd;
@@ -70,7 +67,7 @@ src_compile() {
 }
 
 src_install() {
-	gnustep-2_src_install
+	gnustep-base_src_install
 
 	use gsnd && newinitd ${FILESDIR}/gsnd.initd gsnd
 }

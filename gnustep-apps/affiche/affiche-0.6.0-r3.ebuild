@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/affiche/affiche-0.6.0-r2.ebuild,v 1.3 2005/08/25 18:57:12 swegener Exp $
+# $Header: $
 
 inherit gnustep-2
 
@@ -12,6 +12,3 @@ SRC_URI="http://www.collaboration-world.com/affiche.data/releases/Stable/${P/a/A
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 LICENSE="GPL-2"
-
-DEPEND="${GS_DEPEND}"
-RDEPEND="${GS_RDEPEND}"

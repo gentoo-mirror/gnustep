@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/clipbook/clipbook-0.6.0.8.3.ebuild,v 1.1 2006/12/05 21:22:14 grobian Exp $
+# $Header: $
 
 inherit gnustep-2
 
@@ -13,6 +13,3 @@ SRC_URI="http://www.gnustep.it/enrico/gworkspace/gworkspace-${PV/0.6.}.tar.gz"
 KEYWORDS="~amd64 ~x86 ~ppc"
 LICENSE="GPL-2"
 SLOT="0"
-
-DEPEND="${GS_DEPEND}"
-RDEPEND="${GS_RDEPEND}"

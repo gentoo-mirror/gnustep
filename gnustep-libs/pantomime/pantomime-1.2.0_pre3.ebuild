@@ -16,9 +16,8 @@ LICENSE="LGPL-2.1 Elm"
 KEYWORDS="~amd64 ~x86 ~ppc"
 SLOT="0"
 
-DEPEND="${GS_DEPEND}
-	dev-libs/openssl"
-RDEPEND="${GS_RDEPEND}"
+DEPEND="dev-libs/openssl"
+RDEPEND="${DEPEND}"
 
 src_install() {
 	gnustep-2_src_install

@@ -17,12 +17,10 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="crypt emoticon xface"
-DEPEND="${GS_DEPEND}
-	=gnustep-libs/pantomime-${PV}
+DEPEND="=gnustep-libs/pantomime-${PV}
 	>=gnustep-base/gnustep-gui-0.11.0
 	gnustep-libs/addresseskit"
-RDEPEND="${GS_RDEPEND}
-	crypt? ( app-crypt/gnupg )"
+RDEPEND="crypt? ( app-crypt/gnupg )"
 
 src_unpack() {
 	unpack ${A}

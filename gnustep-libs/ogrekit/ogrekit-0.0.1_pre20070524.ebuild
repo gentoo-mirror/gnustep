@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/popplerkit/popplerkit-0.0.0.20050720.ebuild,v 1.2 2005/08/25 19:03:49 swegener Exp $
+# $Header: $
 
 inherit gnustep-2
 
@@ -13,9 +13,8 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-DEPEND="${GS_DEPEND}
-	>=dev-libs/oniguruma-5.7.0"
-RDEPEND="${GS_RDEPEND}"
+DEPEND=">=dev-libs/oniguruma-5.7.0"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}

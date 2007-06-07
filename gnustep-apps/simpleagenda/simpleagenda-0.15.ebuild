@@ -14,9 +14,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="${GS_DEPEND}"
-RDEPEND="${GS_RDEPEND}"
-
 S=${WORKDIR}/${MY_PN}-${PV}
 
 src_unpack() {

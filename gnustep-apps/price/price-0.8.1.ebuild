@@ -11,9 +11,6 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 
-DEPEND="${GS_DEPEND}"
-RDEPEND="${GS_RDEPEND}"
-
 S=${WORKDIR}/PRICE
 
 src_unpack() {

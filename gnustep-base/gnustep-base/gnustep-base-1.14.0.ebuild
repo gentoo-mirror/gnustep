@@ -1,8 +1,8 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-base/gnustep-base-1.13.0-r1.ebuild,v 1.2 2007/03/15 17:33:32 grobian Exp $
+# $Header: $
 
-inherit gnustep-2 autotools
+inherit gnustep-base autotools
 
 DESCRIPTION="The GNUstep Base Library is a library of general-purpose, non-graphical Objective C objects."
 
@@ -15,18 +15,15 @@ LICENSE="GPL-2 LGPL-2.1"
 IUSE="gcc-libffi"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
+	>=gnustep-base/gnustep-make-2.0
 	!gcc-libffi? ( dev-libs/ffcall )
 	gcc-libffi? ( >=sys-devel/gcc-3.3.5 )
 	>=dev-libs/libxml2-2.6
 	>=dev-libs/libxslt-1.1
 	>=dev-libs/gmp-4.1
 	>=dev-libs/openssl-0.9.7
-	>=sys-libs/zlib-1.2
-	sys-apps/sed
-	${DOC_DEPEND}"
-RDEPEND="${DEPEND}
-	${DEBUG_DEPEND}
-	${DOC_RDEPEND}"
+	>=sys-libs/zlib-1.2"
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	egnustep_env

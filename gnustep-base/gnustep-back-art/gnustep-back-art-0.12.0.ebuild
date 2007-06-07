@@ -1,8 +1,8 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-back-art/gnustep-back-art-0.11.0.ebuild,v 1.1 2006/09/03 21:17:12 grobian Exp $
+# $Header: $
 
-inherit gnustep-2
+inherit gnustep-base
 
 S=${WORKDIR}/gnustep-back-${PV}
 
@@ -35,9 +35,7 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	gnustep-base/mknfonts
 	media-fonts/dejavu
 	!virtual/gnustep-back"
-RDEPEND="${DEPEND}
-	${DEBUG_DEPEND}
-	${DOC_RDEPEND}"
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	egnustep_env
@@ -63,7 +61,7 @@ src_compile() {
 src_install() {
 	egnustep_env
 
-	gnustep-2_src_install
+	gnustep-base_src_install
 
 	mkdir -p "${D}/${GNUSTEP_SYSTEM_LIBRARY}/Fonts"
 	cp -pPR Fonts/*.nfont "${D}/${GNUSTEP_SYSTEM_LIBRARY}/Fonts"

@@ -12,7 +12,4 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="${GS_DEPEND}"
-RDEPEND="${GS_RDEPEND}
-	x11-apps/xgamma"
-
+RDEPEND="x11-apps/xgamma"

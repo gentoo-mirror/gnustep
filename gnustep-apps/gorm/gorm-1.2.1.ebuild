@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gorm/gorm-1.1.0.ebuild,v 1.1 2006/12/05 21:30:38 grobian Exp $
+# $Header: $
 
 inherit gnustep-2
 
@@ -11,10 +11,6 @@ SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/dev-apps/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86 ~ppc"
 LICENSE="GPL-2"
 SLOT="0"
-
-DEPEND="${GS_DEPEND}
-	doc? ( sys-apps/sed )"
-RDEPEND="${GS_RDEPEND}"
 
 src_unpack() {
 	unpack ${A}

@@ -10,6 +10,3 @@ SRC_URI="http://www.linuks.mine.nu/aclock/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-
-DEPEND="${GS_DEPEND}"
-RDEPEND="${GS_RDEPEND}"

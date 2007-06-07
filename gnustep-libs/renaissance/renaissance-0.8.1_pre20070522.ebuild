@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/renaissance/renaissance-0.8.1_pre20060324.ebuild,v 1.2 2006/06/04 17:53:24 grobian Exp $
+# $Header: $
 
 inherit gnustep-2
 
@@ -13,6 +13,3 @@ SRC_URI="http://overlays.gentoo.org/svn/proj/gnustep/downloads/${P}.tar.bz2"
 KEYWORDS="~amd64 ~x86"
 LICENSE="LGPL-2.1"
 SLOT="0"
-
-DEPEND="${GS_DEPEND}"
-RDEPEND="${GS_RDEPEND}"

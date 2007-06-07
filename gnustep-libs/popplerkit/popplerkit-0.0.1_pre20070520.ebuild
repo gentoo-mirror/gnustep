@@ -13,10 +13,9 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-DEPEND="${GS_DEPEND}
-	>=app-text/poppler-0.4
+DEPEND=">=app-text/poppler-0.4
 	>=media-libs/freetype-2"
-RDEPEND="${GS_RDEPEND}"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}

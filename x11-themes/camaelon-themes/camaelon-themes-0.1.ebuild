@@ -15,9 +15,6 @@ KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 SLOT="0"
 LICENSE="LGPL-2.1"
 
-DEPEND="${GS_DEPEND}"
-RDEPEND="${GS_RDEPEND}"
-
 src_compile() {
 	einfo "Nothing to compile"
 }

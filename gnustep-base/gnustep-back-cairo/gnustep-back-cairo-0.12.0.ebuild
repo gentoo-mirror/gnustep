@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit gnustep-2
+inherit gnustep-base
 
 S=${WORKDIR}/gnustep-back-${PV}
 
@@ -32,9 +32,7 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=media-libs/freetype-2.1.9
 	>=x11-libs/cairo-1.2.0
 	!virtual/gnustep-back"
-RDEPEND="${DEPEND}
-	${DEBUG_DEPEND}
-	${DOC_RDEPEND}"
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	egnustep_env
@@ -49,5 +47,4 @@ src_compile() {
 	econf $myconf || die "configure failed"
 
 	egnustep_make
-
 }
