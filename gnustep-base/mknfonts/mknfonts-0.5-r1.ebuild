@@ -12,7 +12,6 @@ KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 SLOT="0"
 LICENSE="GPL-2"
 
-IUSE=""
 DEPEND="gnustep-base/gnustep-gui
 	>=media-libs/freetype-2.1"
 RDEPEND="${DEPEND}"

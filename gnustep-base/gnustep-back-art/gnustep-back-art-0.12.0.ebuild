@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 SLOT="0"
 LICENSE="LGPL-2.1"
 
-IUSE="${IUSE} opengl xim doc"
+IUSE="opengl xim"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	~gnustep-base/gnustep-gui-${PV}

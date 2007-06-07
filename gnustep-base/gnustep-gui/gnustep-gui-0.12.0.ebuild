@@ -12,7 +12,7 @@ KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 SLOT="0"
 LICENSE="LGPL-2.1"
 
-IUSE="${IUSE} jpeg gif png gsnd doc cups"
+IUSE="jpeg gif png gsnd cups"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=gnustep-base/gnustep-base-1.14.0

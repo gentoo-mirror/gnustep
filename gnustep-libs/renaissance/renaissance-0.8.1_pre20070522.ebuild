@@ -10,7 +10,6 @@ HOMEPAGE="http://www.gnustep.it/Renaissance/index.html"
 SRC_URI="http://overlays.gentoo.org/svn/proj/gnustep/downloads/${P}.tar.bz2"
 
 
-IUSE=""
 KEYWORDS="~amd64 ~x86"
 LICENSE="LGPL-2.1"
 SLOT="0"

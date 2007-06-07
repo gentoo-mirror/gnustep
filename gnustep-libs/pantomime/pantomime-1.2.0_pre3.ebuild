@@ -16,7 +16,6 @@ LICENSE="LGPL-2.1 Elm"
 KEYWORDS="~amd64 ~x86 ~ppc"
 SLOT="0"
 
-IUSE=""
 DEPEND="${GS_DEPEND}
 	dev-libs/openssl"
 RDEPEND="${GS_RDEPEND}"

@@ -11,8 +11,8 @@ SRC_URI="http://www.linuks.mine.nu/displaycalibrator/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=""
-RDEPEND="x11-apps/xgamma"
+DEPEND="${GS_DEPEND}"
+RDEPEND="${GS_RDEPEND}
+	x11-apps/xgamma"
 

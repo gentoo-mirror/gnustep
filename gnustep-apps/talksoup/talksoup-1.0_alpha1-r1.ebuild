@@ -15,7 +15,6 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-1"
 
-IUSE=""
 DEPEND="${GS_DEPEND}
 	>=gnustep-libs/netclasses-1.05"
 RDEPEND="${GS_RDEPEND}

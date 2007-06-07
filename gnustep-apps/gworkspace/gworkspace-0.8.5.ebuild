@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="${IUSE} pdf doc"
+IUSE="pdf"
 DEPEND="${GS_DEPEND}
 	pdf? ( >=gnustep-libs/popplerkit-0.0.1_pre )
 	gnustep-apps/systempreferences

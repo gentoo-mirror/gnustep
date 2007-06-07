@@ -12,7 +12,7 @@ KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1"
 
-IUSE="${IUSE} doc gcc-libffi"
+IUSE="gcc-libffi"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	!gcc-libffi? ( dev-libs/ffcall )

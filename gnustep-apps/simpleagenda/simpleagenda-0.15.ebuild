@@ -13,7 +13,6 @@ SRC_URI="http://coyote.octets.fr/pub/gnustep/${MY_PN}-${PV}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="${GS_DEPEND}"
 RDEPEND="${GS_RDEPEND}"
@@ -23,7 +22,7 @@ S=${WORKDIR}/${MY_PN}-${PV}
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	
+
 	epatch ${FILESDIR}/${PN}-chronographersource.patch
 }
 

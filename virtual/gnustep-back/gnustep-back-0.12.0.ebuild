@@ -8,7 +8,6 @@ SRC_URI=""
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE=""
 RDEPEND="|| (
 		~gnustep-base/gnustep-back-art-${PV}
 		~gnustep-base/gnustep-back-xlib-${PV}

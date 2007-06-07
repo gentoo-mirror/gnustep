@@ -13,7 +13,6 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-IUSE=""
 DEPEND="${GS_DEPEND}
 	>=dev-libs/oniguruma-5.7.0"
 RDEPEND="${GS_RDEPEND}"
