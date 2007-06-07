@@ -86,5 +86,5 @@ src_install() {
 	dodoc ${S}/Documentation/*
 
 	# FIX ?
-	#rm -rf ${D}$(egnustep_install_domain)/Applications/GNUMail.app/Resources/Resources
+	rm -rf ${D}$(egnustep_install_domain)/Applications/GNUMail.app/Resources/Resources
 }
