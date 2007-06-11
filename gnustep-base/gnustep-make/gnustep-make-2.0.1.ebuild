@@ -30,6 +30,7 @@ src_compile() {
 
 	local myconf
 	myconf="--prefix=${GNUSTEP_PREFIX} --with-layout=gnustep"
+	myconf="$myconf --with-config-file=/etc/GNUstep/GNUstep.conf"
 	myconf="$myconf --enable-native-objc-exceptions"
 	econf $myconf || die "configure failed"
 
@@ -64,4 +65,3 @@ INFOPATH=${GNUSTEP_SYSTEM_DOC_INFO}:${GNUSTEP_LOCAL_DOC_INFO}
 INFODIR=${GNUSTEP_SYSTEM_DOC_INFO}:${GNUSTEP_LOCAL_DOC_INFO}
 EOF
 }
-
