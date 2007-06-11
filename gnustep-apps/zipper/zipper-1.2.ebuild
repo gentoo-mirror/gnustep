@@ -17,7 +17,7 @@ DEPEND="gnustep-libs/renaissance"
 RDEPEND="${DEPEND}"
 
 pkg_postinst() {
-	gnustep-2_pkg_postinst
+	gnustep-base_pkg_postinst
 
 	elog "Optional archives programs zipper can use:"
 	elog "app-arch/unzip	(ZIP files)"

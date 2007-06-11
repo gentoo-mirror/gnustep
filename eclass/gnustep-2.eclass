@@ -11,20 +11,5 @@ DEPEND=">=gnustep-base/gnustep-make-2.0
 RDEPEND="$DEPEND
 	debug? ( >=sys-devel/gdb-6.0 )"
 
-gnustep-2_pkg_setup() {
-	gnustep-base_pkg_setup
-}
-
-gnustep-2_src_compile() {
-	gnustep-base_src_compile
-}
-
-gnustep-2_src_install() {
-	gnustep-base_src_install
-}
-
-gnustep-2_pkg_postinst() {
-	gnustep-base_pkg_postinst
-}
-
-EXPORT_FUNCTIONS pkg_setup src_compile src_install pkg_postinst
+# If you need to explicitly call some EXPORT_FUNCTIONS,
+# use the gnustep-base_* prefixed ones

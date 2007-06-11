@@ -59,7 +59,7 @@ src_compile() {
 }
 
 src_install() {
-	gnustep-2_src_install
+	gnustep-base_src_install
 
 	cd Bundles/Clock
 	egnustep_install || die

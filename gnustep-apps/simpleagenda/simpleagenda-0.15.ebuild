@@ -25,16 +25,16 @@ src_unpack() {
 
 src_compile() {
 	cd ${WORKDIR}/ChronographerSource
-	gnustep-2_src_compile
+	gnustep-base_src_compile
 
 	cd ${S}
-	gnustep-2_src_compile
+	gnustep-base_src_compile
 }
 
 src_install() {
 	cd ${WORKDIR}/ChronographerSource
-	gnustep-2_src_install
+	gnustep-base_src_install
 
 	cd ${S}
-	gnustep-2_src_install
+	gnustep-base_src_install
 }

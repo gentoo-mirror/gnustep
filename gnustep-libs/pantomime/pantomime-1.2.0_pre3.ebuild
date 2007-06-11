@@ -20,7 +20,7 @@ DEPEND="dev-libs/openssl"
 RDEPEND="${DEPEND}"
 
 src_install() {
-	gnustep-2_src_install
+	gnustep-base_src_install
 
 	dodoc ${S}/Documentation/*
 	docinto rfc
