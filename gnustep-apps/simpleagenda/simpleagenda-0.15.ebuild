@@ -24,17 +24,18 @@ src_unpack() {
 }
 
 src_compile() {
+	egnustep_env
 	cd ${WORKDIR}/ChronographerSource
-	gnustep-base_src_compile
+	egnustep_make
 
 	cd ${S}
-	gnustep-base_src_compile
+	egnustep_make
 }
 
 src_install() {
 	cd ${WORKDIR}/ChronographerSource
-	gnustep-base_src_install
+	egnustep_install
 
 	cd ${S}
-	gnustep-base_src_install
+	egnustep_install
 }
