@@ -1,13 +1,13 @@
---- GNUmakefile.preamble.orig	2007-06-06 22:36:27.000000000 +0200
-+++ GNUmakefile.preamble	2007-06-07 08:33:44.000000000 +0200
-@@ -15,8 +15,8 @@
- ADDITIONAL_LDFLAGS +=  -lChronographerSource 
+--- GNUmakefile.preamble.orig	2007-06-13 14:26:33.000000000 +0200
++++ GNUmakefile.preamble	2007-06-15 09:12:55.000000000 +0200
+@@ -15,8 +15,7 @@
+ ADDITIONAL_LDFLAGS +=  -lChronographerSource -lical 
  
  # Additional include directories the compiler should search
 -ADDITIONAL_INCLUDE_DIRS += 
-+ADDITIONAL_INCLUDE_DIRS += -I..
++ADDITIONAL_INCLUDE_DIRS +=  -I..
  
  # Additional library directories the linker should search
--ADDITIONAL_LIB_DIRS += -L/opt/gnustep/Local/Library/Libraries 
-+ADDITIONAL_LIB_DIRS += -L/opt/gnustep/Local/Library/Libraries -L../ChronographerSource/obj
- 
+-ADDITIONAL_LIB_DIRS += -L/opt/gnustep/Local/Library/Libraries -L/usr/local/lib 
+-
++ADDITIONAL_LIB_DIRS += -L../ChronographerSource/obj
