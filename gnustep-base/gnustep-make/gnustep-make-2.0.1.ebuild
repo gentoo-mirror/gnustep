@@ -35,27 +35,35 @@ src_compile() {
 	econf $myconf || die "configure failed"
 
 	emake
+	# Prepare doc here (needed when no gnustep-make is already installed)
+	if use doc ; then
+		cd Documentation
+		emake -j1 all install || die "doc make has failed"
+		cd ..
+	fi
 }
 
 src_install() {
+	# Get GNUSTEP_* variables
+	. ./GNUstep.conf
+
 	local make_eval="-j1"
 	use debug || make_eval="${make_eval} debug=no"
 	make_eval="${make_eval} verbose=yes"
 
 	emake ${make_eval} DESTDIR=${D} install || die "install has failed"
 
+	# Copy the documentation
 	if use doc ; then
-		cd Documentation
-		emake ${make_eval} all || die "doc make has failed"
-		emake ${make_eval} DESTDIR=${D} install || die "doc install has failed"
-		cd ..
+		dodir ${GNUSTEP_SYSTEM_LIBRARY}
+		cp -r Documentation/tmp-installation/System/Library/Documentation \
+			${D}${GNUSTEP_SYSTEM_LIBRARY}
 	fi
 
 	exeinto /etc/profile.d
 	doexe ${FILESDIR}/gnustep-2.sh
 	doexe ${FILESDIR}/gnustep-2.csh
 
-	. ./GNUstep.conf
 	dodir /etc/env.d
 	cat <<- EOF > "${D}"/etc/env.d/99gnustep
 PATH=${GNUSTEP_SYSTEM_TOOLS}:${GNUSTEP_LOCAL_TOOLS}
