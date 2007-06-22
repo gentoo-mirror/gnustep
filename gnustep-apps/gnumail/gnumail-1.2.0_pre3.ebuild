@@ -26,6 +26,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
+	epatch ${FILESDIR}/${P}-index.patch
 	sed -i -e \
 		's|$(GNUSTEP_INSTALLATION_DIR)/Library|$(DESTDIR)$(GNUSTEP_SYSTEM_LIBRARY)|' \
 		Bundles/*/GNUmakefile || die "gnustep-make-2 sed failed"
