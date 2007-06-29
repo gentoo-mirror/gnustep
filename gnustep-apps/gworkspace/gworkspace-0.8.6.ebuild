@@ -16,7 +16,7 @@ SLOT="0"
 
 IUSE="pdf"
 DEPEND="pdf? ( >=gnustep-libs/popplerkit-0.0.1_pre )
-	gnustep-apps/systempreferences
+	>=gnustep-apps/systempreferences-1.0.1_p24791
 	>=dev-db/sqlite-3.2.8"
 RDEPEND="!gnustep-apps/desktop
 	!gnustep-apps/recycler"
