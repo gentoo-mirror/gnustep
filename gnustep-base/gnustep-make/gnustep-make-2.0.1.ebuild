@@ -37,6 +37,8 @@ src_compile() {
 	emake
 	# Prepare doc here (needed when no gnustep-make is already installed)
 	if use doc ; then
+		# If a gnustep-1 environment is set
+		unset GNUSTEP_MAKEFILES
 		cd Documentation
 		emake -j1 all install || die "doc make has failed"
 		cd ..
