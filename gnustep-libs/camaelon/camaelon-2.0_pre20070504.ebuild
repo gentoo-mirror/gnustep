@@ -15,8 +15,7 @@ SLOT="0"
 LICENSE="LGPL-2.1"
 
 src_install() {
-	egnustep_env
-	egnustep_install
+	gnustep-base_src_install
 
 	#Link default theme
 	mkdir -p ${D}${GNUSTEP_SYSTEM_LIBRARY}/Themes
