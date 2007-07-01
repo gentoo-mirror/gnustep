@@ -34,8 +34,7 @@ src_unpack() {
 
 	epatch "${FILESDIR}"/${P}-flac-1.1.3.patch
 	epatch "${FILESDIR}"/${P}-NSCellExtensions.patch
-
-	sed -i -e "s/.*GNUSTEP_INSTALLATION_DIR.*//" GNUmakefile */*/GNUmakefile
+	epatch "${FILESDIR}"/${P}-gnustep-make-2.patch
 }
 
 cynthiune_get_config() {
