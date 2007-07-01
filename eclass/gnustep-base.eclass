@@ -132,7 +132,7 @@ egnustep_install() {
 
 # Make and install docs using GNUstep Makefiles
 egnustep_doc() {
-	cd ${S}/Documentation
+	cd ${S}/Documentation || return
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
 		eval emake ${__GS_MAKE_EVAL} all || die "doc make failed"
 		eval emake ${__GS_MAKE_EVAL} install || die "doc install failed"

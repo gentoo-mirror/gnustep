@@ -56,9 +56,4 @@ src_compile() {
 src_install() {
 	egnustep_env
 	egnustep_install "$(cynthiune_get_config)" || die
-	if use doc ; then
-		egnustep_env
-		egnustep_doc || die
-	fi
-	egnustep_package_config
 }
