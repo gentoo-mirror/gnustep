@@ -115,21 +115,19 @@ egnustep_env() {
 # Make utilizing GNUstep Makefiles
 egnustep_make() {
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-		eval emake ${__GS_MAKE_EVAL} all || die "package make failed"
+		eval emake ${*} ${__GS_MAKE_EVAL} all || die "package make failed"
 	else
 		die "no Makefile found"
 	fi
-	return 0
 }
 
 # Make-install utilizing GNUstep Makefiles
 egnustep_install() {
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-		eval emake ${__GS_MAKE_EVAL} install || die "package install failed"
+		eval emake ${*} ${__GS_MAKE_EVAL} install || die "package install failed"
 	else
 		die "no Makefile found"
 	fi
-	return 0
 }
 
 # Make and install docs using GNUstep Makefiles
@@ -140,7 +138,6 @@ egnustep_doc() {
 		eval emake ${__GS_MAKE_EVAL} install || die "doc install failed"
 	fi
 	cd ..
-	return 0
 }
 
 EXPORT_FUNCTIONS pkg_setup src_compile src_install pkg_postinst
