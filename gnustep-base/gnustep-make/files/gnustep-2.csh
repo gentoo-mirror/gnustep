@@ -1,5 +1,8 @@
 #!/bin/csh
 
+# Test for an interactive shell
+if ( "$?0" != "0" ) exit
+
 setenv GNUSTEP_SYSTEM_TOOLS /usr/GNUstep/System/Tools
 
 if ( -x $GNUSTEP_SYSTEM_TOOLS/make_services ) then
