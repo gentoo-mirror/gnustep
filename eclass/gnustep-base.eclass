@@ -7,12 +7,9 @@ inherit eutils flag-o-matic
 # Inner gnustep eclass, should only be inherited directly by gnustep-base packages
 
 # IUSE variables across all GNUstep packages
-# "debug"	- enable code for debugging; also nostrip
+# "debug"	- enable code for debugging;
 # "doc" - build and install documentation, if available
 IUSE="debug doc"
-if use debug; then
-	RESTRICT="nostrip"
-fi
 
 # packages needed to build any base gnustep package
 GNUSTEP_CORE_DEPEND="virtual/libc
