@@ -48,7 +48,7 @@ gnustep-base_src_install() {
 	egnustep_install || die
 	if use doc ; then
 		egnustep_env
-		egnustep_doc || die
+		egnustep_doc
 	fi
 	# Copies "convenience scripts"
 	if [ -f ${FILESDIR}/config-${PN}.sh ]; then
