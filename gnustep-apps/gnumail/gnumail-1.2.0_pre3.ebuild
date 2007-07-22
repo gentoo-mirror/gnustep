@@ -19,7 +19,7 @@ SLOT="0"
 IUSE="crypt emoticon xface"
 DEPEND="=gnustep-libs/pantomime-${PV}
 	>=gnustep-base/gnustep-gui-0.11.0
-	gnustep-libs/addresseskit"
+	gnustep-apps/addresses"
 RDEPEND="crypt? ( app-crypt/gnupg )"
 
 src_unpack() {
