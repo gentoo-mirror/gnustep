@@ -26,4 +26,5 @@ src_unpack() {
 	cd ${S}
 
 	epatch ${FILESDIR}/${P}-gui12.patch
+	epatch ${FILESDIR}/${P}-pathdomainmask.patch
 }
