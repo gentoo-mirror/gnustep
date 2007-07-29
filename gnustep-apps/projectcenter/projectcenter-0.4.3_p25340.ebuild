@@ -8,9 +8,9 @@ S=${WORKDIR}/${P/projectc/ProjectC}
 
 DESCRIPTION="An IDE for GNUstep."
 HOMEPAGE="http://www.gnustep.org/experience/ProjectCenter.html"
-SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/dev-apps/${P/projectc/ProjectC}.tar.gz"
+SRC_URI="http://overlays.gentoo.org/svn/proj/gnustep/downloads/${P}.tar.bz2"
 
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~x86 ~ppc"
 LICENSE="GPL-2"
 SLOT="0"
 
