@@ -9,7 +9,7 @@ DESCRIPTION="StepTalk is the official GNUstep scripting framework."
 HOMEPAGE="http://www.gnustep.org/experience/StepTalk.html"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/libs/${MY_PN}-${PV}.tar.gz"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="LGPL-2.1"
 SLOT="0"
 
