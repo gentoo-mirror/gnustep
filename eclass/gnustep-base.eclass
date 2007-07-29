@@ -87,7 +87,9 @@ egnustep_env() {
 			DESTDIR=\"\${D}\" \
 			GNUSTEP_INSTALLATION_DOMAIN=SYSTEM \
 			TAR_OPTIONS=\"\${TAR_OPTIONS} --no-same-owner\" \
-			messages=yes -j1"
+			messages=yes \
+			-j1"
+			# -j1 is needed as gnustep-make is not parallel-safe
 
 		if ! use debug ; then
 			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} debug=no"
