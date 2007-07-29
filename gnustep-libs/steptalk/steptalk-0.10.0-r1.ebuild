@@ -4,15 +4,16 @@
 
 inherit gnustep-2
 
+MY_PN="StepTalk"
 DESCRIPTION="StepTalk is the official GNUstep scripting framework."
 HOMEPAGE="http://www.gnustep.org/experience/StepTalk.html"
-SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/libs/${P/steptalk/StepTalk}.tar.gz"
+SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/libs/${MY_PN}-${PV}.tar.gz"
 
 KEYWORDS="~amd64"
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-S="${WORKDIR}/StepTalk"
+S="${WORKDIR}/${MY_PN}"
 
 src_unpack() {
 	unpack ${A}
@@ -21,18 +22,12 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-gnustep-make-2.patch
 }
 
-#TODO
-#src_install() {
-#	gnustep-base_src_install
-#
-#	if use doc ; then
-#		egnustep_env
-#		cd Documentation
-#		mkdir -p ${TMP}/tmpdocs
-#		mv *.* ${TMP}/tmpdocs
-#		mv Reference ${TMP}/tmpdocs
-#		mkdir -p ${D}$(egnustep_install_domain)/Library/Documentation/Developer/${PN/stept/StepT}
-#		mv ${TMP}/tmpdocs/* ${D}$(egnustep_install_domain)/Library/Documentation/Developer/${PN/stept/StepT}
-#		cd ..
-#	fi
-#}
+src_install() {
+	gnustep-base_src_install
+
+	if use doc ; then
+		egnustep_env
+		mkdir -p ${D}${GNUSTEP_SYSTEM_DOC}/Developer/${MY_PN}
+		cp -R Documentation/* ${D}${GNUSTEP_SYSTEM_DOC}/Developer/${MY_PN}
+	fi
+}
