@@ -8,7 +8,7 @@ inherit gnustep-base
 
 DEPEND=">=gnustep-base/gnustep-make-2.0
 	virtual/gnustep-back"
-RDEPEND="$DEPEND
+RDEPEND="${DEPEND}
 	debug? ( >=sys-devel/gdb-6.0 )"
 
 # The following gnustep-based EXPORT_FUNCTIONS are available:

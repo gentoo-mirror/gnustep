@@ -7,8 +7,8 @@ inherit eutils flag-o-matic
 # Inner gnustep eclass, should only be inherited directly by gnustep-base packages
 
 # IUSE variables across all GNUstep packages
-# "debug"	- enable code for debugging;
-# "doc" - build and install documentation, if available
+# "debug": enable code for debugging
+# "doc": build and install documentation, if available
 IUSE="debug doc"
 
 # packages needed to build any base gnustep package
@@ -51,7 +51,7 @@ gnustep-base_src_install() {
 		egnustep_doc
 	fi
 	# Copies "convenience scripts"
-	if [ -f ${FILESDIR}/config-${PN}.sh ]; then
+	if [ -f "${FILESDIR}/config-${PN}.sh" ]; then
 		dodir ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
 		exeinto ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
 		doexe ${FILESDIR}/config-${PN}.sh
@@ -60,7 +60,7 @@ gnustep-base_src_install() {
 
 gnustep-base_pkg_postinst() {
 	# Informs user about existence of "convenience script"	
-	if [ -f ${FILESDIR}/config-${PN}.sh ]; then
+	if [ -f "${FILESDIR}/config-${PN}.sh" ]; then
 		elog "Make sure to set happy defaults for this package by executing:"
 		elog "  ${GNUSTEP_SYSTEM_TOOLS}/Gentoo/config-${PN}.sh"
 		elog "as the user you will run the package as."
@@ -72,7 +72,8 @@ egnustep_env() {
 	# Get additional variables
 	GNUSTEP_SH_EXPORT_ALL_VARIABLES="true"
 
-	if [ -f ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh ] ; then
+	if [ -f "${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh" ] ; then
+		# Reset GNUstep variables
 		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep-reset.sh
 		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh
 
@@ -132,6 +133,7 @@ egnustep_install() {
 # Make and install docs using GNUstep Makefiles
 egnustep_doc() {
 	if [ -d ./Documentation ]; then
+		# Check documentation presence
 		cd ${S}/Documentation
 		if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
 			eval emake ${__GS_MAKE_EVAL} all || die "doc make failed"
