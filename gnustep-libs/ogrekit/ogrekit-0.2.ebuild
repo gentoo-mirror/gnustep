@@ -4,22 +4,14 @@
 
 inherit gnustep-2
 
-S=${WORKDIR}/OgreKit
+S="${WORKDIR}/Etoile-${PV}/Frameworks/OgreKit"
 
 DESCRIPTION="OniGuruma regular expression framework"
 HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=OgreKit"
-SRC_URI="http://overlays.gentoo.org/svn/proj/gnustep/downloads/${P}.tar.bz2"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 DEPEND=">=dev-libs/oniguruma-5.7.0"
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	sed  -i "s/^include.*etoile.make//" GNUmakefile
-}
-
