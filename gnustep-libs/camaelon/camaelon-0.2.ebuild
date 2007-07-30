@@ -4,12 +4,12 @@
 
 inherit gnustep-2
 
-S=${WORKDIR}/${PN/c/C}
+S="${WORKDIR}/Etoile-${PV}/Bundles/${PN/c/C}"
 
 DESCRIPTION="Camaelon allows you to load theme bundles for GNUstep."
 
 HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Camaelon"
-SRC_URI="http://overlays.gentoo.org/svn/proj/gnustep/downloads/${P}.tar.bz2"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 SLOT="0"
 LICENSE="LGPL-2.1"
