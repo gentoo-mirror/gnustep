@@ -10,7 +10,7 @@ DESCRIPTION="A very simple calculator"
 HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Applications"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="GPL-2"
 KEYWORDS="~ppc ~x86 ~amd64"
 SLOT="0"
 
@@ -26,6 +26,5 @@ src_install() {
 	cp -R Calc.app ${D}/${GNUSTEP_SYSTEM_APPS}
 
 	# Tools wrapper
-	dodir ${GNUSTEP_SYSTEM_TOOLS}
-	ln -s ${GNUSTEP_SYSTEM_APPS}/Calc.app/Calc ${D}/${GNUSTEP_SYSTEM_TOOLS}/
+	make_wrapper Calc ${GNUSTEP_SYSTEM_APPS}/Calc.app/Calc "" "" ${GNUSTEP_SYSTEM_TOOLS}
 }
