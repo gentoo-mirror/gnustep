@@ -4,7 +4,7 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/RSSKit"
+S="${WORKDIR}/Etoile-${PV}/Frameworks/OPMLKit"
 
 DESCRIPTION="OPML documents support framework"
 HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Frameworks_Suite"
