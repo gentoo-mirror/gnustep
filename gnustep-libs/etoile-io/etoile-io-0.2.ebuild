@@ -14,7 +14,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="gnustep-libs/steptalk"
+DEPEND="gnustep-libs/distributedview
+	gnustep-libs/steptalk"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
