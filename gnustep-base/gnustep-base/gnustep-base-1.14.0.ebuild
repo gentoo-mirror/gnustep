@@ -60,7 +60,7 @@ src_install() {
 	fi
 
 	dodir /etc/revdep-rebuild
-	sed -e 's|$GNUSTEP_SEARCH_DIRS|'"$GNUSTEP_PATHLIST"'|' \
+	sed -e 's|$GNUSTEP_SEARCH_DIRS|'"$GNUSTEP_SYSTEM_ROOT $GNUSTEP_LOCAL_ROOT"'|' \
 		"${FILESDIR}"/50-gnustep-revdep \
 		> "${D}/etc/revdep-rebuild/50-gnustep-revdep"
 }
