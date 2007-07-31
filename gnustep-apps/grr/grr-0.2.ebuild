@@ -15,6 +15,7 @@ KEYWORDS="~x86 ~amd64"
 SLOT="0"
 
 DEPEND="gnustep-libs/etoile-ui
+	gnustep-libs/opmlkit
 	gnustep-libs/rsskit"
 RDEPEND="${DEPEND}"
 
