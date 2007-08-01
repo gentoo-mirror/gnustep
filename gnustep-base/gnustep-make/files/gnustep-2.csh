@@ -1,7 +1,7 @@
 #!/bin/csh
 
 # Test for an interactive shell
-if ( ! $?prompt ) then
+if ( $?prompt ) then
 
 	setenv GNUSTEP_SYSTEM_TOOLS /usr/GNUstep/System/Tools
 
