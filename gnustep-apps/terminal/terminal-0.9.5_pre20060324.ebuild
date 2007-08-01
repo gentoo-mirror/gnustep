@@ -13,3 +13,9 @@ SRC_URI="http://overlays.gentoo.org/svn/proj/gnustep/downloads/${P}.tar.bz2"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
+
+src_compile() {
+	use elibc_glibc && append-ldflags -lutil
+	gnustep-base_src_compile
+}
+
