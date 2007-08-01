@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit gnustep-base
+inherit gnustep-base eutils
 
 DESCRIPTION="GNUstep Makefile Package"
 
@@ -23,6 +23,12 @@ pkg_setup() {
 		ewarn "gcc must be compiled with Objective-C support! See the objc USE flag."
 		die "ObjC support not available"
 	fi
+}
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-destdir.patch
 }
 
 src_compile() {
