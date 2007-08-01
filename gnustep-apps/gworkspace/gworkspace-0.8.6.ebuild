@@ -23,7 +23,7 @@ RDEPEND="!gnustep-apps/desktop
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
 	epatch ${FILESDIR}/${P}-rpath.patch
 	epatch ${FILESDIR}/${P}-popplerkit.patch
@@ -33,11 +33,15 @@ src_unpack() {
 }
 
 src_compile() {
+	local myconf=""
+
+	use kernel_linux && myconf="${myconf} --with-inotify"
+
 	egnustep_env
-	econf --with-inotify
+	econf ${myconf}
 	egnustep_make
 
-	cd ${S}/GWMetadata
+	cd "${S}"/GWMetadata
 	econf || die "GWMetadata configure failed"
 	egnustep_make || die "GWMetadata make failed"
 }
@@ -47,13 +51,13 @@ src_install() {
 
 	egnustep_install
 
-	cd ${S}/GWMetadata
+	cd "${S}"/GWMetadata
 	egnustep_install
 
 	if use doc;
 	then
 		dodir /usr/share/doc/${PF}
-		cp ${S}/Documentation/*.pdf ${D}/usr/share/doc/${PF}
+		cp "${S}"/Documentation/*.pdf "${D}"/usr/share/doc/${PF}
 	fi
 }
 
