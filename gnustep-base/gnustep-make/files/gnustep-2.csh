@@ -1,14 +1,16 @@
 #!/bin/csh
 
 # Test for an interactive shell
-if ( "$?0" != "0" ) exit
+if ( ! $?prompt ) then
 
-setenv GNUSTEP_SYSTEM_TOOLS /usr/GNUstep/System/Tools
+	setenv GNUSTEP_SYSTEM_TOOLS /usr/GNUstep/System/Tools
 
-if ( -x $GNUSTEP_SYSTEM_TOOLS/make_services ) then
-    $GNUSTEP_SYSTEM_TOOLS/make_services
-endif
+	if ( -x $GNUSTEP_SYSTEM_TOOLS/make_services ) then
+		$GNUSTEP_SYSTEM_TOOLS/make_services
+	endif
 
-if ( -x $GNUSTEP_SYSTEM_TOOLS/gdnc ) then
-    $GNUSTEP_SYSTEM_TOOLS/gdnc
+	if ( -x $GNUSTEP_SYSTEM_TOOLS/gdnc ) then
+		$GNUSTEP_SYSTEM_TOOLS/gdnc
+	endif
+
 endif
