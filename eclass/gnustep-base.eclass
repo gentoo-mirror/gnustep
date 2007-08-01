@@ -107,6 +107,7 @@ egnustep_env() {
 					-L"${GNUSTEP_SYSTEM_LIBRARIES}"
 			;;
 		esac
+		__GS_MAKE_EVAL="${__GS_MAKE_EVAL} ALL_LDFLAGS=\"\${LDFLAGS}\""
 	else
 		die "gnustep-make not installed!"
 	fi
