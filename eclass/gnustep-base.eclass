@@ -107,7 +107,7 @@ egnustep_env() {
 					-L"${GNUSTEP_SYSTEM_LIBRARIES}"
 			;;
 		esac
-		__GS_MAKE_EVAL="${__GS_MAKE_EVAL} ALL_LDFLAGS=\"\${LDFLAGS}\""
+		__GS_MAKE_EVAL="${__GS_MAKE_EVAL} AUXILIARY_LDFLAGS=\"\${LDFLAGS}\""
 	else
 		die "gnustep-make not installed!"
 	fi
@@ -124,6 +124,8 @@ egnustep_make() {
 
 # Make-install utilizing GNUstep Makefiles
 egnustep_install() {
+	# avoid problems due to our "weird" prefix, make sure it exists
+	mkdir -p "${D}${GNUSTEP_SYSTEM_TOOLS}"
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
 		eval emake ${*} ${__GS_MAKE_EVAL} install || die "package install failed"
 	else
