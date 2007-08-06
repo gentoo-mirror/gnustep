@@ -22,6 +22,7 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	gif? ( >=media-libs/giflib-4.1 )
 	png? ( >=media-libs/libpng-1.2 )
 	cups? ( >=net-print/cups-1.1 )
+	media-libs/audiofile
 	app-text/aspell"
 RDEPEND="${DEPEND}"
 
@@ -33,6 +34,8 @@ src_compile() {
 	myconf="$myconf `use_enable jpeg`"
 	myconf="$myconf `use_enable png`"
 	myconf="$myconf `use_enable cups`"
+	# gsnd is disabled until portaudio-19 is unmasked in portage
+	myconf="$myconf --disable-gsnd"
 
 	econf $myconf || die "configure failed"
 
