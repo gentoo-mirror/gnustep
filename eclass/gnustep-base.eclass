@@ -38,14 +38,14 @@ gnustep-base_pkg_setup() {
 gnustep-base_src_compile() {
 	egnustep_env
 	if [ -x ./configure ]; then
-		econf || die
+		econf || die "configure failed"
 	fi
-	egnustep_make || die
+	egnustep_make
 }
 
 gnustep-base_src_install() {
 	egnustep_env
-	egnustep_install || die
+	egnustep_install
 	if use doc ; then
 		egnustep_env
 		egnustep_doc
@@ -80,8 +80,22 @@ egnustep_env() {
 		# Needed to run installed GNUstep apps in sandbox
 		addpredict "/root/GNUstep"
 
-		# Set up common env vars for make operations
+		# Set rpath in ldflags when available
+		case ${CHOST} in
+			*-linux-gnu|*-solaris*)
+				append-ldflags \
+					-Wl,-rpath="${GNUSTEP_SYSTEM_LIBRARIES}" \
+					-L"${GNUSTEP_SYSTEM_LIBRARIES}"
+			;;
+			*)
+				append-ldflags \
+					-L"${GNUSTEP_SYSTEM_LIBRARIES}"
+			;;
+		esac
+
+		# Set up env vars for make operations
 		__GS_MAKE_EVAL=" \
+			AUXILIARY_LDFLAGS=\"\${LDFLAGS}\" \
 			HOME=\"\${T}\" \
 			GNUSTEP_USER_DIR=\"\${T}\" \
 			GNUSTEP_USER_DEFAULTS_DIR=\"\${T}\"/Defaults \
@@ -96,30 +110,18 @@ egnustep_env() {
 			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} debug=no"
 		fi
 
-		case ${CHOST} in
-			*-linux-gnu|*-solaris*)
-				append-ldflags \
-					-Wl,-rpath="${GNUSTEP_SYSTEM_LIBRARIES}" \
-					-L"${GNUSTEP_SYSTEM_LIBRARIES}"
-			;;
-			*)
-				append-ldflags \
-					-L"${GNUSTEP_SYSTEM_LIBRARIES}"
-			;;
-		esac
-		__GS_MAKE_EVAL="${__GS_MAKE_EVAL} AUXILIARY_LDFLAGS=\"\${LDFLAGS}\""
-	else
-		die "gnustep-make not installed!"
+		return 0
 	fi
+	die "gnustep-make not installed!"
 }
 
 # Make utilizing GNUstep Makefiles
 egnustep_make() {
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
 		eval emake ${*} ${__GS_MAKE_EVAL} all || die "package make failed"
-	else
-		die "no Makefile found"
+		return 0
 	fi
+	die "no Makefile found"
 }
 
 # Make-install utilizing GNUstep Makefiles
@@ -128,9 +130,9 @@ egnustep_install() {
 	mkdir -p "${D}${GNUSTEP_SYSTEM_TOOLS}"
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
 		eval emake ${*} ${__GS_MAKE_EVAL} install || die "package install failed"
-	else
-		die "no Makefile found"
+		return 0
 	fi
+	die "no Makefile found"
 }
 
 # Make and install docs using GNUstep Makefiles
