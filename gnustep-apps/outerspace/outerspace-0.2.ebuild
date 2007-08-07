@@ -17,6 +17,5 @@ SLOT="0"
 DEPEND="gnustep-libs/distributedview
 	gnustep-libs/etoile-ui
 	gnustep-libs/iconkit
-	gnustep-libs/inspectorkit
-	gnustep-libs/panekit"
+	gnustep-libs/inspectorkit"
 RDEPEND="${DEPEND}"
