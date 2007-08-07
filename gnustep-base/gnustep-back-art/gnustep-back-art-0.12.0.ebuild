@@ -32,7 +32,7 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	media-libs/fontconfig
 	>=media-libs/freetype-2.1.9
 	>=media-libs/libart_lgpl-2.3
-	gnustep-base/mknfonts
+	>=gnustep-base/mknfonts-0.5-r1
 	media-fonts/dejavu
 	!virtual/gnustep-back"
 RDEPEND="${DEPEND}"
