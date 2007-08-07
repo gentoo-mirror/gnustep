@@ -4,7 +4,7 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/IconKit"
+S="${WORKDIR}/Etoile-${PV}/Frameworks/InspectorKit"
 
 DESCRIPTION="Commonly used inspector adapted for Etoile"
 HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Frameworks_Suite"
