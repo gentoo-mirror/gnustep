@@ -35,6 +35,7 @@ src_unpack() {
 	cd ${S}
 
 	epatch "${FILESDIR}"/${P}-flac-1.1.3.patch
+	epatch "${FILESDIR}"/${P}-set-macro.patch
 	epatch "${FILESDIR}"/${P}-NSCellExtensions.patch
 	epatch "${FILESDIR}"/${P}-gnustep-make-2.patch
 }
