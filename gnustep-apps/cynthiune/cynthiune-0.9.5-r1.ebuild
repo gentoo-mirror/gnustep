@@ -26,8 +26,9 @@ DEPEND="media-libs/audiofile
 	modplug? ( media-libs/libmodplug )
 	timidity? ( media-sound/timidity++ )
 	vorbis? ( >=media-libs/libogg-1.1.2
-		>=media-libs/libvorbis-1.0.1-r2 )"
-RDEPEND="$DEPEND"
+		>=media-libs/libvorbis-1.0.1-r2 )
+	media-libs/musicbrainz"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
@@ -39,9 +40,8 @@ src_unpack() {
 }
 
 cynthiune_get_config() {
-	local myconf=""
 	# Gentoo doesn't have libavi (any more)
-	myconf="${myconf} disable-windowsmedia=yes"
+	local myconf="disable-windowsmedia=yes"
 	use arts || myconf="${myconf} disable-arts=yes"
 	use esd || myconf="${myconf} disable-esound=yes"
 	use flac || myconf="${myconf} disable-flac=yes"
