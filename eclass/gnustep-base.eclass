@@ -20,6 +20,9 @@ GNUSTEP_CORE_DEPEND="virtual/libc
 # Where to install GNUstep
 GNUSTEP_PREFIX="/usr/GNUstep"
 
+# GNUstep environment array
+typeset -a GS_ENV
+
 # Ebuild function overrides
 gnustep-base_pkg_setup() {
 	if test_version_info 3.3
@@ -94,20 +97,19 @@ egnustep_env() {
 		esac
 
 		# Set up env vars for make operations
-		__GS_MAKE_EVAL=" \
-			AUXILIARY_LDFLAGS=\"\${LDFLAGS}\" \
-			HOME=\"\${T}\" \
-			GNUSTEP_USER_DIR=\"\${T}\" \
-			GNUSTEP_USER_DEFAULTS_DIR=\"\${T}\"/Defaults \
-			DESTDIR=\"\${D}\" \
+		GS_ENV=( AUXILIARY_LDFLAGS="${LDFLAGS}" \
+			DESTDIR="${D}" \
+			HOME="${T}" \
+			GNUSTEP_USER_DIR="${T}" \
+			GNUSTEP_USER_DEFAULTS_DIR="${T}"/Defaults \
 			GNUSTEP_INSTALLATION_DOMAIN=SYSTEM \
-			TAR_OPTIONS=\"\${TAR_OPTIONS} --no-same-owner\" \
+			TAR_OPTIONS="${TAR_OPTIONS} --no-same-owner" \
 			messages=yes \
-			-j1"
+			-j1 )
 			# -j1 is needed as gnustep-make is not parallel-safe
 
 		if ! use debug ; then
-			__GS_MAKE_EVAL="${__GS_MAKE_EVAL} debug=no"
+			GS_ENV=( "${GS_ENV[@]}" "debug=no" )
 		fi
 
 		return 0
@@ -118,7 +120,7 @@ egnustep_env() {
 # Make utilizing GNUstep Makefiles
 egnustep_make() {
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-		eval emake ${*} ${__GS_MAKE_EVAL} all || die "package make failed"
+		emake ${*} "${GS_ENV[@]}" all || die "package make failed"
 		return 0
 	fi
 	die "no Makefile found"
@@ -129,7 +131,7 @@ egnustep_install() {
 	# avoid problems due to our "weird" prefix, make sure it exists
 	mkdir -p "${D}${GNUSTEP_SYSTEM_TOOLS}"
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-		eval emake ${*} ${__GS_MAKE_EVAL} install || die "package install failed"
+		emake ${*} "${GS_ENV[@]}" install || die "package install failed"
 		return 0
 	fi
 	die "no Makefile found"
@@ -141,8 +143,8 @@ egnustep_doc() {
 		# Check documentation presence
 		cd "${S}/Documentation"
 		if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-			eval emake ${__GS_MAKE_EVAL} all || die "doc make failed"
-			eval emake ${__GS_MAKE_EVAL} install || die "doc install failed"
+			emake "${GS_ENV[@]}" all || die "doc make failed"
+			emake "${GS_ENV[@]}" install || die "doc install failed"
 		fi
 		cd ..
 	fi
