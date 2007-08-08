@@ -54,12 +54,12 @@ gnustep-base_src_install() {
 	if [ -f "${FILESDIR}/config-${PN}.sh" ]; then
 		dodir ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
 		exeinto ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
-		doexe ${FILESDIR}/config-${PN}.sh
+		doexe "${FILESDIR}/config-${PN}.sh"
 	fi
 }
 
 gnustep-base_pkg_postinst() {
-	# Informs user about existence of "convenience script"	
+	# Informs user about existence of "convenience script"
 	if [ -f "${FILESDIR}/config-${PN}.sh" ]; then
 		elog "Make sure to set happy defaults for this package by executing:"
 		elog "  ${GNUSTEP_SYSTEM_TOOLS}/Gentoo/config-${PN}.sh"
@@ -139,7 +139,7 @@ egnustep_install() {
 egnustep_doc() {
 	if [ -d ./Documentation ]; then
 		# Check documentation presence
-		cd ${S}/Documentation
+		cd "${S}/Documentation"
 		if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
 			eval emake ${__GS_MAKE_EVAL} all || die "doc make failed"
 			eval emake ${__GS_MAKE_EVAL} install || die "doc install failed"
