@@ -23,3 +23,6 @@ src_compile() {
 	egnustep_env
 	egnustep_make etoile=yes || die "compilation failed"
 }
+
+DEPEND="gnustep-libs/bookmarkkit"
+RDEPEND="${DEPEND}"
