@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit gnustep-base autotools
+inherit gnustep-base
 
 DESCRIPTION="The GNUstep Base Library is a library of general-purpose, non-graphical Objective C objects."
 
@@ -47,17 +47,7 @@ src_compile() {
 }
 
 src_install() {
-	egnustep_env
-	egnustep_install
-
-	if use doc;
-	then
-		cd ${S}/Documentation
-		eval emake ${__GS_MAKE_EVAL} AUTOGSDOC="${S}/Tools/obj/autogsdoc" all \
-			|| die "doc make has failed"
-		eval emake ${__GS_MAKE_EVAL} install || die "doc install has failed"
-		cd ..
-	fi
+	gnustep-base_src_install
 
 	dodir /etc/revdep-rebuild
 	sed -e 's|$GNUSTEP_SEARCH_DIRS|'"$GNUSTEP_SYSTEM_ROOT $GNUSTEP_LOCAL_ROOT"'|' \
@@ -66,7 +56,6 @@ src_install() {
 }
 
 pkg_postinst() {
-
 	ewarn "The shared library version has changed in this release."
 	ewarn "You will need to recompile all Applications/Tools/etc in order"
 	ewarn "to use this library."
