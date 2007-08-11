@@ -118,7 +118,7 @@ egnustep_env() {
 
 # Make utilizing GNUstep Makefiles
 egnustep_make() {
-	if [[ -f ./[mM]akefile -o -f ./GNUmakefile ]] ; then
+	if [[ -f ./[mM]akefile || -f ./GNUmakefile ]] ; then
 		emake ${*} "${GS_ENV[@]}" all || die "package make failed"
 		return 0
 	fi
@@ -129,7 +129,7 @@ egnustep_make() {
 egnustep_install() {
 	# avoid problems due to our "weird" prefix, make sure it exists
 	mkdir -p "${D}"${GNUSTEP_SYSTEM_TOOLS}
-	if [[ -f ./[mM]akefile -o -f ./GNUmakefile ]] ; then
+	if [[ -f ./[mM]akefile || -f ./GNUmakefile ]] ; then
 		emake ${*} "${GS_ENV[@]}" install || die "package install failed"
 		return 0
 	fi
@@ -141,7 +141,7 @@ egnustep_doc() {
 	if [[ -d ./Documentation ]] ; then
 		# Check documentation presence
 		cd "${S}"/Documentation
-		if [[ -f ./[mM]akefile -o -f ./GNUmakefile ]] ; then
+		if [[ -f ./[mM]akefile || -f ./GNUmakefile ]] ; then
 			emake "${GS_ENV[@]}" all || die "doc make failed"
 			emake "${GS_ENV[@]}" install || die "doc install failed"
 		fi
