@@ -56,7 +56,7 @@ gnustep-base_src_install() {
 	if [[ -f ${FILESDIR}/config-${PN}.sh ]] ; then
 		dodir ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
 		exeinto ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
-		doexe "${FILESDIR}/config-${PN}.sh"
+		doexe "${FILESDIR}"/config-${PN}.sh
 	fi
 }
 
@@ -76,8 +76,8 @@ egnustep_env() {
 
 	if [[ -f ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh ]] ; then
 		# Reset GNUstep variables
-		source ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep-reset.sh
-		source ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh
+		source "${GNUSTEP_PREFIX}"/System/Library/Makefiles/GNUstep-reset.sh
+		source "${GNUSTEP_PREFIX}"/System/Library/Makefiles/GNUstep.sh
 
 		# Needed to run installed GNUstep apps in sandbox
 		addpredict "/root/GNUstep"
@@ -128,7 +128,7 @@ egnustep_make() {
 # Make-install utilizing GNUstep Makefiles
 egnustep_install() {
 	# avoid problems due to our "weird" prefix, make sure it exists
-	mkdir -p "${D}${GNUSTEP_SYSTEM_TOOLS}"
+	mkdir -p "${D}"${GNUSTEP_SYSTEM_TOOLS}
 	if [[ -f ./[mM]akefile -o -f ./GNUmakefile ]] ; then
 		emake ${*} "${GS_ENV[@]}" install || die "package install failed"
 		return 0
@@ -140,7 +140,7 @@ egnustep_install() {
 egnustep_doc() {
 	if [[ -d ./Documentation ]] ; then
 		# Check documentation presence
-		cd "${S}/Documentation"
+		cd "${S}"/Documentation
 		if [[ -f ./[mM]akefile -o -f ./GNUmakefile ]] ; then
 			emake "${GS_ENV[@]}" all || die "doc make failed"
 			emake "${GS_ENV[@]}" install || die "doc install failed"
