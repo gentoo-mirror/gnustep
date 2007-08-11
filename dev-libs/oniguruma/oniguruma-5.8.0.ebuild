@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/oniguruma/oniguruma-4.1.1.ebuild,v 1.1 2006/07/01 04:01:22 usata Exp $
+# $Header: $
 
 MY_P="onig-${PV}"
 
@@ -19,7 +19,6 @@ DEPEND="virtual/libc"
 S=${WORKDIR}/${MY_P}
 
 src_compile() {
-
 	econf || die
 	emake || die
 }
