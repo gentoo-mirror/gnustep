@@ -4,7 +4,10 @@
 
 inherit eutils flag-o-matic
 
-# Inner gnustep eclass, should only be inherited directly by gnustep-base packages
+# Inner gnustep eclass, should only be inherited directly by gnustep-base
+# packages
+#
+# maintainer: GNUstep Herd <gnustep@gentoo.org>
 
 # IUSE variables across all GNUstep packages
 # "debug": enable code for debugging
@@ -13,9 +16,7 @@ IUSE="debug doc"
 
 # packages needed to build any base gnustep package
 GNUSTEP_CORE_DEPEND="virtual/libc
-	doc? ( virtual/tetex
-		=dev-tex/latex2html-2002*
-		>=app-text/texi2html-1.64 )"
+	doc? ( virtual/tetex =dev-tex/latex2html-2002* >=app-text/texi2html-1.64 )"
 
 # Where to install GNUstep
 GNUSTEP_PREFIX="/usr/GNUstep"
@@ -25,11 +26,9 @@ typeset -a GS_ENV
 
 # Ebuild function overrides
 gnustep-base_pkg_setup() {
-	if test_version_info 3.3
-	then
+	if test_version_info 3.3 ; then
 		strip-unsupported-flags
-	elif test_version_info 3.4
-	then
+	elif test_version_info 3.4 ; then
 		# strict-aliasing is known to break obj-c stuff in gcc-3.4*
 		filter-flags -fstrict-aliasing
 	fi
@@ -40,7 +39,7 @@ gnustep-base_pkg_setup() {
 
 gnustep-base_src_compile() {
 	egnustep_env
-	if [ -x ./configure ]; then
+	if [[ -x ./configure ]] ; then
 		econf || die "configure failed"
 	fi
 	egnustep_make
@@ -54,7 +53,7 @@ gnustep-base_src_install() {
 		egnustep_doc
 	fi
 	# Copies "convenience scripts"
-	if [ -f "${FILESDIR}/config-${PN}.sh" ]; then
+	if [[ -f ${FILESDIR}/config-${PN}.sh ]] ; then
 		dodir ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
 		exeinto ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
 		doexe "${FILESDIR}/config-${PN}.sh"
@@ -63,7 +62,7 @@ gnustep-base_src_install() {
 
 gnustep-base_pkg_postinst() {
 	# Informs user about existence of "convenience script"
-	if [ -f "${FILESDIR}/config-${PN}.sh" ]; then
+	if [[ -f ${FILESDIR}/config-${PN}.sh ]] ; then
 		elog "Make sure to set happy defaults for this package by executing:"
 		elog "  ${GNUSTEP_SYSTEM_TOOLS}/Gentoo/config-${PN}.sh"
 		elog "as the user you will run the package as."
@@ -75,10 +74,10 @@ egnustep_env() {
 	# Get additional variables
 	GNUSTEP_SH_EXPORT_ALL_VARIABLES="true"
 
-	if [ -f "${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh" ] ; then
+	if [[ -f ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh ]] ; then
 		# Reset GNUstep variables
-		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep-reset.sh
-		. ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh
+		source ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep-reset.sh
+		source ${GNUSTEP_PREFIX}/System/Library/Makefiles/GNUstep.sh
 
 		# Needed to run installed GNUstep apps in sandbox
 		addpredict "/root/GNUstep"
@@ -119,7 +118,7 @@ egnustep_env() {
 
 # Make utilizing GNUstep Makefiles
 egnustep_make() {
-	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
+	if [[ -f ./[mM]akefile -o -f ./GNUmakefile ]] ; then
 		emake ${*} "${GS_ENV[@]}" all || die "package make failed"
 		return 0
 	fi
@@ -130,7 +129,7 @@ egnustep_make() {
 egnustep_install() {
 	# avoid problems due to our "weird" prefix, make sure it exists
 	mkdir -p "${D}${GNUSTEP_SYSTEM_TOOLS}"
-	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
+	if [[ -f ./[mM]akefile -o -f ./GNUmakefile ]] ; then
 		emake ${*} "${GS_ENV[@]}" install || die "package install failed"
 		return 0
 	fi
@@ -139,10 +138,10 @@ egnustep_install() {
 
 # Make and install docs using GNUstep Makefiles
 egnustep_doc() {
-	if [ -d ./Documentation ]; then
+	if [[ -d ./Documentation ]] ; then
 		# Check documentation presence
 		cd "${S}/Documentation"
-		if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
+		if [[ -f ./[mM]akefile -o -f ./GNUmakefile ]] ; then
 			emake "${GS_ENV[@]}" all || die "doc make failed"
 			emake "${GS_ENV[@]}" install || die "doc install failed"
 		fi

@@ -5,6 +5,8 @@
 inherit gnustep-base
 
 # Eclass for GNUstep Apps, Frameworks, and Bundles build
+#
+# maintainer: GNUstep Herd <gnustep@gentoo.org>
 
 DEPEND=">=gnustep-base/gnustep-make-2.0
 	virtual/gnustep-back"
