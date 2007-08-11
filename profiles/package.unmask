@@ -1,4 +1,6 @@
 # New working version of popplerkit from Etoile project
 # And unmasking vindaloo
+# Also unmasks working gworkspace
 gnustep-apps/vindaloo
 >gnustep-libs/popplerkit-0.0.0
+>=gnustep-apps/gworkspace-0.8.6

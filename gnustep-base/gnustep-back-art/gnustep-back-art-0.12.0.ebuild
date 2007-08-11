@@ -34,7 +34,8 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=media-libs/libart_lgpl-2.3
 	>=gnustep-base/mknfonts-0.5-r1
 	media-fonts/dejavu
-	!virtual/gnustep-back"
+	!gnustep-base/gnustep-back-cairo
+	!gnustep-base/gnustep-back-xlib"
 RDEPEND="${DEPEND}"
 
 src_compile() {

@@ -31,7 +31,8 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 
 	>=media-libs/freetype-2.1.9
 	>=x11-libs/cairo-1.2.0
-	!virtual/gnustep-back"
+	!gnustep-base/gnustep-back-art
+	!gnustep-base/gnustep-back-xlib"
 RDEPEND="${DEPEND}"
 
 src_compile() {

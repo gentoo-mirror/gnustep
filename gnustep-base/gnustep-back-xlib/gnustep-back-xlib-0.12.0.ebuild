@@ -30,7 +30,8 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	dev-libs/expat
 	media-libs/fontconfig
 	>=media-libs/freetype-2.1.9
-	!virtual/gnustep-back"
+	!gnustep-base/gnustep-back-art
+	!gnustep-base/gnustep-back-cairo"
 RDEPEND="${DEPEND}"
 
 src_compile() {
