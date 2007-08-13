@@ -14,7 +14,9 @@ LICENSE="BSD"
 KEYWORDS="~x86 ~amd64"
 SLOT="0"
 
-DEPEND="gnustep-libs/xwindowserverkit
+DEPEND="gnustep-libs/bookmarkkit
+	gnustep-libs/iconkit
+	gnustep-libs/xwindowserverkit
 	gnustep-apps/etoile-system"
 RDEPEND="${DEPEND}
 	gnustep-apps/azalea"
@@ -23,6 +25,3 @@ src_compile() {
 	egnustep_env
 	egnustep_make etoile=yes || die "compilation failed"
 }
-
-DEPEND="gnustep-libs/bookmarkkit"
-RDEPEND="${DEPEND}"
