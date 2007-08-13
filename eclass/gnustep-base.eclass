@@ -37,6 +37,26 @@ gnustep-base_pkg_setup() {
 	filter-flags -fomit-frame-pointer
 }
 
+gnustep-base_src_unpack() {
+	unpack ${A}
+	cd "${S}"
+
+	if [[ -f ./GNUmakefile ]] ; then
+		# Kill stupid includes that are simply overdone or useless on normal
+		# Gentoo, but (may) cause major headaches on Prefixed Gentoo.  If this
+		# only removes a part of a path it's good that it bails out, as we want
+		# to know when they use some direct include.
+		ebegin "Cleaning paths from GNUmakefile"
+		sed -i \
+			-e 's|-I/usr/X11R6/include||g' \
+			-e 's|-I/usr/include||g' \
+			-e 's|-L/usr/X11R6/lib||g' \
+			-e 's|-L/usr/lib||g' \
+			GNUmakefile
+		eend $?
+	fi
+}
+
 gnustep-base_src_compile() {
 	egnustep_env
 	if [[ -x ./configure ]] ; then
@@ -149,4 +169,4 @@ egnustep_doc() {
 	fi
 }
 
-EXPORT_FUNCTIONS pkg_setup src_compile src_install pkg_postinst
+EXPORT_FUNCTIONS pkg_setup src_unpack src_compile src_install pkg_postinst
