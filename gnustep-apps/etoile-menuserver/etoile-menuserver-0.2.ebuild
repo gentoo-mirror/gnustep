@@ -16,4 +16,6 @@ SLOT="0"
 
 DEPEND="gnustep-apps/etoile-system
 	gnustep-libs/xwindowserverkit"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	gnustep-libs/service-menulet
+	gnustep-libs/volumecontrol-menulet"
