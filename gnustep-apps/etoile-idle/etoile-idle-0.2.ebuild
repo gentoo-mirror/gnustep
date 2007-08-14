@@ -13,3 +13,6 @@ SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="BSD"
 KEYWORDS="~x86 ~amd64"
 SLOT="0"
+
+DEPEND="x11-misc/xscreensaver"
+RDEPEND="${DEPEND}"

@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="gnustep-libs/distributedview
-	gnustep-libs/steptalk"
+	>=gnustep-libs/steptalk-0.10"
 RDEPEND="${DEPEND}"
 
 src_unpack() {

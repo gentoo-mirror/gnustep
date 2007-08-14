@@ -12,3 +12,6 @@ SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
+
+DEPEND="media-libs/libpng"
+RDEPEND="${DEPEND}"
