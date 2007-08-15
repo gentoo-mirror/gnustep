@@ -69,7 +69,7 @@ pkg_postinst() {
 	elog "to enable all Etoile features, you will need to run (as user):"
 	elog "# defaults write NSGlobalDomain GSAppKitUserBundles '("
 	elog "\"/usr/GNUstep/System/Library/Bundles/Camaelon.themeEngine\","
-	elog "\"/usr/GNUstep/System/Library/Bundles/EtoileMenus.bundle",
+	elog "\"/usr/GNUstep/System/Library/Bundles/EtoileMenus.bundle\","
 	elog "\"/usr/GNUstep/System/Library/Bundles/EtoileBehavior.bundle\")'"
 	elog "This will probably be changed in the near future"
 }
