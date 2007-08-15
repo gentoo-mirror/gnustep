@@ -1,9 +1,13 @@
 #!/bin/sh
 
 # Test for an interactive shell
-if [[ $- != *i* ]]; then
-	return
-fi
+case $- in
+	*i*)
+	;;
+	*)
+		return
+	;;
+esac
 	
 GNUSTEP_SYSTEM_TOOLS=/usr/GNUstep/System/Tools
 
