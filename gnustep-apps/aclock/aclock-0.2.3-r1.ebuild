@@ -10,3 +10,10 @@ SRC_URI="http://www.linuks.mine.nu/aclock/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
+
+gnustep_config_script() {
+	echo "echo ' * using smooth seconds'"
+	echo "defaults write AClock SmoothSeconds YES"
+	echo "echo ' * setting refresh rate to 0.1 seconds'"
+	echo "defaults write AClock RefreshRate 0.1"
+}

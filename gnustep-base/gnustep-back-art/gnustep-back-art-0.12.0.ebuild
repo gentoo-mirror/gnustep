@@ -68,3 +68,11 @@ src_install() {
 	cp -pPR Fonts/*.nfont "${D}/${GNUSTEP_SYSTEM_LIBRARY}/Fonts"
 }
 
+gnustep_config_script() {
+	echo "echo ' * setting normal font to DejaVuSans'"
+	echo "defaults write NSGlobalDomain NSFont DejaVuSans"
+	echo "echo ' * setting bold font to DejaVuSans-Bold'"
+	echo "defaults write NSGlobalDomain NSBoldFont DejaVuSans-Bold"
+	echo "echo ' * setting fixed font to DejaVuSansMono'"
+	echo "defaults write NSGlobalDomain NSUserFixedPitchFont DejaVuSansMono"
+}

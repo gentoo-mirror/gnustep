@@ -72,21 +72,14 @@ gnustep-base_src_install() {
 		egnustep_env
 		egnustep_doc
 	fi
-	# Copies "convenience scripts"
-	if [[ -f ${FILESDIR}/config-${PN}.sh ]] ; then
-		dodir ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
-		exeinto ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
-		doexe "${FILESDIR}"/config-${PN}.sh
-	fi
+	egnustep_install_config
 }
 
 gnustep-base_pkg_postinst() {
-	# Informs user about existence of "convenience script"
-	if [[ -f ${FILESDIR}/config-${PN}.sh ]] ; then
-		elog "Make sure to set happy defaults for this package by executing:"
-		elog "  ${GNUSTEP_SYSTEM_TOOLS}/Gentoo/config-${PN}.sh"
-		elog "as the user you will run the package as."
-	fi
+	[[ $(type -t gnustep_config_script) != "function" ]] && return 0
+
+	elog "To use this package, as *user* you should run:"
+	elog "  ${GNUSTEP_SYSTEM_TOOLS}/Gentoo/config-${PN}.sh"
 }
 
 # Clean/reset an ebuild to the installed GNUstep environment
@@ -127,9 +120,9 @@ egnustep_env() {
 			-j1 )
 			# -j1 is needed as gnustep-make is not parallel-safe
 
-		if ! use debug ; then
-			GS_ENV=( "${GS_ENV[@]}" "debug=no" )
-		fi
+		use debug \
+			&& GS_ENV=( "${GS_ENV[@]}" "debug=yes" ) \
+			|| GS_ENV=( "${GS_ENV[@]}" "debug=no" )
 
 		return 0
 	fi
@@ -167,6 +160,23 @@ egnustep_doc() {
 		fi
 		cd ..
 	fi
+}
+
+egnustep_install_config() {
+	[[ $(type -t gnustep_config_script) != "function" ]] && return 0
+
+	local cfile=config-${PN}.sh
+
+	echo '#!/usr/bin/env bash' > "${T}"/${cfile}
+	echo "echo Applying ${P} default configuration ..." >> "${T}"/${cfile}
+	gnustep_config_script | \
+	while read line ; do
+		echo "${line}" >> "${T}"/${cfile}
+	done
+	echo "done" >> "${T}"/${cfile}
+
+	exeinto ${GNUSTEP_SYSTEM_TOOLS}/Gentoo
+	doexe "${T}"/${cfile}
 }
 
 EXPORT_FUNCTIONS pkg_setup src_unpack src_compile src_install pkg_postinst
