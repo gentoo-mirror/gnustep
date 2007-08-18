@@ -17,6 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND="media-libs/audiofile
+	media-libs/taglib
 	arts? ( kde-base/arts )
 	esd? ( media-sound/esound )
 	flac? ( media-libs/flac )
