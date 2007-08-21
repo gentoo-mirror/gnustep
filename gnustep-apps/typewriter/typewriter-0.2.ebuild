@@ -12,7 +12,7 @@ HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Applica
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
 DEPEND="gnustep-libs/ogrekit"

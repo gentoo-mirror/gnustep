@@ -11,7 +11,7 @@ HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
 gnustep_config_script() {

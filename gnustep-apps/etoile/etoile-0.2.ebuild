@@ -11,7 +11,7 @@ HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="as-is"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
 RDEPEND=">=gnustep-apps/addresses-0.4.7
@@ -39,7 +39,7 @@ RDEPEND=">=gnustep-apps/addresses-0.4.7
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	
+
 	# Fix path
 	egnustep_env
 	sed -i "s#/usr/local/bin/etoile#${GNUSTEP_SYSTEM_TOOLS}/etoile_system#" \
@@ -56,7 +56,7 @@ src_install() {
 	# Install SystemTaskList
 	dodir ${GNUSTEP_SYSTEM_LIBRARY}/Etoile
 	insinto ${GNUSTEP_SYSTEM_LIBRARY}/Etoile
-	doins SystemTaskList.plist	
+	doins SystemTaskList.plist
 
 	# Install desktop entry file
 	insinto /usr/share/xsessions

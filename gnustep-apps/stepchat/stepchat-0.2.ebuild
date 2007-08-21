@@ -11,5 +11,5 @@ HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Applica
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"

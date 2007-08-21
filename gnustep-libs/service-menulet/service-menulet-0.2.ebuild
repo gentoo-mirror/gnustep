@@ -10,7 +10,7 @@ DESCRIPTION="menulet to use services provided by GNUstep applications"
 HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
 RDEPEND="gnustep-apps/azbackground"

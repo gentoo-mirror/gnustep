@@ -10,7 +10,7 @@ DESCRIPTION="OniGuruma regular expression framework"
 HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=OgreKit"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
 DEPEND=">=dev-libs/oniguruma-5.7.0"

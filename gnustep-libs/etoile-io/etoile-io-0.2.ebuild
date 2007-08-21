@@ -12,7 +12,7 @@ SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 DEPEND="gnustep-libs/distributedview
 	>=gnustep-libs/steptalk-0.10"

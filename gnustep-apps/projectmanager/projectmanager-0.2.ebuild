@@ -11,7 +11,7 @@ DESCRIPTION="ProjectManager is another IDE for GNUstep"
 HOMEPAGE="http://home.gna.org/pmanager/"
 SRC_URI="http://download.gna.org/pmanager/${PV}/${MY_PN}-${PV}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 

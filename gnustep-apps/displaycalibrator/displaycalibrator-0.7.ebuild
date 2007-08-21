@@ -10,6 +10,6 @@ SRC_URI="http://www.linuks.mine.nu/displaycalibrator/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="x11-apps/xgamma"

@@ -11,7 +11,7 @@ DESCRIPTION="IRC client for GNUstep"
 HOMEPAGE="http://talksoup.aeruder.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 LICENSE="GPL-1"
 

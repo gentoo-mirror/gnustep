@@ -12,5 +12,5 @@ HOMEPAGE="http://www.gnustep.it/marko/Sudoku"
 SRC_URI="http://www.gnustep.it/marko/${MY_PN}/${MY_PN}${PV}.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"

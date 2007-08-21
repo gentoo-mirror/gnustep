@@ -8,6 +8,6 @@ DESCRIPTION="Command-line tool for converting between different property-list fo
 HOMEPAGE="http://home.gna.org/pmanager/"
 SRC_URI="http://download.gna.org/pmanager/0.2/${P}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Diction
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
 DEPEND="gnustep-libs/etoile-ui"
