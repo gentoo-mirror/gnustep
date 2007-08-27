@@ -14,5 +14,5 @@ LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
-DEPEND="x11-misc/xscreensaver"
+DEPEND="x11-libs/libXScrnSaver"
 RDEPEND="${DEPEND}"

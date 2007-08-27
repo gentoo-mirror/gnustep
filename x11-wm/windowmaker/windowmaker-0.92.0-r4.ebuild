@@ -57,7 +57,7 @@ src_unpack() {
 			sed -i 's:/opt/share/WindowMaker:/usr/share/WindowMaker:g;' $file
 		fi;
 	done;
-	
+
 	eautoreconf || die "eautoreconf failed"
 }
 
