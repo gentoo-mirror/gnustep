@@ -23,8 +23,14 @@ src_install() {
 }
 
 gnustep_config_script() {
-	echo "echo ' * setting NSGlobalDomain GSAppKitUserBundles'"
-	echo "defaults write NSGlobalDomain GSAppKitUserBundles '(\"/usr/GNUstep/System/Library/Bundles/Camaelon.themeEngine\")'"
+	echo "bundle='\"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/Camaelon.themeEngine\"'"
+	echo 'cur=$(defaults read NSGlobalDomain GSAppKitUserBundles)'
+	echo 'if [[ ${cur} != *${bundle}* ]] ; then'
+	echo "	echo ' * setting NSGlobalDomain GSAppKitUserBundles'"
+	echo "	echo \"\${cur%)\\\'}, \${bundle} )'\" | defaults write || die \"defaults write failed\""
+	echo 'else'
+	echo "	echo ' * Bundle already present in GSAppKitUserBundles'"
+	echo 'fi'
 	echo "echo ' * using Camaelon Theme: Nesdah'"
 	echo "defaults write Camaelon Theme Nesedah"
 }
