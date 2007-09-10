@@ -1,6 +1,2 @@
-# Block hold 200[5-6] in favor of _pre ebuilds
-=gnustep-libs/pantomime-1.2.0.2*
-=gnustep-apps/gnumail-1.2.0.2*
-
 # Mask camaelon-2 to synchronize camaelon version with etoile
 =gnustep-libs/camaelon-2.0*
