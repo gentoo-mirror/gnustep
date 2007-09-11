@@ -62,14 +62,3 @@ src_install() {
 	insinto /usr/share/xsessions
 	doins etoile.desktop
 }
-
-pkg_postinst() {
-	elog "Thanks for trying Etoile ebuilds from the GNUstep overlay"
-	elog "This is still a work in progress. For now,"
-	elog "to enable all Etoile features, you will need to run (as user):"
-	elog "# defaults write NSGlobalDomain GSAppKitUserBundles '("
-	elog "\"/usr/GNUstep/System/Library/Bundles/Camaelon.themeEngine\","
-	elog "\"/usr/GNUstep/System/Library/Bundles/EtoileMenus.bundle\","
-	elog "\"/usr/GNUstep/System/Library/Bundles/EtoileBehavior.bundle\")'"
-	elog "This will probably be changed in the near future"
-}
