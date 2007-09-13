@@ -7,7 +7,7 @@ inherit gnustep-2
 S="${WORKDIR}/Etoile-${PV}/Frameworks/DistributedView"
 
 DESCRIPTION="Etoile project extensions framework, provides a flexible icon view"
-HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=DistributedView"
+HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~x86"

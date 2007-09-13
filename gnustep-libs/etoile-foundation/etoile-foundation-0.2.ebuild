@@ -7,7 +7,7 @@ inherit gnustep-2
 S="${WORKDIR}/Etoile-${PV}/Frameworks/EtoileFoundation"
 
 DESCRIPTION="Foundation framework extensions from the Etoile project"
-HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=EtoileFoundation"
+HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="BSD"

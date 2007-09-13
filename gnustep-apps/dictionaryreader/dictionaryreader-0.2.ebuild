@@ -7,7 +7,7 @@ inherit gnustep-2
 S="${WORKDIR}/Etoile-${PV}/Services/User/DictionaryReader"
 
 DESCRIPTION="Dictionary application that queries Dict servers"
-HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=DictionaryReader"
+HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="MIT"

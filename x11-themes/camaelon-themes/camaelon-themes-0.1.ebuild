@@ -8,7 +8,7 @@ S=${WORKDIR}/${PN/c/C}
 
 DESCRIPTION="Additional themes for GNUstep Camaelon theme engine"
 
-HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Camaelon"
+HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://brante.dyndns.org/gnustep/download/MaxCurve-0.2.tar.bz2
 	mirror://sourceforge/mpdcon/IndustrialTheme.tar.bz2"
 KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"

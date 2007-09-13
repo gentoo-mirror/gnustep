@@ -8,7 +8,7 @@ S="${WORKDIR}/Etoile-${PV}/Services/User/${PN/t/T}"
 
 DESCRIPTION="Etoile project simple word processor"
 
-HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Applications"
+HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="BSD"

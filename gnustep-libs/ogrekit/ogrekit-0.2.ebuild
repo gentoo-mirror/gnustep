@@ -7,7 +7,7 @@ inherit gnustep-2
 S="${WORKDIR}/Etoile-${PV}/Frameworks/OgreKit"
 
 DESCRIPTION="OniGuruma regular expression framework"
-HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=OgreKit"
+HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"

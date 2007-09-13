@@ -7,7 +7,7 @@ inherit gnustep-2
 S="${WORKDIR}/Etoile-${PV}/Services/User/Sketch"
 
 DESCRIPTION="A vector-based drawing application"
-HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Applications"
+HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="MIT"

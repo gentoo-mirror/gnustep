@@ -7,7 +7,7 @@ inherit gnustep-2
 S="${WORKDIR}/Etoile-${PV}/Services/User/Calc"
 
 DESCRIPTION="A very simple calculator"
-HOMEPAGE="http://www.etoile-project.org/etoile/mediawiki/index.php?title=Applications"
+HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="GPL-2"
