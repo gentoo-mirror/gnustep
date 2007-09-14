@@ -189,6 +189,18 @@ gnustep_append_default() {
 	fi
 }
 
+gnustep_set_default() {
+	if [[ -z \$1 || -z \$2 || -z \$3 ]]; then 
+		echo "warning: invalid script invocation" 
+		return 
+	fi 
+	dom=\$1 
+	key=\$2 
+	val=\$3 
+	echo " * setting \${dom} \${key}" 
+	defaults write \${dom} \${key} \${val}
+}
+
 echo "Applying ${P} default configuration ..."
 EOF
 

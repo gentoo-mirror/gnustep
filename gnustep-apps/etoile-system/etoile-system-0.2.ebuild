@@ -15,9 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
 gnustep_config_script() {
-	echo "echo ' * using running copy'"
-	echo "defaults write NSGlobalDomain NSUseRunningCopy YES"
-	echo "echo ' * setting GWorkspace behaviours for Etoile'"
-	echo "defaults write GWorkspace NoWarnOnQuit YES"
-	echo "defaults write NSGlobalDomain GSWorkspaceApplication \"NotExist.app\""
+	echo "gnustep_set_default NSGlobalDomain NSUseRunningCopy YES"
+	echo "gnustep_set_default GWorkspace NoWarnOnQuit YES"
+	echo "gnustep_set_default NSGlobalDomain GSWorkspaceApplication \"NotExist.app\""
 }

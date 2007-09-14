@@ -24,6 +24,5 @@ src_install() {
 
 gnustep_config_script() {
 	echo "gnustep_append_default NSGlobalDomain GSAppKitUserBundles \"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/Camaelon.themeEngine\""
-	echo "echo ' * using Camaelon Theme: Nesdah'"
-	echo "defaults write Camaelon Theme Nesedah"
+	echo "gnustep_set_default Camaelon Theme Nesedah"
 }
