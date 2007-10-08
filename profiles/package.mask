@@ -1,2 +1,0 @@
-# Mask camaelon-2 to synchronize camaelon version with etoile
-=gnustep-libs/camaelon-2.0*
