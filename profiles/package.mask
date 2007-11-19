@@ -1,0 +1,9 @@
+# Unstable gnustep packages
+=gnustep-base/gnustep-back-art-0.13.0
+=gnustep-base/gnustep-back-cairo-0.13.0
+=gnustep-base/gnustep-back-xlib-0.13.0
+=gnustep-base/gnustep-base-1.15.1
+=gnustep-base/gnustep-gui-0.13.0
+
+# Depends on unstable packages
+=gnustep-apps/gorm-1.2.2
