@@ -8,7 +8,7 @@ DESCRIPTION="A library of general-purpose, non-graphical Objective C objects."
 
 HOMEPAGE="http://www.gnustep.org"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
-KEYWORDS="~alpha amd64 ppc ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1"
 
@@ -72,5 +72,5 @@ pkg_postinst() {
 	ewarn "You will need to recompile all Applications/Tools/etc in order"
 	ewarn "to use this library."
 	ewarn "Run:"
-	ewarn "revdep-rebuild --library \"libgnustep-base.so.1.1[0-3]\""
+	ewarn "revdep-rebuild --library \"libgnustep-base.so.1.1[0-4]\""
 }
