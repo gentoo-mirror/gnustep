@@ -7,3 +7,4 @@
 
 # Depends on unstable packages
 =gnustep-apps/gorm-1.2.2
+=gnustep-apps/simpleagenda-0.33

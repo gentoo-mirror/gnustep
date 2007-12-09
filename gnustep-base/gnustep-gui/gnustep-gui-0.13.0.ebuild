@@ -41,3 +41,9 @@ src_compile() {
 
 	egnustep_make || die
 }
+
+pkg_postinst() {
+	ewarn "The shared library version has changed in this release."
+	ewarn "You will need to recompile all Applications/Tools/etc in order"
+	ewarn "to use this library. Please run revdep-rebuild to do so"
+}
