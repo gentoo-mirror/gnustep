@@ -17,7 +17,8 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	epatch "${FILESDIR}"/${P}-gnustep-base1.15.patch
+	epatch "${FILESDIR}"/${P}-gnustep-base-1.15.patch
+	epatch "${FILESDIR}"/${P}-gnustep-gui-0.13.1.patch
 }
 
 gnustep_config_script() {
