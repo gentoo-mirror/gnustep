@@ -22,8 +22,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	# Path case problem
-	ln -s iovm IoVM
+	sed -i -e "s/IoVM/iovm/" GNUmakefile.steptalk || die "sed failed"
 }
 
 src_compile() {
