@@ -1,0 +1,11 @@
+--- iovm/IoState_inline.h.orig	2008-06-16 15:47:57.000000000 +0200
++++ iovm/IoState_inline.h	2008-06-16 15:48:15.000000000 +0200
+@@ -35,8 +35,6 @@
+ #define IOFAILURE(self) IOFALSE(self)
+ #define ISFAILURE(self) ISFALSE(self)
+ 
+-inline IoObject *IOBOOL(IoObject *self, int b);
+-
+ IOINLINE IoObject *IOTRUE(IoObject *self)
+ {
+ 	return IOSTATE->ioTrue;

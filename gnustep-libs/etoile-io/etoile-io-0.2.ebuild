@@ -22,6 +22,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
+	epatch "${FILESDIR}"/${P}-multipledeclarations.patch
 	sed -i -e "s/IoVM/iovm/" GNUmakefile.steptalk || die "sed failed"
 }
 
