@@ -18,7 +18,7 @@ IUSE="preferences systempreferences"
 DEPEND=">=media-libs/libcdaudio-0.7
 	preferences? ( gnustep-apps/preferences )
 	systempreferences? ( gnustep-apps/systempreferences )
-	gnustep-libs/cddb.bundle"
+	gnustep-libs/cddb"
 RDEPEND="${DEPEND}"
 
 cdplayer_preferences() {
