@@ -2,10 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-#TODO:
-# * add use flags and deps for mysql,postrgesql, sqlite
-# * complete DEPEND
-
 inherit gnustep-base apache-module
 
 MY_PV="1621-200805211100"
@@ -17,11 +13,13 @@ SRC_URI="http://download.opengroupware.org/nightly/sources/trunk/${PN}-trunk-r${
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="postgres sqlite"
 
 DEPEND="gnustep-base/gnustep-base
 	dev-libs/libxml2
-	net-nds/openldap"
+	net-nds/openldap
+	postgres? ( virtual/postgresql-base )
+	sqlite? ( >=dev-db/sqlite-3 )"
 RDEPEND="${DEPEND}"
 
 APACHE2_MOD_DEFINE="SOPE"
