@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+#TODO:
+# * switch to gnustep-base
+# * Provide default configuration file for apache
+# * create user, fill defaults
+# * complete DEPEND
+
 inherit gnustep-2
 
 MY_PN="SOGo"

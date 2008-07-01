@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+#TODO:
+# * switch to gnustep-base
+# * Install module from sope-appserver/mod_ngobjweb/
+# * add use flags and deps for mysql,postrgesql, sqlite
+# * complete DEPEND
+
 inherit gnustep-2
 
 MY_PV="1621-200805211100"
@@ -13,7 +19,6 @@ SRC_URI="http://download.opengroupware.org/nightly/sources/trunk/${PN}-trunk-r${
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-#TODO add use flags and deps for mysql,postrgesql, sqlite
 IUSE=""
 
 DEPEND="dev-libs/libxml2
