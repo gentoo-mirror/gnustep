@@ -3,12 +3,10 @@
 # $Header: $
 
 #TODO:
-# * switch to gnustep-base
-# * Provide default configuration file for apache
 # * create user, fill defaults
 # * complete DEPEND
 
-inherit gnustep-2
+inherit depend.apache gnustep-base
 
 MY_PN="SOGo"
 MY_PV="1.0rc6.1"
@@ -23,6 +21,7 @@ IUSE=""
 
 DEPEND="gnustep-libs/sope"
 RDEPEND="${DEPEND}"
+need_apache2
 
 S=${WORKDIR}/${MY_PN}
 
@@ -39,4 +38,46 @@ src_compile() {
 	egnustep_env
 	./configure
 	egnustep_make
+}
+
+src_install() {
+	gnustep-base_src_install
+	dodir "${APACHE_MODULES_CONFDIR}"
+	cat <<EOF >"${D}/${APACHE_MODULES_CONFDIR}"/47_sogo.conf
+<IfDefine SOPE>
+LoadModule ngobjweb_module modules/mod_ngobjweb.so
+
+Alias   /sogo.woa/WebServerResources/ \
+        ${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/WebServerResources/
+Alias   /SOGo.woa/WebServerResources/ \
+        ${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/WebServerResources/
+
+AliasMatch      /SOGo/so/ControlPanel/Products/(.*)/Resources/(.*) \
+                ${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/\$1.SOGo/Resources/\$2
+
+<LocationMatch "^/SOGo*">
+        AddDefaultCharset UTF-8
+        SetHandler ngobjweb-adaptor
+        SetAppPort 18888
+</LocationMatch>
+
+<LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*png">
+        SetHandler default-handler
+</LocationMatch>
+
+<LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*gif">
+        SetHandler default-handler
+</LocationMatch>
+
+<LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*css">
+        SetHandler default-handler
+</LocationMatch>
+
+<LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*js">
+        SetHandler default-handler
+</LocationMatch>
+
+</IfDefine>
+EOF
+
 }

@@ -3,12 +3,10 @@
 # $Header: $
 
 #TODO:
-# * switch to gnustep-base
-# * Install module from sope-appserver/mod_ngobjweb/
 # * add use flags and deps for mysql,postrgesql, sqlite
 # * complete DEPEND
 
-inherit gnustep-2
+inherit gnustep-base apache-module
 
 MY_PV="1621-200805211100"
 
@@ -21,10 +19,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-libs/libxml2
-	net-nds/openldap
-	www-servers/apache"
+DEPEND="gnustep-base/gnustep-base
+	dev-libs/libxml2
+	net-nds/openldap"
 RDEPEND="${DEPEND}"
+
+APACHE2_MOD_DEFINE="SOPE"
+APACHE2_MOD_FILE="sope-appserver/mod_ngobjweb/mod_ngobjweb.so"
+need_apache2
 
 S=${WORKDIR}/${PN}
 
@@ -46,4 +48,14 @@ src_compile() {
 	egnustep_env
 	./configure --with-gnustep || die "configure failed"
 	egnustep_make apxs=/usr/sbin/apxs apr=/usr/bin/apr-1-config
+}
+
+src_install() {
+	gnustep-base_src_install
+	apache-module_src_install
+}
+
+pkg_postinst() {
+	gnustep-base_pkg_postinst
+	apache-module_pkg_postinst
 }
