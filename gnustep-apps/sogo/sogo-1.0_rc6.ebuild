@@ -22,6 +22,16 @@ need_apache2
 
 S=${WORKDIR}/${MY_PN}
 
+pkg_setup() {
+	gnustep-base_pkg_setup
+
+	if ! built_with_use gnustep-libs/sope postgres; then
+		eerror "SOGo needs gnustep-libs/sope with USE=postgres enabled"
+		die "gnustep-libs/sope compiled without USE=postgres"
+	fi
+}
+
+
 src_unpack() {
 	gnustep-base_src_unpack
 
