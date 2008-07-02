@@ -5,7 +5,8 @@
 inherit depend.apache gnustep-base
 
 MY_PN="SOGo"
-MY_PV="1.0rc6.1"
+MY_PV="${PV/_/}.1"
+
 DESCRIPTION="groupware server built around OpenGroupware.org and the SOPE application server"
 HOMEPAGE="http://sogo.opengroupware.org/"
 SRC_URI="http://www.inverse.ca/downloads/${MY_PN}/Sources/${MY_PN}-${MY_PV}.tar.gz"
@@ -56,34 +57,35 @@ src_install() {
 <IfDefine SOPE>
 LoadModule ngobjweb_module modules/mod_ngobjweb.so
 
-Alias   /sogo.woa/WebServerResources/ \
-        ${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/WebServerResources/
-Alias   /SOGo.woa/WebServerResources/ \
-        ${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/WebServerResources/
+Alias /sogo.woa/WebServerResources/ \
+	${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/WebServerResources/
+Alias /SOGo.woa/WebServerResources/ \
+	${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/WebServerResources/
 
-AliasMatch      /SOGo/so/ControlPanel/Products/(.*)/Resources/(.*) \
-                ${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/\$1.SOGo/Resources/\$2
+AliasMatch /SOGo/so/ControlPanel/Products/(.*)/Resources/(.*) \
+	${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/\$1.SOGo/Resources/\$2
 
 <LocationMatch "^/SOGo*">
-        AddDefaultCharset UTF-8
-        SetHandler ngobjweb-adaptor
-        SetAppPort 20000
+	AddDefaultCharset UTF-8
+	SetHandler ngobjweb-adaptor
+	SetAppPort 20000
+	Allow from 127.0.0.1
 </LocationMatch>
 
 <LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*png">
-        SetHandler default-handler
+	SetHandler default-handler
 </LocationMatch>
 
 <LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*gif">
-        SetHandler default-handler
+	SetHandler default-handler
 </LocationMatch>
 
 <LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*css">
-        SetHandler default-handler
+	SetHandler default-handler
 </LocationMatch>
 
 <LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*js">
-        SetHandler default-handler
+	SetHandler default-handler
 </LocationMatch>
 
 </IfDefine>
