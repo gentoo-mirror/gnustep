@@ -16,6 +16,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="gnustep-apps/etoile-system
+	gnustep-libs/systemconfig
 	gnustep-libs/xwindowserverkit"
 RDEPEND="${DEPEND}"
 # Not available in current stable
