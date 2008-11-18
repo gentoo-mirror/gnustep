@@ -4,19 +4,17 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/CoreObject"
+S="${WORKDIR}/Etoile-${PV}/Frameworks/XMPPKit"
 
-DESCRIPTION="A framework for describing and organizing model objects"
+DESCRIPTION=" Objective-C implementation of the XMPP protocol"
 HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
-
 LICENSE="BSD"
-SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+SLOT="0"
 
-DEPEND="dev-db/libpq
-	gnustep-libs/etoile-serialize"
+DEPEND="gnustep-libs/addresseskit
+	gnustep-libs/etoile-foundation"
 RDEPEND="${DEPEND}"
 
 src_unpack() {

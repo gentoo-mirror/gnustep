@@ -4,20 +4,15 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/EtoileFoundation"
+S="${WORKDIR}/Etoile-${PV}/Services/Private/AZBackground"
 
-DESCRIPTION="Foundation framework extensions from the Etoile project"
+DESCRIPTION="A background image setter for the Etoile project"
 HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+SLOT="0"
 
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}
+DEPEND="gnustep-libs/xwindowserverkit"
+RDEPEND="${DEPEND}"
