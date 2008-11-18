@@ -12,6 +12,7 @@ SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
+IUSE=""
 
 DEPEND="gnustep-libs/ogrekit"
 RDEPEND="${DEPEND}"

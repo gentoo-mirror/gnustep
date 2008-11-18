@@ -13,6 +13,7 @@ SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="as-is"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
+IUSE=""
 
 RDEPEND=">=gnustep-apps/azbackground-${PV}
 	>=gnustep-apps/dictionaryreader-${PV}
@@ -29,7 +30,7 @@ RDEPEND=">=gnustep-apps/azbackground-${PV}
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
 	# Fix path
 	egnustep_env
