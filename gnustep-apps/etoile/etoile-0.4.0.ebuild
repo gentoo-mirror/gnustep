@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit gnustep-2
-
 DESCRIPTION="Meta-package for the Etoile desktop environment"
 HOMEPAGE="http://www.etoile-project.org"
 
