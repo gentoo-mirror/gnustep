@@ -4,18 +4,16 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/EtoileSerialize"
+S="${WORKDIR}/Etoile-${PV}/Frameworks/OgreKit"
 
-DESCRIPTION="Collection of classes that perform serialization and deserialization of arbitrary objects"
+DESCRIPTION="OniGuruma regular expression framework"
 HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
-
 LICENSE="BSD"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="gnustep-libs/etoile-foundation"
+DEPEND=">=dev-libs/oniguruma-5.7.0"
 RDEPEND="${DEPEND}"
 
 src_unpack() {

@@ -4,18 +4,16 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/EtoileSerialize"
+S="${WORKDIR}/Etoile-${PV}/Frameworks/LuceneKit"
 
-DESCRIPTION="Collection of classes that perform serialization and deserialization of arbitrary objects"
+DESCRIPTION="GNUstep port of Lucene"
 HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
-
-LICENSE="BSD"
+LICENSE="Apache-2.0"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="gnustep-libs/etoile-foundation"
+DEPEND="gnustep-libs/ogrekit"
 RDEPEND="${DEPEND}"
 
 src_unpack() {

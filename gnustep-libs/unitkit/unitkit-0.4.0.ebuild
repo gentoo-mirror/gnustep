@@ -14,3 +14,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
+
+src_unpack() {
+	unpack ${A}
+	cd "${WORKDIR}/Etoile-${PV}"
+
+	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
+}
