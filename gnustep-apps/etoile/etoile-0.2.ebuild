@@ -15,26 +15,26 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
 RDEPEND=">=gnustep-apps/addresses-0.4.7
-	~gnustep-apps/azalea-${PV}
-	~gnustep-apps/azbackground-${PV}
-	~gnustep-apps/azdock-${PV}
-	~gnustep-apps/azswitch-${PV}
-	~gnustep-apps/calc-${PV}
-	~gnustep-apps/dictionaryreader-${PV}
-	~gnustep-apps/etoile-corner-${PV}
-	~gnustep-apps/etoile-idle-${PV}
-	~gnustep-apps/etoile-menuserver-${PV}
-	~gnustep-apps/etoile-system-${PV}
-	~gnustep-apps/fontmanager-${PV}
-	~gnustep-apps/grr-${PV}
-	~gnustep-apps/outerspace-${PV}
-	~gnustep-apps/sketch-${PV}
-	~gnustep-apps/stepchat-${PV}
-	~gnustep-apps/typewriter-${PV}
-	~gnustep-apps/vindaloo-${PV}
-	~gnustep-libs/camaelon-${PV}
-	~gnustep-libs/etoile-behavior-${PV}
-	~gnustep-libs/etoile-wildmenus-${PV}"
+	>=gnustep-apps/azalea-${PV}
+	>=gnustep-apps/azbackground-${PV}
+	>=gnustep-apps/azdock-${PV}
+	>=gnustep-apps/azswitch-${PV}
+	>=gnustep-apps/calc-${PV}
+	>=gnustep-apps/dictionaryreader-${PV}
+	>=gnustep-apps/etoile-corner-${PV}
+	>=gnustep-apps/etoile-idle-${PV}
+	>=gnustep-apps/etoile-menuserver-${PV}
+	>=gnustep-apps/etoile-system-${PV}
+	>=gnustep-apps/fontmanager-${PV}
+	>=gnustep-apps/grr-${PV}
+	>=gnustep-apps/outerspace-${PV}
+	>=gnustep-apps/sketch-${PV}
+	>=gnustep-apps/stepchat-${PV}
+	>=gnustep-apps/typewriter-${PV}
+	>=gnustep-apps/vindaloo-${PV}
+	>=gnustep-libs/camaelon-${PV}
+	>=gnustep-libs/etoile-behavior-${PV}
+	>=gnustep-libs/etoile-wildmenus-${PV}"
 
 src_unpack() {
 	unpack ${A}
