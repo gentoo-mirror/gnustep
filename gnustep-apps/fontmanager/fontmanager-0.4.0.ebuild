@@ -4,12 +4,13 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/ScriptKit"
+S="${WORKDIR}/Etoile-${PV}/Services/User/FontManager"
 
-DESCRIPTION="lightweight cross-app scripting framework built on top of Distributed Objects"
+DESCRIPTION="Fonts managing application"
 HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
-LICENSE="LGPL-2.1"
+
+LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
@@ -18,5 +19,5 @@ src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}/Etoile-${PV}"
 
-	sed -i -e "s/-Werror//" etoile.make "${S}"/GNUmakefile || die "sed failed"
+	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
 }
