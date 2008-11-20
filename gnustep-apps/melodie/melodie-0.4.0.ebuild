@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="gnustep-libs/coreobject
+DEPEND="media-libs/libmp4v2
+	gnustep-libs/coreobject
 	gnustep-libs/etoile-ui
 	gnustep-libs/mediakit
 	gnustep-libs/smalltalkkit"

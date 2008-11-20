@@ -14,7 +14,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="gnustep-libs/etoile-foundation"
+DEPEND="gnustep-libs/etoile-foundation
+	gnustep-libs/coreobject"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
