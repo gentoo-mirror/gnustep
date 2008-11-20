@@ -17,10 +17,3 @@ IUSE=""
 
 RDEPEND="!gnustep-apps/addresses"
 DEPEND="${RDEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}

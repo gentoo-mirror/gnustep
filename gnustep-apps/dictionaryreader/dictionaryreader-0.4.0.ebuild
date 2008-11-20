@@ -18,13 +18,6 @@ IUSE=""
 DEPEND="gnustep-libs/etoile-ui"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}
-
 src_compile() {
 	egnustep_env
 	egnustep_make etoile=yes || die "compilation failed"

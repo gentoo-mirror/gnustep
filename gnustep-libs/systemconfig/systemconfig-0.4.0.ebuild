@@ -13,10 +13,3 @@ LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
-
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}

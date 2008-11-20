@@ -16,10 +16,3 @@ IUSE=""
 
 DEPEND=">=dev-libs/oniguruma-5.7.0"
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}

@@ -17,10 +17,3 @@ IUSE=""
 
 DEPEND="x11-libs/libXScrnSaver"
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}

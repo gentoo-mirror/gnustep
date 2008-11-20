@@ -19,10 +19,3 @@ IUSE=""
 DEPEND="gnustep-libs/ogrekit
 	gnustep-libs/scriptkit"
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}
