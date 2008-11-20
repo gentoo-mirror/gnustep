@@ -153,7 +153,7 @@ src_compile() {
 		CONF_FLAGS="${CONF_FLAGS} --enable-targets=host-only"
 	fi
 
-	if use amd64 && use pic; then
+	if use amd64 || use pic; then
 		CONF_FLAGS="${CONF_FLAGS} --enable-pic"
 	fi
 
