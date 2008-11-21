@@ -19,5 +19,5 @@ src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}/Etoile-${PV}"
 
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
+	sed -i -e "s/-Werror/& -fgnu89-inline/" etoile.make || die "sed failed"
 }

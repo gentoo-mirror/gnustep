@@ -29,5 +29,5 @@ src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}/Etoile-${PV}"
 
-	sed -i -e "s/-Werror//" etoile.make "${S}"/GNUmakefile || die "sed failed"
+	sed -i -e "s/-Werror/& -fgnu89-inline -Wno-unreachable-code/" etoile.make "${S}"/GNUmakefile || die "sed failed"
 }
