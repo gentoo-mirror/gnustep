@@ -19,7 +19,9 @@ IUSE=""
 DEPEND="media-libs/libmp4v2
 	gnustep-libs/coreobject
 	gnustep-libs/etoile-ui
+	gnustep-libs/iconkit
 	gnustep-libs/mediakit
+	gnustep-libs/scriptkit
 	gnustep-libs/smalltalkkit"
 RDEPEND="${DEPEND}"
 
