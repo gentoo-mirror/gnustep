@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -17,5 +17,6 @@ SLOT="0"
 DEPEND="gnustep-libs/distributedview
 	gnustep-libs/etoile-ui
 	gnustep-libs/iconkit
-	gnustep-libs/inspectorkit"
+	gnustep-libs/inspectorkit
+	gnustep-libs/xwindowserverkit"
 RDEPEND="${DEPEND}"
