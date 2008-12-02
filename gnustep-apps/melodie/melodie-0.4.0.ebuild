@@ -17,6 +17,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="media-libs/libmp4v2
+	media-libs/taglib
 	gnustep-libs/coreobject
 	gnustep-libs/etoile-ui
 	gnustep-libs/iconkit
