@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND="gnustep-libs/etoile-foundation
 	gnustep-libs/systemconfig
-	media-video/ffmpeg"
+	>=media-video/ffmpeg-0.4.9_p20080326"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
