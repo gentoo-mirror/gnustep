@@ -165,7 +165,7 @@ src_compile() {
 	CONF_FLAGS="${CONF_FLAGS} --with-llvmgccdir=/dev/null"
 
 	econf ${CONF_FLAGS} || die "econf failed"
-	emake tools-only || die "emake failed"
+	emake || die "emake failed"
 }
 
 src_install()
