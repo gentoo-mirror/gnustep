@@ -16,15 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND="gnustep-libs/etoile-foundation
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0
+	gnustep-libs/etoile-foundation
 	gnustep-libs/languagekit"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
 
 	# Copy updated lempar.c
 	cd "${S}"

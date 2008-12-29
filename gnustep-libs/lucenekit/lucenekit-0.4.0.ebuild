@@ -14,12 +14,6 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="gnustep-libs/ogrekit"
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0
+	gnustep-libs/ogrekit"
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}

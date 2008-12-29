@@ -15,12 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND=">=sys-devel/llvm-2.4"
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0
+	>=sys-devel/llvm-2.4"
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}

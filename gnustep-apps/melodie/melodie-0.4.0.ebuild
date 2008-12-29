@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="media-libs/libmp4v2
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0
+	media-libs/libmp4v2
 	media-libs/taglib
 	gnustep-libs/coreobject
 	gnustep-libs/etoile-ui
@@ -25,10 +26,9 @@ DEPEND="media-libs/libmp4v2
 	gnustep-libs/scriptkit
 	gnustep-libs/smalltalkkit"
 RDEPEND="${DEPEND}"
-
 src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}/Etoile-${PV}"
 
-	sed -i -e "s/-Werror//" etoile.make "${S}"/GNUmakefile || die "sed failed"
+	sed -i -e "s/-Werror/-Werror -Wno-unreachable-code/" etoile.make "${S}"/GNUmakefile || die "sed failed"
 }

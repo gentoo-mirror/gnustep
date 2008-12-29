@@ -15,13 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND="virtual/postgresql-base
-	gnustep-libs/etoile-serialize"
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0
+	gnustep-libs/etoile-serialize
+	virtual/postgresql-base"
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make || die "sed failed"
-}

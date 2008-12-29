@@ -15,13 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="gnustep-libs/etoile-serialize
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0
+	gnustep-libs/etoile-serialize
 	gnustep-libs/xmppkit"
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make "${S}"/GNUmakefile || die "sed failed"
-}

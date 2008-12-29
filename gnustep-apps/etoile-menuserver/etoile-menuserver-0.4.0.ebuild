@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="gnustep-libs/systemconfig
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0
+	gnustep-libs/systemconfig
 	gnustep-libs/xwindowserverkit"
 RDEPEND="${DEPEND}"
 # Not available in current stable

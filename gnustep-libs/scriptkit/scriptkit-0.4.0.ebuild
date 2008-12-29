@@ -14,9 +14,5 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make "${S}"/GNUmakefile || die "sed failed"
-}
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0"
+RDEPEND="${DEPEND}"

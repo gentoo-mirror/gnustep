@@ -14,7 +14,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="gnustep-libs/etoile-foundation
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0
+	gnustep-libs/etoile-foundation
 	gnustep-libs/systemconfig
 	>=media-video/ffmpeg-0.4.9_p20080326"
 RDEPEND="${DEPEND}"
@@ -22,8 +23,6 @@ RDEPEND="${DEPEND}"
 src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}/Etoile-${PV}"
-
-	sed -i -e "s/-Werror//" etoile.make "${S}"/GNUmakefile || die "sed failed"
 
 	cd "${S}"
 	sed -i -e "s#avcodec.h#libavcodec/avcodec.h#" \
