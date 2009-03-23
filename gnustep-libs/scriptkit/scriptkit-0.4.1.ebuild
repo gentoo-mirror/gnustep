@@ -8,7 +8,7 @@ S="${WORKDIR}/Etoile-${PV}/Frameworks/ScriptKit"
 
 DESCRIPTION="lightweight cross-app scripting framework built on top of Distributed Objects"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"

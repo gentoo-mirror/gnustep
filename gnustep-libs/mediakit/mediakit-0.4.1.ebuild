@@ -8,15 +8,15 @@ S="${WORKDIR}/Etoile-${PV}/Frameworks/MediaKit"
 
 DESCRIPTION="a common backend engine to play multimedia stream"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
 DEPEND=">=gnustep-base/gnustep-gui-0.16.0
-	gnustep-libs/etoile-foundation
-	gnustep-libs/systemconfig
+	>=gnustep-libs/etoile-foundation-${PV}
+	>=gnustep-libs/systemconfig-${PV}
 	>=media-video/ffmpeg-0.4.9_p20080326"
 RDEPEND="${DEPEND}"
 

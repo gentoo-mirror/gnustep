@@ -4,15 +4,16 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/OgreKit"
+S="${WORKDIR}/Etoile-${PV}/Frameworks/LuceneKit"
 
-DESCRIPTION="OniGuruma regular expression framework"
+DESCRIPTION="GNUstep port of Lucene"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
-LICENSE="BSD"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
+LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND=">=dev-libs/oniguruma-5.7.0"
+DEPEND=">=gnustep-base/gnustep-gui-0.16.0
+	>=gnustep-libs/ogrekit-${PV}"
 RDEPEND="${DEPEND}"

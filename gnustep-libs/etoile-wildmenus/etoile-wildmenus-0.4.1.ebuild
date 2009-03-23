@@ -4,14 +4,15 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/OgreKit"
+S="${WORKDIR}/Etoile-${PV}/Bundles/EtoileWildMenus"
 
-DESCRIPTION="OniGuruma regular expression framework"
+DESCRIPTION="provides horizontal menu display to Etoile applications"
 HOMEPAGE="http://www.etoile-project.org"
 SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 
-DEPEND=">=dev-libs/oniguruma-5.7.0"
-RDEPEND="${DEPEND}"
+gnustep_config_script() {
+	echo "gnustep_append_default NSGlobalDomain GSAppKitUserBundles \"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/EtoileMenus.bundle\""
+}

@@ -8,7 +8,7 @@ S="${WORKDIR}/Etoile-${PV}/Frameworks/XWindowServerKit"
 
 DESCRIPTION="framework to integrate GNUstep with X window system"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
