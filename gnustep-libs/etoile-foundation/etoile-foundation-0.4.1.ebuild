@@ -10,7 +10,7 @@ S="${WORKDIR}/Etoile-${PV}/Frameworks/EtoileFoundation"
 
 DESCRIPTION="Foundation framework extensions from the Etoile project"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

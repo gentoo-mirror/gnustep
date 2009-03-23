@@ -4,11 +4,11 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Services/User/Jabber"
+S="${WORKDIR}/Etoile-${PV}/Services/Private/Corner"
 
-DESCRIPTION="Etoilé instant messenger for jabber"
+DESCRIPTION="A simple 'hot-corners' implementation"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
@@ -16,6 +16,6 @@ SLOT="0"
 IUSE=""
 
 DEPEND=">=gnustep-base/gnustep-gui-0.16.0
-	gnustep-libs/etoile-serialize
-	gnustep-libs/xmppkit"
+	>=gnustep-libs/scriptkit-${PV}
+	>=gnustep-libs/smalltalkkit-${PV}"
 RDEPEND="${DEPEND}"

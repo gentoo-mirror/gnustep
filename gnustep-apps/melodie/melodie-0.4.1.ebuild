@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=2
+
 inherit gnustep-2
 
 S="${WORKDIR}/Etoile-${PV}/Services/User/Melodie"
@@ -9,7 +11,7 @@ S="${WORKDIR}/Etoile-${PV}/Services/User/Melodie"
 DESCRIPTION="Melodie is a music player for Etoile"
 
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
@@ -19,16 +21,15 @@ IUSE=""
 DEPEND=">=gnustep-base/gnustep-gui-0.16.0
 	media-libs/libmp4v2
 	media-libs/taglib
-	gnustep-libs/coreobject
-	gnustep-libs/etoile-ui
-	gnustep-libs/iconkit
-	gnustep-libs/mediakit
-	gnustep-libs/scriptkit
-	gnustep-libs/smalltalkkit"
+	>=gnustep-libs/coreobject-${PV}
+	>=gnustep-libs/etoile-ui-${PV}
+	>=gnustep-libs/iconkit-${PV}
+	>=gnustep-libs/mediakit-${PV}
+	>=gnustep-libs/scriptkit-${PV}
+	>=gnustep-libs/smalltalkkit-${PV}"
 RDEPEND="${DEPEND}"
-src_unpack() {
-	unpack ${A}
-	cd "${WORKDIR}/Etoile-${PV}"
 
+src_prepare() {
+	cd "${WORKDIR}/Etoile-${PV}"
 	sed -i -e "s/-Werror/-Werror -Wno-unreachable-code/" etoile.make "${S}"/GNUmakefile || die "sed failed"
 }

@@ -6,6 +6,8 @@ EAPI=2
 
 inherit gnustep-2 toolchain-funcs
 
+S="${WORKDIR}/Etoile-${PV}/Languages/Smalltalk"
+
 SQLITE="sqlite-3.6.2"
 DESCRIPTION="Étoilé's Pragmatic Smalltalk, a Smalltalk JIT compiler which generates code binary-compatible with Objective-C"
 HOMEPAGE="http://www.etoile-project.org"
@@ -22,7 +24,6 @@ DEPEND=">=gnustep-base/gnustep-gui-0.16.0
 	>=gnustep-libs/languagekit-${PV}"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/Etoile-${PV}/Languages/SmalltalkKit"
 
 src_prepare() {
 	# Copy updated lempar.c

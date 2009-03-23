@@ -4,16 +4,16 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Services/Private/Idle"
+S="${WORKDIR}/Etoile-${PV}/Services/Private/AZBackground"
 
-DESCRIPTION="sends user-idle notifications every minute that the user is idle"
+DESCRIPTION="A background image setter for the Etoile project"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="x11-libs/libXScrnSaver"
+DEPEND=">=gnustep-libs/xwindowserverkit-${PV}"
 RDEPEND="${DEPEND}"

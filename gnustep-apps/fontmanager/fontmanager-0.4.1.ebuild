@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -8,8 +8,9 @@ S="${WORKDIR}/Etoile-${PV}/Services/User/FontManager"
 
 DESCRIPTION="Fonts managing application"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
+IUSE=""

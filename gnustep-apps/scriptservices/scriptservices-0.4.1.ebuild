@@ -8,12 +8,12 @@ S="${WORKDIR}/Etoile-${PV}/Services/Private/ScriptServices"
 
 DESCRIPTION="Gateway between GNUstep system services and Unix scripts"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="gnustep-libs/smalltalkkit"
+DEPEND=">=gnustep-libs/smalltalkkit-${PV}"
 RDEPEND="${DEPEND}"

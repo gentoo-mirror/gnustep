@@ -8,7 +8,7 @@ S="${WORKDIR}/Etoile-${PV}/Bundles/EtoileWildMenus"
 
 DESCRIPTION="provides horizontal menu display to Etoile applications"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
