@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=2
+
 inherit gnustep-2
 
 S="${WORKDIR}/Etoile-${PV}/Frameworks/EtoileFoundation"
@@ -18,3 +20,10 @@ IUSE=""
 DEPEND=">=gnustep-base/gnustep-gui-0.16.0
 	>=gnustep-base/gnustep-gui-0.16.0"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	sed -i -e "s#ADDITIONAL_OBJCFLAGS += -march=i586##" GNUmakefile || die "sed failed"
+
+	cd "${WORKDIR}/Etoile-${PV}"
+	sed -i -e "s/-Werror//" etoile.make || die "Werror sed failed"
+}

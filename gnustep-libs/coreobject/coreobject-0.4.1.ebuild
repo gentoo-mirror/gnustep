@@ -4,17 +4,18 @@
 
 inherit gnustep-2
 
-S="${WORKDIR}/Etoile-${PV}/Frameworks/EtoileUI"
+S="${WORKDIR}/Etoile-${PV}/Frameworks/CoreObject"
 
-DESCRIPTION="AppKit framework extensions from the Etoile project"
+DESCRIPTION="A framework for describing and organizing model objects"
 HOMEPAGE="http://www.etoile-project.org"
-SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.gz"
+SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
+
 LICENSE="BSD"
-KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND=">=gnustep-base/gnustep-gui-0.16.0
-	gnustep-libs/etoile-foundation
-	gnustep-libs/coreobject"
+	>=gnustep-libs/etoile-serialize-${PV}
+	virtual/postgresql-base"
 RDEPEND="${DEPEND}"
