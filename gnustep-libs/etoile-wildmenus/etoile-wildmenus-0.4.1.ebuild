@@ -12,6 +12,7 @@ SRC_URI="http://download.gna.org/etoile/etoile-${PV}.tar.bz2"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
+IUSE=""
 
 gnustep_config_script() {
 	echo "gnustep_append_default NSGlobalDomain GSAppKitUserBundles \"${GNUSTEP_SYSTEM_LIBRARY}/Bundles/EtoileMenus.bundle\""

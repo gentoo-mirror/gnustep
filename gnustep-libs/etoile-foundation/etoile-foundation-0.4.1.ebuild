@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND=">=gnustep-base/gnustep-gui-0.16.0
-	>=gnustep-base/gnustep-gui-0.16.0"
+DEPEND=">=virtual/gnustep-back-0.16.0"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
