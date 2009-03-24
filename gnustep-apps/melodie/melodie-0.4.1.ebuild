@@ -31,5 +31,5 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	cd "${WORKDIR}/Etoile-${PV}"
-	sed -i -e "s/-Werror/-Werror -Wno-unreachable-code/" etoile.make "${S}"/GNUmakefile || die "sed failed"
+	sed -i -e "s/-Werror/-Wno-unreachable-code/" etoile.make "${S}"/GNUmakefile || die "sed failed"
 }
