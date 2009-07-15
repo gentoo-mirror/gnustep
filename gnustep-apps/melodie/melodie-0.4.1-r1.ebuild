@@ -19,7 +19,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND=">=gnustep-base/gnustep-gui-0.16.0
-	media-libs/libmp4v2
+	>=media-libs/libmp4v2-1.9.0
 	media-libs/taglib
 	>=gnustep-libs/coreobject-${PV}
 	>=gnustep-libs/etoile-ui-${PV}
@@ -32,4 +32,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	cd "${WORKDIR}/Etoile-${PV}"
 	sed -i -e "s/-Werror/-Wno-unreachable-code/" etoile.make "${S}"/GNUmakefile || die "sed failed"
+
+	cd "${S}"
+	sed -i -e "s|#include <mp4.h>|#include <mp4v2/mp4v2.h>|" TLMusicFile.m || die "libmp4v2 sed failed"
 }
