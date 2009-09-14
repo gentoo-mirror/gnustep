@@ -22,7 +22,7 @@ LICENSE="LLVM"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-IUSE="debug pic alltargets"
+IUSE="debug alltargets"
 
 DEPEND="dev-lang/perl
   >=sys-devel/make-3.79
@@ -112,7 +112,7 @@ src_compile() {
 		CONF_FLAGS="${CONF_FLAGS} --enable-targets=host-only"
 	fi
 
-	if use amd64 || use pic; then
+	if use amd64; then
 		CONF_FLAGS="${CONF_FLAGS} --enable-pic"
 	fi
 
