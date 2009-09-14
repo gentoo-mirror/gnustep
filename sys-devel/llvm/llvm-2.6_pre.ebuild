@@ -1,7 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: $
 
+EAPI=2
 inherit eutils toolchain-funcs multilib
 
 DESCRIPTION="Low Level Virtual Machine"
@@ -9,32 +10,20 @@ HOMEPAGE="http://llvm.org/"
 #SRC_URI="http://llvm.org/releases/${PV}/${P}.tar.gz"
 SRC_URI="http://llvm.org/prereleases/${PV/_pre}/${PN}-${PV/_pre}.tar.gz"
 
-LICENSE="LLVM"
-# most part of LLVM fall under the "University of Illinois Open Source License"
-# which doesn't seem to exist in portage yet, so I call it 'LLVM' for now.  it
-# can be read from llvm/LICENSE.TXT in the source tarball.
-
-# the directory llvm/runtime/GCCLibraries/libc contains a stripped down C
-# library licensed under the LGPL 2.1 with some third party copyrights, see the
-# two LICENCE* files in that directory.  Those parts do *not* get built, so
-# we omit LGPL in ${LICENCE}
-
+LICENSE="Uoi-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-
 IUSE="debug alltargets"
 
 DEPEND="dev-lang/perl
-  >=sys-devel/make-3.79
-  >=sys-devel/flex-2.5.4
-  >=sys-devel/bison-1.28
-  !~sys-devel/bison-1.85
-  !~sys-devel/bison-1.875
-  >=sys-devel/gcc-3.0
-  >=sys-devel/binutils-2.18
-        "
+	>=sys-devel/make-3.79
+	>=sys-devel/flex-2.5.4
+	>=sys-devel/bison-1.28
+	!~sys-devel/bison-1.85
+	!~sys-devel/bison-1.875
+	>=sys-devel/gcc-3.0
+	>=sys-devel/binutils-2.18"
 RDEPEND="dev-lang/perl"
-PDEPEND=""
 
 S=${WORKDIR}/${PN}-${PV/_pre}
 
@@ -51,7 +40,7 @@ pkg_setup() {
 		elog "Your version of gcc is known to miscompile llvm."
 		elog "Check http://www.llvm.org/docs/GettingStarted.html for"
 		elog "possible solutions."
-		die "Your currently active version of gcc is known to miscompile llvm" 
+		die "Your currently active version of gcc is known to miscompile llvm"
 	fi
 
 	if [[ ${CHOST} == i*86-* && ${broken_gcc_x86} == *" ${version} "* ]] ; then
@@ -59,7 +48,7 @@ pkg_setup() {
 		elog "architectures.  Check"
 		elog "http://www.llvm.org/docs/GettingStarted.html for possible"
 		elog "solutions."
-		die "Your currently active version of gcc is known to miscompile llvm" 
+		die "Your currently active version of gcc is known to miscompile llvm"
 	fi
 
 	if [[ ${CHOST} == x86_64-* && ${broken_gcc_amd64} == *" ${version} "* ]];
@@ -68,11 +57,11 @@ pkg_setup() {
 		 elog "architectures.  Check"
 		 elog "http://www.llvm.org/docs/GettingStarted.html for possible"
 		 elog "solutions."
-		die "Your currently active version of gcc is known to miscompile llvm" 
+		die "Your currently active version of gcc is known to miscompile llvm"
 	 fi
 }
 
-src_compile() {
+src_prepare() {
 	# unfortunately ./configure won't listen to --mandir and the-like, so take
 	# care of this.
 	einfo "Fixing install dirs"
@@ -80,19 +69,18 @@ src_compile() {
 		-e 's,^PROJ_etcdir.*,PROJ_etcdir := $(DESTDIR)/etc/llvm,' \
 		-i Makefile.config.in || die "sed failed"
 
-	# fix gccld and gccas, which would otherwise point to the build directory
+	# point by default to the build directory
 	einfo "Fixing gccld and gccas"
 	sed -e 's,^TOOLDIR.*,TOOLDIR=/usr/bin,' \
 		-i tools/gccld/gccld.sh tools/gccas/gccas.sh || die "sed failed"
 
-	# all binaries get rpath'd to a dir in the temporary tree that doesn't
-	# contain libraries anyway; can safely remove those to avoid QA warnings
-	# (the exception would be if we build shared libraries, which we don't)
 	einfo "Fixing rpath"
-	sed -e 's,-rpath \$(ToolDir),,g' -i Makefile.rules || die "sed failed"
+	sed -e 's/\$(RPATH) -Wl,\$(\(ToolDir\|LibDir\))//g' -i Makefile.rules || die "sed failed"
 
 	epatch "${FILESDIR}"/llvm-2.3-dont-build-hello.patch
-	epatch "${FILESDIR}"/llvm-2.3-disable-strip.patch
+}
+
+src_configure() {
 	local CONF_FLAGS=""
 
 	if use debug; then
@@ -117,32 +105,18 @@ src_compile() {
 	fi
 
 	# things would be built differently depending on whether llvm-gcc is
-	# already present on the system or not. When not bootstapping we make sure
-	# that no llvm-gcc is found
-	local LLVM_GCC_DIR=/dev/null 
+	# already present on the system or not.
+	local LLVM_GCC_DIR=/dev/null
 	local LLVM_GCC_DRIVER=nope ; local LLVM_GPP_DRIVER=nope
-	if has_version sys-devel/llvm-gcc; then
-		# when bootstapping, make sure configure will find installed llvm-gcc
-		if [[ -z ${LLVM_GCC_PREFIX} ]] ; then
-			local here=/usr/$(get_libdir)/llvm-gcc/
-			# this is scary
-			local LLVM_GCC_PREFIX=${here}$(ls $here | head -1)
+	if has_version sys-devel/llvm-gcc ; then
+		LLVM_GCC_DIR=$(find /usr/$(get_libdir)/llvm-gcc/ -mindepth 1 -maxdepth 1 2> /dev/null)
+		LLVM_GCC_DRIVER=$(find ${LLVM_GCC_DIR} -name 'llvm*-gcc' 2> /dev/null)
+
+		if [[ -z ${LLVM_GCC_DRIVER} ]] ; then
+			die "failed to find installed llvm-gcc, LLVM_GCC_DIR=${LLVM_GCC_DIR}"
 		fi
 
-		[[ -z $(ls ${LLVM_GCC_PREFIX}/bin/*-gcc 2> /dev/null) ]] && \
-			die "failed to find installed llvm-gcc, LLVM_GCC_PREFIX=${LLVM_GCC_PREFIX}"
-
-		for driver in ${LLVM_GCC_PREFIX}/bin/*-gcc ; do
-			LLVM_GCC_DRIVER=${driver##*/}
-			break;
-		done
-
-		LLVM_GCC_DIR=${LLVM_GCC_PREFIX}
-
-		[[ -z ${LLVM_GCC_DRIVER} ]] && \
-			die "failed to find installed llvm-gcc, LLVM_GCC_PREFIX=${LLVM_GCC_PREFIX}"
-
-		einfo "using $LLVM_GCC_DRIVER residing in $LLVM_GCC_DIR"
+		einfo "Using $LLVM_GCC_DRIVER"
 		LLVM_GPP_DRIVER=${LLVM_GCC_DRIVER/%-gcc/-g++}
 	fi
 
@@ -152,19 +126,22 @@ src_compile() {
 		--with-llvmgxx=${LLVM_GPP_DRIVER}"
 
 	econf ${CONF_FLAGS} || die "econf failed"
-	emake || die "emake failed"
+}
+
+src_compile() {
+	emake VERBOSE=1 KEEP_SYMBOLS=1 || die "emake failed"
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	emake KEEP_SYMBOLS=1 DESTDIR="${D}" install || die "install failed"
 
 	# don't install html.tar.gz in /usr/share/doc -- FIXME: USE=doc
 	einfo "Removing archived html documentation"
 	rm "${D}"/usr/share/doc/${PF}/*tar.gz \
 		|| die "no such file ${D}/usr/share/doc/${PF}/*tar.gz"
 
-	# tblgen does not get installed, so remove its man page.  
-	# llvmgcc.1 and llvmgxx.1 are present here for unknown reasons. But, since 
+	# tblgen does not get installed, so remove its man page.
+	# llvmgcc.1 and llvmgxx.1 are present here for unknown reasons. But, since
 	# llvm-gcc installs bad man pages, keep the 2 files alive
 	rm "${D}"/usr/share/man/man1/tblgen.1
 }
