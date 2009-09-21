@@ -13,7 +13,7 @@ SRC_URI="http://llvm.org/prereleases/${PV/_pre}/${PN}-${PV/_pre}.tar.gz"
 LICENSE="Uoi-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="debug alltargets"
+IUSE="alltargets debug test"
 
 DEPEND="dev-lang/perl
 	>=sys-devel/make-3.79
@@ -22,7 +22,8 @@ DEPEND="dev-lang/perl
 	!~sys-devel/bison-1.85
 	!~sys-devel/bison-1.875
 	>=sys-devel/gcc-3.0
-	>=sys-devel/binutils-2.18"
+	>=sys-devel/binutils-2.18
+	test? ( dev-util/dejagnu )"
 RDEPEND="dev-lang/perl"
 
 S=${WORKDIR}/${PN}-${PV/_pre}
@@ -76,8 +77,6 @@ src_prepare() {
 
 	einfo "Fixing rpath"
 	sed -e 's/\$(RPATH) -Wl,\$(\(ToolDir\|LibDir\))//g' -i Makefile.rules || die "sed failed"
-
-	epatch "${FILESDIR}"/llvm-2.3-dont-build-hello.patch
 }
 
 src_configure() {
