@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
-inherit eutils toolchain-funcs multilib
+EAPI="2"
+inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
@@ -77,6 +77,11 @@ src_prepare() {
 
 	einfo "Fixing rpath"
 	sed -e 's/\$(RPATH) -Wl,\$(\(ToolDir\|LibDir\))//g' -i Makefile.rules || die "sed failed"
+	
+	# Fix docs installation
+	sed -e '/^NO_INSTALL_MANS/s/$/$(DST_MAN_DIR)tblgen.1 $(DST_MAN_DIR)llvmgcc.1 $(DST_MAN_DIR)llvmgxx.1/' \
+		-i docs/CommandGuide/Makefile || die "manpages sed failed"
+	epatch "${FILESDIR}"/${PN}-2.6-nohtmltargz.patch
 }
 
 src_configure() {
@@ -133,14 +138,4 @@ src_compile() {
 
 src_install() {
 	emake KEEP_SYMBOLS=1 DESTDIR="${D}" install || die "install failed"
-
-	# don't install html.tar.gz in /usr/share/doc -- FIXME: USE=doc
-	einfo "Removing archived html documentation"
-	rm "${D}"/usr/share/doc/${PF}/*tar.gz \
-		|| die "no such file ${D}/usr/share/doc/${PF}/*tar.gz"
-
-	# tblgen does not get installed, so remove its man page.
-	# llvmgcc.1 and llvmgxx.1 are present here for unknown reasons. But, since
-	# llvm-gcc installs bad man pages, keep the 2 files alive
-	rm "${D}"/usr/share/man/man1/tblgen.1
 }
