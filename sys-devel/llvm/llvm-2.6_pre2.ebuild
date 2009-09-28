@@ -71,7 +71,7 @@ src_prepare() {
 		-e 's,^PROJ_libdir.*,PROJ_libdir := $(DESTDIR)/usr/'$(get_libdir), \
 		-i Makefile.config.in || die "sed failed"
 
-	# point by default to the build directory
+	# points by default to the build directory
 	einfo "Fixing gccld and gccas"
 	sed -e 's,^TOOLDIR.*,TOOLDIR=/usr/bin,' \
 		-i tools/gccld/gccld.sh tools/gccas/gccas.sh || die "sed failed"
@@ -83,6 +83,9 @@ src_prepare() {
 	sed -e '/^NO_INSTALL_MANS/s/$/$(DST_MAN_DIR)tblgen.1 $(DST_MAN_DIR)llvmgcc.1 $(DST_MAN_DIR)llvmgxx.1/' \
 		-i docs/CommandGuide/Makefile || die "manpages sed failed"
 	epatch "${FILESDIR}"/${PN}-2.6-nohtmltargz.patch
+
+	# Buggy test, http://llvm.org/bugs/show_bug.cgi?id=5047
+	rm test/DebugInfo/2009-01-15-dbg_declare.ll
 }
 
 src_configure() {
@@ -110,25 +113,11 @@ src_configure() {
 	fi
 
 	# things would be built differently depending on whether llvm-gcc is
-	# already present on the system or not.
-	local LLVM_GCC_DIR=/dev/null
-	local LLVM_GCC_DRIVER=nope ; local LLVM_GPP_DRIVER=nope
-	if has_version sys-devel/llvm-gcc ; then
-		LLVM_GCC_DIR=$(find /usr/$(get_libdir)/llvm-gcc/ -mindepth 1 -maxdepth 1 2> /dev/null)
-		LLVM_GCC_DRIVER=$(find ${LLVM_GCC_DIR} -name 'llvm*-gcc' 2> /dev/null)
-
-		if [[ -z ${LLVM_GCC_DRIVER} ]] ; then
-			die "failed to find installed llvm-gcc, LLVM_GCC_DIR=${LLVM_GCC_DIR}"
-		fi
-
-		einfo "Using $LLVM_GCC_DRIVER"
-		LLVM_GPP_DRIVER=${LLVM_GCC_DRIVER/%-gcc/-g++}
-	fi
-
+	# used or not. Forcibly disabled here until someone add llvm-gcc
 	CONF_FLAGS="${CONF_FLAGS} \
-		--with-llvmgccdir=${LLVM_GCC_DIR} \
-		--with-llvmgcc=${LLVM_GCC_DRIVER} \
-		--with-llvmgxx=${LLVM_GPP_DRIVER}"
+		--with-llvmgccdir=/dev/null \
+		--with-llvmgcc=none \
+		--with-llvmgxx=none"
 
 	econf ${CONF_FLAGS} || die "econf failed"
 }
