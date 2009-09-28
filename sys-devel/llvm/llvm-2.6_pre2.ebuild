@@ -68,6 +68,7 @@ src_prepare() {
 	einfo "Fixing install dirs"
 	sed -e 's,^PROJ_docsdir.*,PROJ_docsdir := $(DESTDIR)$(PROJ_prefix)/share/doc/'${PF}, \
 		-e 's,^PROJ_etcdir.*,PROJ_etcdir := $(DESTDIR)/etc/llvm,' \
+		-e 's,^PROJ_libdir.*,PROJ_libdir := $(DESTDIR)/usr/'$(get_libdir), \
 		-i Makefile.config.in || die "sed failed"
 
 	# point by default to the build directory
