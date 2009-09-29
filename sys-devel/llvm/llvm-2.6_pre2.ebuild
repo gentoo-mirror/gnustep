@@ -10,7 +10,7 @@ HOMEPAGE="http://llvm.org/"
 #SRC_URI="http://llvm.org/releases/${PV}/${P}.tar.gz"
 SRC_URI="http://llvm.org/prereleases/${PV/_pre*}/pre-release${PV/*_pre}/${PN}-${PV/_pre*}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Uoi-NCSA"
+LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="alltargets debug test"
@@ -78,7 +78,7 @@ src_prepare() {
 
 	einfo "Fixing rpath"
 	sed -e 's/\$(RPATH) -Wl,\$(\(ToolDir\|LibDir\))//g' -i Makefile.rules || die "sed failed"
-	
+
 	# Fix docs installation
 	sed -e '/^NO_INSTALL_MANS/s/$/$(DST_MAN_DIR)tblgen.1 $(DST_MAN_DIR)llvmgcc.1 $(DST_MAN_DIR)llvmgxx.1/' \
 		-i docs/CommandGuide/Makefile || die "manpages sed failed"

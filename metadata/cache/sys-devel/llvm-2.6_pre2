@@ -4,7 +4,7 @@ dev-lang/perl
 http://llvm.org/prereleases/2.6/pre-release2/llvm-2.6.tar.gz -> llvm-2.6_pre2.tar.gz
 
 http://llvm.org/
-Uoi-NCSA
+UoI-NCSA
 Low Level Virtual Machine
 ~amd64 ~ppc ~x86
 eutils multilib portability toolchain-funcs
