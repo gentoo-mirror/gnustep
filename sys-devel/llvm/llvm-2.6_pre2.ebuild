@@ -13,7 +13,7 @@ SRC_URI="http://llvm.org/prereleases/${PV/_pre*}/pre-release${PV/*_pre}/${PN}-${
 LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="alltargets debug test"
+IUSE="alltargets debug llvm-gcc test"
 
 DEPEND="dev-lang/perl
 	>=sys-devel/make-3.79
@@ -23,6 +23,7 @@ DEPEND="dev-lang/perl
 	!~sys-devel/bison-1.875
 	>=sys-devel/gcc-3.0
 	>=sys-devel/binutils-2.18
+	llvm-gcc? ( sys-devel/llvm-gcc )
 	test? ( dev-util/dejagnu )"
 RDEPEND="dev-lang/perl"
 
@@ -71,7 +72,7 @@ src_prepare() {
 		-e 's,^PROJ_libdir.*,PROJ_libdir := $(DESTDIR)/usr/'$(get_libdir), \
 		-i Makefile.config.in || die "sed failed"
 
-	# points by default to the build directory
+	# this points by default to the build directory
 	einfo "Fixing gccld and gccas"
 	sed -e 's,^TOOLDIR.*,TOOLDIR=/usr/bin,' \
 		-i tools/gccld/gccld.sh tools/gccas/gccas.sh || die "sed failed"
@@ -113,11 +114,25 @@ src_configure() {
 	fi
 
 	# things would be built differently depending on whether llvm-gcc is
-	# used or not. Forcibly disabled here until someone add llvm-gcc
+	# used or not.
+	local LLVM_GCC_DIR=/dev/null
+	local LLVM_GCC_DRIVER=nope ; local LLVM_GPP_DRIVER=nope
+	if use llvm-gcc ; then
+		LLVM_GCC_DIR=$(find /usr/$(get_libdir)/llvm-gcc/ -mindepth 1 -maxdepth 1 2> /dev/null)
+		LLVM_GCC_DRIVER=$(find ${LLVM_GCC_DIR} -name 'llvm*-gcc' 2> /dev/null)
+
+		if [[ -z ${LLVM_GCC_DRIVER} ]] ; then
+			die "failed to find installed llvm-gcc, LLVM_GCC_DIR=${LLVM_GCC_DIR}"
+		fi
+
+		einfo "Using $LLVM_GCC_DRIVER"
+		LLVM_GPP_DRIVER=${LLVM_GCC_DRIVER/%-gcc/-g++}
+	fi
+
 	CONF_FLAGS="${CONF_FLAGS} \
-		--with-llvmgccdir=/dev/null \
-		--with-llvmgcc=none \
-		--with-llvmgxx=none"
+		--with-llvmgccdir=${LLVM_GCC_DIR} \
+		--with-llvmgcc=${LLVM_GCC_DRIVER} \
+		--with-llvmgxx=${LLVM_GPP_DRIVER}"
 
 	econf ${CONF_FLAGS} || die "econf failed"
 }
