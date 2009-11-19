@@ -20,7 +20,6 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND=">=gnustep-base/gnustep-gui-0.16.0
-	>=gnustep-libs/etoile-foundation-${PV}
 	>=gnustep-libs/languagekit-${PV}"
 RDEPEND="${DEPEND}"
 
