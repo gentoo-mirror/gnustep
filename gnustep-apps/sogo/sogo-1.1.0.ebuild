@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=2
 inherit depend.apache gnustep-base
 
 MY_PN="SOGo"
@@ -16,36 +17,17 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="gnustep-libs/sope"
+DEPEND="gnustep-libs/sope[postgres]"
 RDEPEND="${DEPEND}
 	dev-db/postgresql"
 need_apache2
 
-S=${WORKDIR}/${MY_PN}
+S=${WORKDIR}/${MY_PN}-${MY_PV}
 
-pkg_setup() {
-	gnustep-base_pkg_setup
-
-	if ! built_with_use gnustep-libs/sope postgres; then
-		eerror "SOGo needs gnustep-libs/sope with USE=postgres enabled"
-		die "gnustep-libs/sope compiled without USE=postgres"
-	fi
-}
-
-
-src_unpack() {
-	gnustep-base_src_unpack
-
-	# Fix for missing include
-	epatch "${FILESDIR}"/${PN}-foundation_include.patch
-}
-
-
-src_compile() {
+src_configure() {
 	# Do not use standard src_compile, as ./configure is not standard
 	egnustep_env
 	./configure
-	egnustep_make
 }
 
 src_install() {
@@ -58,12 +40,14 @@ src_install() {
 LoadModule ngobjweb_module modules/mod_ngobjweb.so
 
 Alias /sogo.woa/WebServerResources/ \
-	${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/WebServerResources/
+	${GNUSTEP_SYSTEM_LIBRARY}/SOGo/WebServerResources/
 Alias /SOGo.woa/WebServerResources/ \
-	${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/WebServerResources/
+	${GNUSTEP_SYSTEM_LIBRARY}/SOGo/WebServerResources/
+Alias /SOGO.woa/WebServerResources/ \
+	${GNUSTEP_SYSTEM_LIBRARY}/SOGo/WebServerResources/
 
 AliasMatch /SOGo/so/ControlPanel/Products/(.*)/Resources/(.*) \
-	${GNUSTEP_SYSTEM_LIBRARY}/SOGo-0.9/\$1.SOGo/Resources/\$2
+	${GNUSTEP_SYSTEM_LIBRARY}/SOGo/\$1.SOGo/Resources/\$2
 
 <LocationMatch "^/SOGo*">
 	AddDefaultCharset UTF-8
@@ -104,7 +88,7 @@ pkg_postinst() {
 	gnustep-base_pkg_postinst
 
 	elog "Do not forget to enable the sope module in /etc/apache2/httpd.conf"
-	elog "Now follow the steps from the SOGo documentation:"
+	elog "Now follow the steps from the SOGo documentation, Configuration section:"
 	elog "http://www.inverse.ca/contributions/sogo/documentation.html#c803"
 	elog "The default port configured for sogo is 20000 (from 47_sogo.conf)"
 	elog "The sogo user home directory is /var/lib/sogo"

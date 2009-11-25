@@ -1,12 +1,12 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=1
+EAPI=2
 
 inherit gnustep-base apache-module
 
-MY_PV="1621-200805211100"
+MY_PV="1660-200906161500"
 
 DESCRIPTION="an extensive set of frameworks which form a complete Web application server environment"
 HOMEPAGE="http://sope.opengroupware.org/en/index.html"
@@ -22,7 +22,8 @@ DEPEND="gnustep-base/gnustep-base
 	net-nds/openldap
 	mysql? ( virtual/mysql )
 	postgres? ( virtual/postgresql-base )
-	sqlite? ( >=dev-db/sqlite-3 )"
+	sqlite? ( >=dev-db/sqlite-3 )
+	!gnustep-libs/gdl2"
 RDEPEND="${DEPEND}"
 
 APACHE2_MOD_DEFINE="SOPE"
@@ -31,23 +32,29 @@ need_apache2
 
 S=${WORKDIR}/${PN}
 
-src_unpack() {
-	gnustep-base_src_unpack
+src_prepare() {
+	gnustep-base_src_prepare
 
-	# Fix for recent gnustep-base
-	epatch "${FILESDIR}"/${PN}-nsexception.patch
 	# Install in System instead of Local
 	epatch "${FILESDIR}"/${PN}-use_system_root.patch
 	# From SOGo project
 	epatch "${FILESDIR}"/${PN}-gsmake2.diff
-	epatch "${FILESDIR}"/${PN}-mime-nosort.diff
-	epatch "${FILESDIR}"/${PN}-patchset-r1621.diff
+	epatch "${FILESDIR}"/${PN}-patchset-r1660.diff
+
+	# Missing -lcrypt
+	sed -e "s/-lXmlRpc -lDOM -lSaxObjC/\0 -lcrypt/" \
+		-i sope-appserver/SoOFS/GNUmakefile.preamble \
+		|| die "crypt sed failed"
+}
+
+src_configure() {
+	# Do not use standard src_configure, as ./configure is not standard
+	egnustep_env
+	./configure --with-gnustep || die "configure failed"
 }
 
 src_compile() {
-	# Do not use standard src_compile, as ./configure is not standard
 	egnustep_env
-	./configure --with-gnustep || die "configure failed"
 	egnustep_make apxs=/usr/sbin/apxs apr=/usr/bin/apr-1-config
 }
 

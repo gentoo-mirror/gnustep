@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -10,7 +10,7 @@ depend() {
 
 start() {
 	ebegin "Starting SOGo service"
-	start-stop-daemon --start --exec /usr/GNUstep/System/Tools/Admin/sogod-0.9 \
+	start-stop-daemon --start --exec /usr/GNUstep/System/Tools/Admin/sogod \
 		--chuid sogo -m -b --pidfile /var/run/sope.pid
 	eend $?
 }
