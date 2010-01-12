@@ -1,0 +1,11 @@
+# ChangeLog for gnustep-apps/sogo
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*sogo-1.1.0-r1 (12 Jan 2010)
+
+  12 Jan 2010; <bernard@gentoo.org> -sogo-1.1.0.ebuild,
+  +sogo-1.1.0-r1.ebuild, -files/sogo.initd, +files/sogod.initd,
+  +metadata.xml:
+  Create ChangeLog to keep tracks of things, new ebuild from bug #295636
+

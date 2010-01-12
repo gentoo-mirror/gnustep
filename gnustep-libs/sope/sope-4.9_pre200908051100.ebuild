@@ -35,7 +35,6 @@ want_apache
 
 pkg_setup() {
 	gnustep-base_pkg_setup
-	egnustep_env
 	local myLDFLAGS="$(gnustep-config --variable=LDFLAGS 2>/dev/null)"
 	if [ -n "${myLDFLAGS}" ] && (echo "${myLDFLAGS}" | grep -q "\-\-a\(dd\|s\)\-needed" 2>/dev/null); then
 		ewarn
