@@ -1,0 +1,17 @@
+# ChangeLog for gnustep-libs/sope
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*sope-4.9_pre200908051100 (12 Jan 2010)
+
+  12 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/47_mod_ngobjweb.conf, -sope-4.7_pre20090616.ebuild,
+  +files/sope.envd, -files/sope-gsmake2.diff,
+  -files/sope-patchset-r1660.diff, +files/sope-r1660-LDAP_deprecated.patch,
+  +files/sope-r1660-NSDictionary+KVC.patch,
+  +sope-4.9_pre200908051100.ebuild, +files/sope-r1660-NSNull+misc.m.patch,
+  +files/sope-r1660-NSZoneMallocAtomic.patch,
+  +files/sope-r1660-SOGo-fix.patch, +files/sope-r1660-SoOFS.patch,
+  +files/sope-r1660-WORepetition.m.patch, +metadata.xml:
+  Create ChangeLog to keep tracks of things, new ebuild from bug #295634
+

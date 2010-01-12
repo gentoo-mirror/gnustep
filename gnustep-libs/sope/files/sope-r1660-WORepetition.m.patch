@@ -1,0 +1,11 @@
+--- ./sope-appserver/NGObjWeb/DynamicElements/WORepetition.m	2009-08-05 11:00:44.000000000 +0200
++++ ./sope-appserver/NGObjWeb/DynamicElements/WORepetition.m.new	2009-11-26 01:01:30.551467024 +0100
+@@ -805,7 +805,7 @@
+     
+     for (cnt = 0; cnt < aCount; cnt++) {
+       if (self->item) {
+-        [self->item setValue:[array objectAtIndex:cnt]
++        [self->item setValue:[[self->list valueInContext:_ctx] objectAtIndex:cnt]
+                     inComponent:sComponent];
+       }
+       else {

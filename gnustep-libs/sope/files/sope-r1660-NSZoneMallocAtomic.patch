@@ -1,0 +1,39 @@
+Index: sope-core/NGStreams/NGStream+serialization.m
+===================================================================
+--- sope-core/NGStreams/NGStream+serialization.m	(revision 1632)
++++ sope-core/NGStreams/NGStream+serialization.m	(working copy)
+@@ -282,7 +282,7 @@
+       else {
+         char *result = NULL;
+     
+-#if NeXT_Foundation_LIBRARY
++#if NeXT_Foundation_LIBRARY || GNUSTEP_BASE_LIBRARY
+         result = NSZoneMalloc(NULL, len + 1);
+ #else
+         result = NSZoneMallocAtomic(NULL, len + 1);
+Index: sope-core/NGStreams/NGGZipStream.m
+===================================================================
+--- sope-core/NGStreams/NGGZipStream.m	(revision 1632)
++++ sope-core/NGStreams/NGGZipStream.m	(working copy)
+@@ -52,7 +52,7 @@
+               @"invalid compression level %i (0-9)", _level);
+ 
+     self->outBufLen = 2048;
+-#if GNU_RUNTIME
++#if GNU_RUNTIME && !GNUSTEP_BASE_LIBRARY
+     self->outBuf    = NSZoneMallocAtomic([self zone], self->outBufLen);
+     self->outp       = NSZoneMallocAtomic([self zone], sizeof(z_stream));
+ #else
+Index: sope-core/NGStreams/NGCharBuffer.m
+===================================================================
+--- sope-core/NGStreams/NGCharBuffer.m	(revision 1632)
++++ sope-core/NGStreams/NGCharBuffer.m	(working copy)
+@@ -46,7 +46,7 @@
+     // Find first power of 2 >= to requested size
+     for (size = 2; size < _la; size *=2);
+     
+-#if NeXT_Foundation_LIBRARY
++#if NeXT_Foundation_LIBRARY || GNUSTEP_BASE_LIBRARY
+     self->la = NSZoneMalloc([self zone], sizeof(LA_NGCharBuffer) * size);
+ #else
+     self->la = NSZoneMallocAtomic([self zone],

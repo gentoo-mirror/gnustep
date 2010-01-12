@@ -1,0 +1,11 @@
+--- sope-core/NGExtensions/FdExt.subproj/NSNull+misc.m	2009-08-05 11:00:11.000000000 +0200
++++ sope-core/NGExtensions/FdExt.subproj/NSNull+misc.m.new	2009-11-26 01:35:31.481468118 +0100
+@@ -241,7 +241,7 @@
+   // But: a single space should be treated as emtpy, since this is very common
+   //      in SQL (Sybase in special)
+   for (i = 0; i < len; i++) {
+-    if (!isspace([self characterAtIndex:i]))
++    if ([self characterAtIndex:i] != 20) // svg
+       return YES;
+   }
+   
