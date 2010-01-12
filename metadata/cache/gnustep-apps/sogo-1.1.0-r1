@@ -1,5 +1,5 @@
-gnustep-libs/sope[ldap?,mysql?,postgres?]
-gnustep-libs/sope[ldap?,mysql?,postgres?] !mysql? ( !postgres? ( virtual/postgresql-base ) ) logrotate? ( app-admin/logrotate ) net-nds/openldap dev-libs/libmemcached
+gnustep-libs/sope[ldap,mysql?,postgres?] !mysql? ( !postgres? ( virtual/postgresql-base ) ) dev-libs/libmemcached net-nds/openldap
+gnustep-libs/sope[ldap,mysql?,postgres?] !mysql? ( !postgres? ( virtual/postgresql-base ) ) dev-libs/libmemcached net-nds/openldap logrotate? ( app-admin/logrotate )
 0
 http://www.scalableogo.org/files/downloads/SOGo/Sources/SOGo-1.1.0.tar.gz
 

@@ -16,10 +16,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="postgres mysql logrotate"
-DEPEND="gnustep-libs/sope[ldap?,mysql?,postgres?]
+DEPEND="gnustep-libs/sope[ldap,mysql?,postgres?]
 	!mysql? ( !postgres? ( virtual/postgresql-base ) )
 	dev-libs/libmemcached
-	ldap? ( net-nds/openldap )"
+	net-nds/openldap"
 RDEPEND="${DEPEND}
 	logrotate? ( app-admin/logrotate )"
 
