@@ -83,7 +83,7 @@ src_unpack() {
 src_prepare() {
 	# http://www.scalableogo.org/english/support/faq/article/how-do-i-compile-sogo.html
 	epatch "${EMTN_STORE_DIR}"/SOGo/SOPE/sope-gsmake2.diff
-	epatch "${EMTN_STORE_DIR}"/SOGo/SOPE/sope-patchset-r1660.diff
+	epatch "${EMTN_STORE_DIR}"/SOGo/SOPE/sope-patchset-r*.diff
 	epatch "${FILESDIR}"/${PN}-r1660-use_system_root.patch
 	epatch "${FILESDIR}"/${PN}-r1660-SOGo-fix.patch
 	epatch "${FILESDIR}"/${PN}-r1660-SoOFS.patch			# Fixing stuff after SOGo patches
