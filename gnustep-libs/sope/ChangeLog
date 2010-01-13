@@ -2,6 +2,15 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*sope-9999 (13 Jan 2010)
+
+  13 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/sope-r1660-MySQL4Channel.m.patch, +sope-9999.ebuild,
+  +files/sope-r1660-NGHttp+WO.m.patch,
+  +files/sope-r1660-NGLogSyslogAppender.m.patch,
+  sope-4.9_pre200908051100.ebuild:
+  Add live ebuild, also by steveb, bug #295634
+
 *sope-4.9_pre200908051100 (12 Jan 2010)
 
   12 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>

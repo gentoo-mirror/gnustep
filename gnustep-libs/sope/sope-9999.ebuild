@@ -4,21 +4,20 @@
 
 EAPI=2
 
-inherit gnustep-base apache-module
+inherit gnustep-base apache-module flag-o-matic subversion
 
-MY_PV="1660-200908051100"
+ESVN_REPO_URI="http://svn.opengroupware.org/SOPE/trunk"
 
 DESCRIPTION="An extensive set of frameworks which form a complete Web application server environment"
 HOMEPAGE="http://sope.opengroupware.org/en/index.html"
-SRC_URI="http://download.opengroupware.org/nightly/sources/trunk/${PN}-trunk-r${MY_PV}.tar.gz
-	http://www.scalableogo.org/files/downloads/SOGo/Sources/SOGo-1.1.0.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="apache2 ldap libFoundation mysql postgres sqlite"
 DEPEND="gnustep-base/gnustep-base
 	dev-libs/libxml2
 	dev-libs/openssl
+	dev-util/monotone
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
 	postgres? ( virtual/postgresql-base )
@@ -55,17 +54,43 @@ pkg_setup() {
 	depend.apache_pkg_setup
 }
 
+src_unpack() {
+	subversion_src_unpack
+
+	# SOGo Monotone
+	EMTN_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/mtn-src"
+	addread "${EMTN_STORE_DIR}"
+	addwrite "${EMTN_STORE_DIR}"
+	if [ ! -d "${EMTN_STORE_DIR}" ]; then
+		mkdir -p "${EMTN_STORE_DIR}" || die "Can't mkdir ${EMTN_STORE_DIR}."
+	fi
+	cd "${EMTN_STORE_DIR}" || die "Can't chdir to ${EMTN_STORE_DIR}"
+
+	if [ ! -f "db.mtn" ]; then
+	mtn db init --db=./db.mtn || die "Failed to initialize Monotone database"
+	fi
+
+	# Pull Inverse's SOGo Monotone repository
+	mtn --db=./db.mtn pull inverse.ca ca.inverse.sogo || die "Failed to pull Monotone repository"
+	if [ ! -d "SOGo" ]; then
+		mtn --db=./db.mtn checkout --branch ca.inverse.sogo SOGo || die "Failed to checkout SOGo branch"
+	else
+		cd SOGo
+		mtn update
+	fi
+}
+
 src_prepare() {
 	# http://www.scalableogo.org/english/support/faq/article/how-do-i-compile-sogo.html
-	epatch "${WORKDIR}"/SOGo-1.1.0/SOPE/sope-gsmake2.diff
-	epatch "${WORKDIR}"/SOGo-1.1.0/SOPE/sope-patchset-r1660.diff
-	epatch "${FILESDIR}"/${PN}-r1660-SOGo-fix.patch			# Fixing stuff after SOGo patches
-	epatch "${FILESDIR}"/${PN}-r1660-NSZoneMallocAtomic.patch	# NSZoneMalloc changed in GNUstep
-	epatch "${FILESDIR}"/${PN}-r1660-SoOFS.patch			# libSoOFS is failing without -lcrypt
-	epatch "${FILESDIR}"/${PN}-r1660-WORepetition.m.patch
-	epatch "${FILESDIR}"/${PN}-r1660-NSDictionary+KVC.patch
-	epatch "${FILESDIR}"/${PN}-r1660-NSNull+misc.m.patch
-	epatch "${FILESDIR}"/${PN}-r1660-LDAP_deprecated.patch
+	epatch "${EMTN_STORE_DIR}"/SOGo/SOPE/sope-gsmake2.diff
+	epatch "${EMTN_STORE_DIR}"/SOGo/SOPE/sope-patchset-r1660.diff
+	epatch "${FILESDIR}"/${PN}-r1660-use_system_root.patch
+	epatch "${FILESDIR}"/${PN}-r1660-SOGo-fix.patch
+	epatch "${FILESDIR}"/${PN}-r1660-SoOFS.patch			# Fixing stuff after SOGo patches
+	epatch "${FILESDIR}"/${PN}-r1660-MySQL4Channel.m.patch		# Fixing issues with primary key and UTF8
+	epatch "${FILESDIR}"/${PN}-r1660-NGLogSyslogAppender.m.patch	# Fixing compiler warnings
+	epatch "${FILESDIR}"/${PN}-r1660-NGHttp+WO.m.patch		# Fixing compiler warnings
+	epatch "${FILESDIR}"/${PN}-r1660-LDAP_deprecated.patch		# Fixing QA issues on 64 Bit
 
 	if use apache2; then
 		# Only add mod_ngobjweb if it is not already in SUBPROJECTS
