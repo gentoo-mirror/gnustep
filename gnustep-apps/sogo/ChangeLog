@@ -2,6 +2,12 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*sogo-9999 (13 Jan 2010)
+
+  13 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org> sogo-1.1.0-r1.ebuild,
+  +sogo-9999.ebuild, +files/sogod.confd, +files/sogod.initd.1:
+  Add live ebuild, also by steveb in bug #295636
+
   12 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org> sogo-1.1.0-r1.ebuild:
   ldap is mandatory
 

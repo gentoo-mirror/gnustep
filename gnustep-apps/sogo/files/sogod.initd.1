@@ -1,0 +1,72 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+sogod_bin=""
+sogod_port=""
+
+depend() {
+	need net
+	after pg_autovacuum postgresql mysql
+	after slapd
+	after mta
+	after memcached
+}
+
+checkconfig() {
+	if [ -f "/etc/GNUstep/GNUstep.conf" ]; then
+		source /etc/GNUstep/GNUstep.conf
+	else
+		eerror "Can't find /etc/GNUstep/GNUstep.conf"
+		return 1
+	fi
+	if [ -x "${HOME}/${GNUSTEP_USER_DIR_ADMIN_TOOLS}/sogod" ]; then
+		sogod_bin="${HOME}/${GNUSTEP_USER_DIR_ADMIN_TOOLS}/sogod"
+	elif [ -x "${GNUSTEP_LOCAL_ADMIN_TOOLS}/sogod" ]; then
+		sogod_bin="${GNUSTEP_LOCAL_ADMIN_TOOLS}/sogod"
+	elif [ -x "${GNUSTEP_SYSTEM_ADMIN_TOOLS}/sogod" ]; then
+		sogod_bin="${GNUSTEP_SYSTEM_ADMIN_TOOLS}/sogod"
+	elif [ -x "${GNUSTEP_NETWORK_ADMIN_TOOLS}/sogod" ]; then
+		sogod_bin="${GNUSTEP_SYSTEM_ADMIN_TOOLS}/sogod"
+	else
+		eerror "Can't find sogod"
+		return 1
+	fi
+	if [ -f "${GNUSTEP_MAKEFILES}/GNUstep.sh" ]; then
+		source "${GNUSTEP_MAKEFILES}/GNUstep.sh"
+	else
+		eerror "Can't find ${GNUSTEP_MAKEFILES}/GNUstep.sh"
+		return 1
+	fi
+	sogod_port="$(defaults -u sogo read sogod WOPort 2>/dev/null)"
+	if [ "${?}" -eq 0 ]; then
+		sogod_port="${sogod_port##* }"
+		if [ "$((${sogod_port}+1-1))" != "${sogod_port}" ]; then
+			sogod_port="20000"
+		fi
+	else
+		sogod_port="20000"
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting SOGo service"
+	start-stop-daemon \
+		--start \
+		--exec ${sogod_bin} \
+		--chuid sogo \
+		-- ${SOGOD_OPTS} \
+			-WOPort ${sogod_port} \
+			-WOLogFile /var/log/sogo/sogod.log \
+			-WOPidFile /var/run/sogod/sogod.pid
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping SOGo service"
+	start-stop-daemon --stop \
+		--pidfile /var/run/sogod/sogod.pid
+	eend ${?}
+}

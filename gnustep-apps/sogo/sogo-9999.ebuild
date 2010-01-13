@@ -11,19 +11,20 @@ MY_PV="${PV/_/}"
 
 DESCRIPTION="Groupware server built around OpenGroupware.org and the SOPE application server"
 HOMEPAGE="http://sogo.opengroupware.org/"
-SRC_URI="http://www.scalableogo.org/files/downloads/${MY_PN}/Sources/${MY_PN}-${MY_PV}.tar.gz"
+SRC_URI=""
+KEYWORDS=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="postgres mysql logrotate"
 DEPEND="gnustep-libs/sope[ldap,mysql?,postgres?]
 	!mysql? ( !postgres? ( virtual/postgresql-base ) )
+	dev-util/monotone
 	dev-libs/libmemcached
 	net-nds/openldap"
 RDEPEND="${DEPEND}
 	logrotate? ( app-admin/logrotate )"
 
-S=${WORKDIR}/${MY_PN}-${MY_PV}
+S=${WORKDIR}/${MY_PN}
 
 pkg_setup() {
 	gnustep-base_pkg_setup
@@ -44,6 +45,43 @@ pkg_setup() {
 		ewarn
 	fi
 	append-ldflags -Wl,--no-as-needed
+}
+
+src_unpack() {
+	EMTN_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/mtn-src"
+	addwrite "${EMTN_STORE_DIR}"
+	if [ ! -d "${EMTN_STORE_DIR}" ]; then
+		mkdir -p "${EMTN_STORE_DIR}" || die "Can't mkdir ${EMTN_STORE_DIR}."
+	fi
+	cd "${EMTN_STORE_DIR}" || die "Can't chdir to ${EMTN_STORE_DIR}"
+
+	if [ ! -f "db.mtn" ]; then
+		mtn db init --db=./db.mtn || die "Failed to initialize Monotone database"
+	fi
+
+	# Pull Inverse's SOGo Monotone repository
+	mtn --db=./db.mtn pull inverse.ca ca.inverse.sogo || die "Failed to pull Monotone repository"
+	if [ ! -d "SOGo" ]; then
+		mtn --db=./db.mtn checkout --branch ca.inverse.sogo SOGo || die "Failed to checkout SOGo branch"
+	else
+		cd SOGo
+		mtn update
+	fi
+
+	# Pull SOGo Connector, SOGo Integrator and Lightning (Inverse Edition)
+	#mtn --db=./db.mtn pull inverse.ca ca.inverse.sogo-connector
+	#mtn --db=./db.mtn checkout --branch ca.inverse.sogo-connector
+	#mtn --db=./db.mtn pull inverse.ca ca.inverse.sogo-integrator
+	#mtn --db=./db.mtn checkout --branch ca.inverse.sogo-integrator
+	#mtn --db=./db.mtn pull inverse.ca ca.inverse.calendar
+	#mtn --db=./db.mtn checkout --branch ca.inverse.calendar
+
+	mkdir -p "${S}"
+	cd "${EMTN_STORE_DIR}"/SOGo
+	rsync -rlpgo --exclude=".mtn-ignore" . "${S}" || die "Can't export to ${S}"
+
+	cd "${S}"
+	gnustep-base_src_prepare
 }
 
 src_configure() {
@@ -80,8 +118,13 @@ src_test() {
 
 src_install() {
 	gnustep-base_src_install
-	newinitd "${FILESDIR}"/sogod.initd sogod \
-		|| die "Init script installation failed"
+	newinitd "${FILESDIR}"/sogod.initd.1 sogod \
+		|| die "init.d script installation failed"
+	newconfd "${FILESDIR}"/sogod.confd sogod \
+		|| die "conf.d script installation failed"
+	diropts -m 0770 -o sogo -g root
+	dodir /var/log/sogo
+	dodir /var/run/sogod
 	if use logrotate; then
 		insopts -m644 -o root -g root
 		insinto /etc/logrotate.d
