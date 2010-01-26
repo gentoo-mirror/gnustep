@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*sogo-1.2.0 (26 Jan 2010)
+
+  26 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org> +sogo-1.2.0.ebuild:
+  Version bump, reported by steve
+
 *sogo-9999 (13 Jan 2010)
 
   13 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org> sogo-1.1.0-r1.ebuild,
