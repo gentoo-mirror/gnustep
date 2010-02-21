@@ -1,0 +1,22 @@
+gnustep-libs/sope[ldap,mysql?,postgres?] !mysql? ( !postgres? ( virtual/postgresql-base ) ) dev-util/monotone dev-libs/libmemcached net-nds/openldap
+gnustep-libs/sope[ldap,mysql?,postgres?] !mysql? ( !postgres? ( virtual/postgresql-base ) ) dev-util/monotone dev-libs/libmemcached net-nds/openldap logrotate? ( app-admin/logrotate )
+0
+
+
+http://sogo.opengroupware.org/
+GPL-2
+Groupware server built around OpenGroupware.org and the SOPE application server
+
+eutils flag-o-matic gnustep-base multilib portability toolchain-funcs
+postgres mysql logrotate debug doc
+
+
+
+2
+
+compile configure install postinst preinst prepare setup test unpack
+
+
+
+
+
