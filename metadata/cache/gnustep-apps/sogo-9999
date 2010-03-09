@@ -1,5 +1,5 @@
-gnustep-libs/sope[ldap,mysql?,postgres?] !mysql? ( !postgres? ( virtual/postgresql-base ) ) dev-util/monotone dev-libs/libmemcached net-nds/openldap
-gnustep-libs/sope[ldap,mysql?,postgres?] !mysql? ( !postgres? ( virtual/postgresql-base ) ) dev-util/monotone dev-libs/libmemcached net-nds/openldap logrotate? ( app-admin/logrotate )
+gnustep-libs/sope[ldap,mysql?,postgres?] !mysql? ( !postgres? ( virtual/postgresql-base ) ) dev-vcs/monotone dev-libs/libmemcached net-nds/openldap
+gnustep-libs/sope[ldap,mysql?,postgres?] !mysql? ( !postgres? ( virtual/postgresql-base ) ) dev-vcs/monotone dev-libs/libmemcached net-nds/openldap logrotate? ( app-admin/logrotate )
 0
 
 

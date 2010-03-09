@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Mar 2010; Bernard Cafarelli <voyageur@gentoo.org> sope-9999.ebuild:
+  monotone was moved to dev-vcs
+
   13 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
   +files/sope-r1660-use_system_root.patch, sope-9999.ebuild,
   -files/sope-use_system_root.patch:

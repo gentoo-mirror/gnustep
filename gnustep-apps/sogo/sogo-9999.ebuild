@@ -18,7 +18,7 @@ SLOT="0"
 IUSE="postgres mysql logrotate"
 DEPEND="gnustep-libs/sope[ldap,mysql?,postgres?]
 	!mysql? ( !postgres? ( virtual/postgresql-base ) )
-	dev-util/monotone
+	dev-vcs/monotone
 	dev-libs/libmemcached
 	net-nds/openldap"
 RDEPEND="${DEPEND}

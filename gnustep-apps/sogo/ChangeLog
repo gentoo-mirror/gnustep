@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Mar 2010; Bernard Cafarelli <voyageur@gentoo.org> sogo-9999.ebuild:
+  monotone was moved to dev-vcs
+
 *sogo-1.2.0 (26 Jan 2010)
 
   26 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org> +sogo-1.2.0.ebuild:

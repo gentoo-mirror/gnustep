@@ -17,7 +17,7 @@ IUSE="apache2 ldap libFoundation mysql postgres sqlite"
 DEPEND="gnustep-base/gnustep-base
 	dev-libs/libxml2
 	dev-libs/openssl
-	dev-util/monotone
+	dev-vcs/monotone
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
 	postgres? ( virtual/postgresql-base )
