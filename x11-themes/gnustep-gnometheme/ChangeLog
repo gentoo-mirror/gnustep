@@ -1,0 +1,10 @@
+# ChangeLog for x11-themes/gnustep-gnometheme
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*gnustep-gnometheme-9999 (13 Jul 2010)
+
+  13 Jul 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-gnometheme-9999.ebuild, +metadata.xml:
+  Live ebuild for GnomeTheme
+
