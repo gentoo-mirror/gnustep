@@ -1,5 +1,5 @@
->=gnustep-base/gnustep-gui-0.16.0 >=gnustep-libs/etoile-foundation-0.4.1 <=sys-devel/llvm-2.5 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
->=gnustep-base/gnustep-gui-0.16.0 >=gnustep-libs/etoile-foundation-0.4.1 <=sys-devel/llvm-2.5 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
+>=gnustep-base/gnustep-gui-0.16.0 >=gnustep-libs/etoile-foundation-0.4.1 <=sys-devel/llvm-2.5 >=gnustep-base/gnustep-make-2.4.0[fhs?] virtual/gnustep-back
+>=gnustep-base/gnustep-gui-0.16.0 >=gnustep-libs/etoile-foundation-0.4.1 <=sys-devel/llvm-2.5 >=gnustep-base/gnustep-make-2.4.0[fhs?] virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
 0
 http://download.gna.org/etoile/etoile-0.4.1.tar.bz2
 
@@ -8,13 +8,13 @@ BSD
 a compiler kit built on top of LLVM for creating dynamic language implementations using an Objective-C runtime for the object model
 ~amd64 ~ppc ~x86
 eutils flag-o-matic gnustep-2 gnustep-base multilib portability toolchain-funcs
-debug doc
+debug doc +fhs
 
 
 
 
 
-compile install postinst setup unpack
+compile install postinst setup
 
 
 

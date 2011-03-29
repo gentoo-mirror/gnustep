@@ -1,5 +1,5 @@
->=gnustep-base/gnustep-gui-0.16.0 >=media-libs/libmp4v2-1.9.0 media-libs/taglib >=gnustep-libs/coreobject-0.4.1 >=gnustep-libs/etoile-ui-0.4.1 >=gnustep-libs/iconkit-0.4.1 >=gnustep-libs/mediakit-0.4.1 >=gnustep-libs/scriptkit-0.4.1 >=gnustep-libs/smalltalkkit-0.4.1 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
->=gnustep-base/gnustep-gui-0.16.0 >=media-libs/libmp4v2-1.9.0 media-libs/taglib >=gnustep-libs/coreobject-0.4.1 >=gnustep-libs/etoile-ui-0.4.1 >=gnustep-libs/iconkit-0.4.1 >=gnustep-libs/mediakit-0.4.1 >=gnustep-libs/scriptkit-0.4.1 >=gnustep-libs/smalltalkkit-0.4.1 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
+>=gnustep-base/gnustep-gui-0.16.0 >=media-libs/libmp4v2-1.9.0 media-libs/taglib >=gnustep-libs/coreobject-0.4.1 >=gnustep-libs/etoile-ui-0.4.1 >=gnustep-libs/iconkit-0.4.1 >=gnustep-libs/mediakit-0.4.1 >=gnustep-libs/scriptkit-0.4.1 >=gnustep-libs/smalltalkkit-0.4.1 >=gnustep-base/gnustep-make-2.4.0[fhs?] virtual/gnustep-back
+>=gnustep-base/gnustep-gui-0.16.0 >=media-libs/libmp4v2-1.9.0 media-libs/taglib >=gnustep-libs/coreobject-0.4.1 >=gnustep-libs/etoile-ui-0.4.1 >=gnustep-libs/iconkit-0.4.1 >=gnustep-libs/mediakit-0.4.1 >=gnustep-libs/scriptkit-0.4.1 >=gnustep-libs/smalltalkkit-0.4.1 >=gnustep-base/gnustep-make-2.4.0[fhs?] virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
 0
 http://download.gna.org/etoile/etoile-0.4.1.tar.bz2
 
@@ -8,7 +8,7 @@ BSD
 Melodie is a music player for Etoile
 ~amd64 ~ppc ~x86
 eutils flag-o-matic gnustep-2 gnustep-base multilib portability toolchain-funcs
-debug doc
+debug doc +fhs
 
 
 

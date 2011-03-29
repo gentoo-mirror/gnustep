@@ -1,5 +1,5 @@
->=gnustep-base/gnustep-make-2.0 virtual/gnustep-back dev-vcs/subversion net-misc/rsync
->=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
+>=gnustep-base/gnustep-make-2.4.0[fhs?] virtual/gnustep-back dev-vcs/subversion net-misc/rsync
+>=gnustep-base/gnustep-make-2.4.0[fhs?] virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
 0
 
 
@@ -8,7 +8,7 @@ LGPL-2.1
 a GNUstep theme engine using current Gtk+ theme
 
 eutils flag-o-matic gnustep-2 gnustep-base multilib portability subversion toolchain-funcs
-debug doc
+debug doc +fhs
 
 
 

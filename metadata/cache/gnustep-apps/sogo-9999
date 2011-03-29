@@ -8,7 +8,7 @@ GPL-2
 Groupware server built around OpenGroupware.org and the SOPE application server
 
 eutils flag-o-matic gnustep-base multilib portability toolchain-funcs
-postgres mysql logrotate debug doc
+postgres mysql logrotate debug doc +fhs
 
 
 

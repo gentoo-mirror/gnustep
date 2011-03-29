@@ -8,7 +8,7 @@ LGPL-2
 An extensive set of frameworks which form a complete Web application server environment
 ~amd64 ~x86
 apache-module depend.apache eutils flag-o-matic gnustep-base multilib portability toolchain-funcs
-apache2 ldap libFoundation mysql postgres sqlite apache2 debug doc
+apache2 ldap libFoundation mysql postgres sqlite apache2 debug doc +fhs
 
 
 

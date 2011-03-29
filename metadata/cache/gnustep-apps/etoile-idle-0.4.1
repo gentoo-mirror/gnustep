@@ -1,5 +1,5 @@
-x11-libs/libXScrnSaver >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
-x11-libs/libXScrnSaver >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
+x11-libs/libXScrnSaver >=gnustep-base/gnustep-make-2.4.0[fhs?] virtual/gnustep-back
+x11-libs/libXScrnSaver >=gnustep-base/gnustep-make-2.4.0[fhs?] virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
 0
 http://download.gna.org/etoile/etoile-0.4.1.tar.bz2
 
@@ -8,13 +8,13 @@ BSD
 sends user-idle notifications every minute that the user is idle
 ~amd64 ~ppc ~x86
 eutils flag-o-matic gnustep-2 gnustep-base multilib portability toolchain-funcs
-debug doc
+debug doc +fhs
 
 
 
 
 
-compile install postinst setup unpack
+compile install postinst setup
 
 
 
