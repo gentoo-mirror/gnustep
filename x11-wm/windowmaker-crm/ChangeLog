@@ -1,0 +1,10 @@
+# ChangeLog for x11-wm/windowmaker-crm
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*windowmaker-crm-9999 (01 Apr 2011)
+
+  01 Apr 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  +windowmaker-crm-9999.ebuild, +files/wmaker.desktop, +metadata.xml:
+  First version, based on cleaned windowmaker ebuild
+
