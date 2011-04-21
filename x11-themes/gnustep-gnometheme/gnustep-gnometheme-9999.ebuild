@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -15,11 +15,15 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="gnome-base/gconf
+	x11-libs/gtk+:2"
+DEPEND="dev-util/pkgconfig
+	${RDEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-pkgconfig.patch
+}
 
 pkg_postinst() {
-	elog "As of now, SystemPreferences crashes on GnomeTheme,"
-	elog "but setting the theme like this works:"
-	elog "# defaults write NSGlobalDomain GSTheme GnomeTheme"
+	elog "Use gnustep-apps/systempreferences to switch theme"
 }
