@@ -1,5 +1,5 @@
-x11-libs/libXv >=x11-libs/libXft-2.1.0 x11-libs/libXt media-libs/fontconfig gif? ( >=media-libs/giflib-4.1.0-r3 ) png? ( >=media-libs/libpng-1.2.1 ) jpeg? ( virtual/jpeg ) tiff? ( >=media-libs/tiff-3.6.1-r2 ) gnustep? ( >=gnustep-base/gnustep-make-2.0 ) xinerama? ( x11-libs/libXinerama ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=dev-vcs/git-1.6
-x11-libs/libXv >=x11-libs/libXft-2.1.0 x11-libs/libXt media-libs/fontconfig gif? ( >=media-libs/giflib-4.1.0-r3 ) png? ( >=media-libs/libpng-1.2.1 ) jpeg? ( virtual/jpeg ) tiff? ( >=media-libs/tiff-3.6.1-r2 ) gnustep? ( >=gnustep-base/gnustep-make-2.0 ) xinerama? ( x11-libs/libXinerama ) !x11-wm/windowmaker nls? ( >=sys-devel/gettext-0.10.39 )
+x11-libs/libXv >=x11-libs/libXft-2.1.0 x11-libs/libXt media-libs/fontconfig gif? ( >=media-libs/giflib-4.1.0-r3 ) png? ( >=media-libs/libpng-1.2.1 ) jpeg? ( virtual/jpeg ) tiff? ( >=media-libs/tiff-3.6.1-r2 ) xinerama? ( x11-libs/libXinerama ) || ( =sys-devel/automake-1.11* ) >=sys-devel/autoconf-2.61 >=sys-devel/libtool-2.2.6b >=dev-vcs/git-1.6
+x11-libs/libXv >=x11-libs/libXft-2.1.0 x11-libs/libXt media-libs/fontconfig gif? ( >=media-libs/giflib-4.1.0-r3 ) png? ( >=media-libs/libpng-1.2.1 ) jpeg? ( virtual/jpeg ) tiff? ( >=media-libs/tiff-3.6.1-r2 ) xinerama? ( x11-libs/libXinerama ) !x11-wm/windowmaker nls? ( >=sys-devel/gettext-0.10.39 )
 0
 http://www.windowmaker.info/pub/source/release/WindowMaker-extra-0.1.tar.gz
 
@@ -7,14 +7,14 @@ http://repo.or.cz/w/wmaker-crm.git
 GPL-2
 Fork from the last available CVS version of Window Maker
 
-autotools eutils flag-o-matic git gnustep-base libtool multilib portability toolchain-funcs
-gif gnustep jpeg nls png tiff modelock +vdesktop xinerama debug doc
+autotools eutils git libtool multilib portability toolchain-funcs
+gif jpeg nls png tiff modelock +vdesktop xinerama
 
 
 
 3
 
-compile configure install postinst prepare setup unpack
+compile configure install prepare unpack
 
 
 

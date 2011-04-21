@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit autotools gnustep-base git
+inherit autotools git
 
 DESCRIPTION="Fork from the last available CVS version of Window Maker"
 HOMEPAGE="http://repo.or.cz/w/wmaker-crm.git"
@@ -14,7 +14,7 @@ EGIT_REPO_URI="git://repo.or.cz/wmaker-crm.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="gif gnustep jpeg nls png tiff modelock +vdesktop xinerama"
+IUSE="gif jpeg nls png tiff modelock +vdesktop xinerama"
 
 DEPEND="x11-libs/libXv
 	>=x11-libs/libXft-2.1.0
@@ -24,7 +24,6 @@ DEPEND="x11-libs/libXv
 	png? ( >=media-libs/libpng-1.2.1 )
 	jpeg? ( virtual/jpeg )
 	tiff? ( >=media-libs/tiff-3.6.1-r2 )
-	gnustep? ( >=gnustep-base/gnustep-make-2.0 )
 	xinerama? ( x11-libs/libXinerama )"
 RDEPEND="${DEPEND}
 	!x11-wm/windowmaker
@@ -38,18 +37,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Fix some paths
-	if use gnustep; then
-		egnustep_env
-	fi
 	for file in "${S}"/WindowMaker/*menu*; do
 		if [[ -r $file ]] ; then
-			if use gnustep ; then
-				sed -i -e "s:/usr/local/GNUstep/Applications:${GNUSTEP_SYSTEM_APPS}:g" "$file" || die
-			else
-				sed -i -e "s:/usr/local/GNUstep/Applications/WPrefs.app:${EPREFIX}/usr/bin/:g;" "$file" || die
-			fi
-
+			sed -i -e "s:/usr/local/GNUstep/Applications/WPrefs.app:${EPREFIX}/usr/bin/:g;" "$file" || die
 			sed -i -e 's:/usr/local/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;' "$file" || die
 			sed -i -e 's:/opt/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;' "$file" || die
 		fi;
@@ -67,13 +57,6 @@ src_configure() {
 
 	# non required X capabilities
 	myconf="${myconf} $(use_enable modelock) $(use_enable xinerama)"
-
-	if use gnustep ; then
-		egnustep_env
-		# Gentoo installs everything in System, make sure configure honors that
-		export GNUSTEP_LOCAL_ROOT=${GNUSTEP_SYSTEM_ROOT}
-		myconf="${myconf} --with-gnustepdir=${GNUSTEP_SYSTEM_ROOT}"
-	fi
 
 	if use nls; then
 		[[ -z $LINGUAS ]] && export LINGUAS="`ls po/*.po | sed 's:po/\(.*\)\.po$:\1:'`"
