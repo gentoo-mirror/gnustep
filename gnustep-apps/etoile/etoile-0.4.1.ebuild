@@ -20,5 +20,4 @@ RDEPEND=">=gnustep-apps/azbackground-${PV}
 	>=gnustep-apps/scriptservices-${PV}
 	>=gnustep-apps/stepchat-${PV}
 	>=gnustep-apps/typewriter-${PV}
-	>=gnustep-apps/vindaloo-${PV}
-	>=gnustep-libs/camaelon-${PV}"
+	>=gnustep-apps/vindaloo-${PV}"

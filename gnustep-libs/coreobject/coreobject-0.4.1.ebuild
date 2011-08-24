@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND=">=gnustep-base/gnustep-gui-0.16.0
-	>=gnustep-libs/etoile-serialize-${PV}
-	virtual/postgresql-base"
+DEPEND="dev-db/postgresql-base
+	>=gnustep-base/gnustep-gui-0.16.0
+	>=gnustep-libs/etoile-serialize-${PV}"
 RDEPEND="${DEPEND}"
