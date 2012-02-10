@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  10 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> windowmaker-9999.ebuild:
+  Fix paths in generated menus and sed lines to evaluate EPREFIX
+
 *windowmaker-9999 (10 Feb 2012)
 
   10 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>

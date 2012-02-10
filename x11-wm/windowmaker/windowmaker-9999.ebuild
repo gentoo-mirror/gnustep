@@ -38,11 +38,11 @@ src_unpack() {
 
 src_prepare() {
 	# Fix some paths
-	for file in "${S}"/WindowMaker/*menu*; do
+	for file in WindowMaker/*menu* util/wmgenmenu.c; do
 		if [[ -r $file ]] ; then
 			sed -i -e "s:/usr/local/GNUstep/Applications/WPrefs.app:${EPREFIX}/usr/bin/:g;" "$file" || die
-			sed -i -e 's:/usr/local/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;' "$file" || die
-			sed -i -e 's:/opt/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;' "$file" || die
+			sed -i -e "s:/usr/local/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;" "$file" || die
+			sed -i -e "s:/opt/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;" "$file" || die
 		fi;
 	done;
 
