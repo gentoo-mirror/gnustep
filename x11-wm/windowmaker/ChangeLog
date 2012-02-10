@@ -1,6 +1,12 @@
-# ChangeLog for x11-wm/windowmaker-crm
+# ChangeLog for x11-wm/windowmaker
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*windowmaker-9999 (10 Feb 2012)
+
+  10 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  +windowmaker-9999.ebuild, +metadata.xml:
+  Rename crm to windowmaker, as this is the official version now
 
   10 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
   windowmaker-crm-9999.ebuild, metadata.xml:

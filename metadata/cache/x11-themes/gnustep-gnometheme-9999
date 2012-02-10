@@ -7,7 +7,7 @@ http://svn.gna.org/viewcvs/gnustep/plugins/themes/GnomeTheme/
 LGPL-2.1
 a GNUstep theme engine using current Gtk+ theme
 
-eutils flag-o-matic gnustep-2 gnustep-base multilib portability subversion toolchain-funcs
+eutils flag-o-matic gnustep-2 gnustep-base multilib portability subversion toolchain-funcs user
 debug doc
 
 

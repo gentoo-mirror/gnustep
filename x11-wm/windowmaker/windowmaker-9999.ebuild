@@ -27,7 +27,6 @@ DEPEND="media-libs/fontconfig
 	xinerama? ( x11-libs/libXinerama )
 	xrandr? ( x11-libs/libXrandr )"
 RDEPEND="${DEPEND}
-	!x11-wm/windowmaker
 	nls? ( >=sys-devel/gettext-0.10.39 )"
 
 src_unpack() {

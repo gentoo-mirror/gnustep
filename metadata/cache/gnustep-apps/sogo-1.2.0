@@ -7,7 +7,7 @@ http://sogo.opengroupware.org/
 GPL-2
 Groupware server built around OpenGroupware.org and the SOPE application server
 ~amd64 ~x86
-eutils flag-o-matic gnustep-base multilib portability toolchain-funcs
+eutils flag-o-matic gnustep-base multilib portability toolchain-funcs user
 postgres mysql logrotate debug doc
 
 
