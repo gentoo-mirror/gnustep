@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -7,8 +7,8 @@ inherit gnustep-2
 
 DESCRIPTION="a GNUstep silver theme"
 HOMEPAGE="http://wiki.gnustep.org/index.php/Themes"
-# Non-versioned: http://wiki.gnustep.org/images/6/6d/Silver.theme.tar.bz2
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/Silver.theme-${PV}.tar.bz2"
+# Non-versioned
+SRC_URI="http://wiki.gnustep.org/images/6/6d/Silver.theme.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
