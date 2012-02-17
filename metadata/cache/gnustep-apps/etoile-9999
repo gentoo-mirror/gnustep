@@ -1,0 +1,22 @@
+gnustep-base/gnustep-make[libobjc2] >=virtual/gnustep-back-0.22.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back dev-vcs/subversion net-misc/rsync
+gnustep-base/gnustep-make[libobjc2] >=virtual/gnustep-back-0.22.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
+0
+
+
+http://www.etoile-project.org
+as-is
+Meta-package for the Etoile desktop environment
+
+eutils flag-o-matic gnustep-2 gnustep-base multilib portability subversion toolchain-funcs user
+debug doc
+
+
+
+4
+
+compile configure install postinst preinst prepare setup unpack
+
+
+
+
+
