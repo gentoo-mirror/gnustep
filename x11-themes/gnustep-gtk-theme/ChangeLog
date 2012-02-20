@@ -1,0 +1,23 @@
+# ChangeLog for x11-themes/gnustep-gtk-theme
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*gnustep-gtk-theme-9999 (20 Feb 2012)
+
+  20 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-gnometheme-9999.ebuild, +gnustep-gtk-theme-9999.ebuild,
+  -files/gnustep-gnometheme-9999-pkgconfig.patch,
+  +files/gnustep-gtk-theme-9999-pkgconfig.patch:
+  Follow upstream rename to Gtk
+
+  21 Apr 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  gnustep-gnometheme-9999.ebuild,
+  +files/gnustep-gnometheme-9999-pkgconfig.patch:
+  Use pkg-config in makefile, add dependencies. Working quite well now
+
+*gnustep-gnometheme-9999 (13 Jul 2010)
+
+  13 Jul 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-gnometheme-9999.ebuild, +metadata.xml:
+  Live ebuild for GnomeTheme
+

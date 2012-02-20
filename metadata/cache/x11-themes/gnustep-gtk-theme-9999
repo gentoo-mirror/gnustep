@@ -3,7 +3,7 @@ gnome-base/gconf x11-libs/gtk+:2 >=gnustep-base/gnustep-make-2.0 virtual/gnustep
 0
 
 
-http://svn.gna.org/viewcvs/gnustep/plugins/themes/GnomeTheme/
+http://svn.gna.org/viewcvs/gnustep/plugins/themes/Gtk/
 LGPL-2.1
 a GNUstep theme engine using current Gtk+ theme
 
@@ -12,7 +12,7 @@ debug doc
 
 
 
-3
+4
 
 compile configure install postinst preinst prepare setup unpack
 
