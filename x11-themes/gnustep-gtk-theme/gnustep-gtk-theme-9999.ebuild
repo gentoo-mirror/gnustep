@@ -20,10 +20,6 @@ RDEPEND="gnome-base/gconf
 DEPEND="dev-util/pkgconfig
 	${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-pkgconfig.patch
-}
-
 pkg_postinst() {
 	elog "Use gnustep-apps/systempreferences to switch theme"
 }

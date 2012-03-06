@@ -7,7 +7,7 @@ http://www.windowmaker.org/
 GPL-2
 The fast and light GNUstep window manager
 
-autotools eutils git-2 libtool multilib portability toolchain-funcs user
+autotools eutils git-2 libtool multilib toolchain-funcs user
 gif jpeg nls png tiff modelock xinerama +xrandr
 
 
