@@ -1,4 +1,4 @@
-gnustep-base/gnustep-base dev-libs/libxml2 dev-libs/openssl dev-vcs/monotone ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) sqlite? ( >=dev-db/sqlite-3.0 ) apache2? ( =www-servers/apache-2* ) dev-vcs/subversion net-misc/rsync
+gnustep-base/gnustep-base dev-libs/libxml2 dev-libs/openssl dev-vcs/monotone ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) sqlite? ( >=dev-db/sqlite-3.0 ) apache2? ( =www-servers/apache-2* ) || ( dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 gnustep-base/gnustep-base dev-libs/libxml2 dev-libs/openssl dev-vcs/monotone ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) sqlite? ( >=dev-db/sqlite-3.0 ) apache2? ( =www-servers/apache-2* )
 0
 

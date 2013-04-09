@@ -1,5 +1,5 @@
-gnustep-base/gnustep-make[libobjc2] >=virtual/gnustep-back-0.22.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back dev-vcs/subversion net-misc/rsync
-gnustep-base/gnustep-make[libobjc2] >=virtual/gnustep-back-0.22.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( >=sys-devel/gdb-6.0 )
+gnustep-base/gnustep-make[libobjc2] >=virtual/gnustep-back-0.22.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back || ( dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+gnustep-base/gnustep-make[libobjc2] >=virtual/gnustep-back-0.22.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
 0
 
 
