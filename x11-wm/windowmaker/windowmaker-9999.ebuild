@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
-inherit autotools git-2
+EAPI=5
+inherit autotools eutils git-2
 
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="http://www.windowmaker.org/"
@@ -12,16 +12,16 @@ EGIT_REPO_URI="git://repo.or.cz/wmaker-crm.git"
 
 SLOT="0"
 LICENSE="GPL-2"
-SLOT="0"
 IUSE="gif jpeg nls png tiff modelock xinerama +xrandr"
 KEYWORDS=""
 
 DEPEND="media-libs/fontconfig
 	>=x11-libs/libXft-2.1.0
+	x11-libs/libXmu
 	x11-libs/libXt
 	x11-libs/libXv
 	gif? ( >=media-libs/giflib-4.1.0-r3 )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	jpeg? ( virtual/jpeg )
 	tiff? ( media-libs/tiff:0 )
 	xinerama? ( x11-libs/libXinerama )
@@ -73,6 +73,7 @@ src_configure() {
 		--with-pixmapdir="${EPREFIX}"/usr/share/pixmaps \
 		--with-nlsdir="${EPREFIX}"/usr/share/locale \
 		${myconf}
+
 	cd ../WindowMaker-extra-0.1
 	econf
 }
