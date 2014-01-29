@@ -1,4 +1,4 @@
-gnustep-base/gnustep-base dev-libs/libxml2 dev-libs/openssl dev-vcs/monotone ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) sqlite? ( >=dev-db/sqlite-3.0 ) apache2? ( =www-servers/apache-2* ) || ( dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+gnustep-base/gnustep-base dev-libs/libxml2 dev-libs/openssl dev-vcs/monotone ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) sqlite? ( >=dev-db/sqlite-3.0 ) apache2? ( =www-servers/apache-2* ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 gnustep-base/gnustep-base dev-libs/libxml2 dev-libs/openssl dev-vcs/monotone ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( virtual/postgresql-base ) sqlite? ( >=dev-db/sqlite-3.0 ) apache2? ( =www-servers/apache-2* )
 0
 
@@ -7,7 +7,7 @@ http://sope.opengroupware.org/en/index.html
 LGPL-2
 An extensive set of frameworks which form a complete Web application server environment
 
-apache-module depend.apache eutils flag-o-matic gnustep-base multilib subversion toolchain-funcs user
+apache-module depend.apache eutils flag-o-matic gnustep-base multilib subversion toolchain-funcs
 apache2 ldap libFoundation mysql postgres sqlite apache2 debug doc
 
 
