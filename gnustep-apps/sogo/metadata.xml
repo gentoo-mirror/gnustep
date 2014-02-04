@@ -7,7 +7,4 @@
 SOGo provides a rich AJAX-based Web interface and supports multiple native clients through the use of standard protocols such as CalDAV, CardDAV and GroupDAV.
 
 SOGo is the missing component of your infrastructure; it sits in the middle of your servers to offer your users an uniform and complete interface to access their information. It has been deployed in production environments where thousands of users are involved.</longdescription>
-	<use>
-		<flag name="logrotate">Use <pkg>app-admin/logrotate</pkg> for rotating logs</flag>
-	</use>
 </pkgmetadata>

@@ -1,6 +1,21 @@
 # ChangeLog for gnustep-libs/sope
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*sope-2.1.1 (04 Feb 2014)
+
+  04 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org> +sope-2.1.1.ebuild,
+  -sope-4.9_pre200908051100.ebuild, -sope-9999.ebuild, -files,
+  -files/47_mod_ngobjweb.conf, -files/sope.envd,
+  -files/sope-r1660-LDAP_deprecated.patch,
+  -files/sope-r1660-MySQL4Channel.m.patch, -files/sope-r1660-NGHttp+WO.m.patch,
+  -files/sope-r1660-NGLogSyslogAppender.m.patch,
+  -files/sope-r1660-NSDictionary+KVC.patch,
+  -files/sope-r1660-NSNull+misc.m.patch,
+  -files/sope-r1660-NSZoneMallocAtomic.patch, -files/sope-r1660-SOGo-fix.patch,
+  -files/sope-r1660-SoOFS.patch, -files/sope-r1660-WORepetition.m.patch,
+  -files/sope-r1660-use_system_root.patch, metadata.xml:
+  Major bump with rewritten ebuild
 
   09 Mar 2010; Bernard Cafarelli <voyageur@gentoo.org> sope-9999.ebuild:
   monotone was moved to dev-vcs

@@ -1,6 +1,14 @@
 # ChangeLog for gnustep-apps/sogo
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*sogo-2.1.1b (04 Feb 2014)
+
+  04 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org> -sogo-1.1.0-r1.ebuild,
+  -sogo-1.2.0.ebuild, -sogo-1.2.1.ebuild, +sogo-2.1.1b.ebuild,
+  -sogo-9999.ebuild, files/sogod.confd, files/sogod.initd,
+  -files/sogod.initd.1, metadata.xml:
+  Major bump with rewritten ebuild
 
   09 Mar 2010; Bernard Cafarelli <voyageur@gentoo.org> sogo-9999.ebuild:
   monotone was moved to dev-vcs
