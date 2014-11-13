@@ -1,6 +1,9 @@
 # ChangeLog for x11-wm/windowmaker
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  13 Nov 2014; Bernard Cafarelli <voyageur@gentoo.org> windowmaker-9999.ebuild:
+  Sync with current stable ebuild
 
   10 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> windowmaker-9999.ebuild:
   Fix paths in generated menus and sed lines to evaluate EPREFIX

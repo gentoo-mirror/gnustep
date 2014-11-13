@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://repo.or.cz/wmaker-crm.git"
 
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="gif jpeg nls png tiff modelock xinerama +xrandr"
+IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama xrandr"
 KEYWORDS=""
 
 DEPEND="media-libs/fontconfig
@@ -21,9 +21,11 @@ DEPEND="media-libs/fontconfig
 	x11-libs/libXt
 	x11-libs/libXv
 	gif? ( >=media-libs/giflib-4.1.0-r3 )
-	png? ( media-libs/libpng:0= )
+	imagemagick? ( media-gfx/imagemagick )
 	jpeg? ( virtual/jpeg )
+	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
+	webp? ( media-libs/libwebp )
 	xinerama? ( x11-libs/libXinerama )
 	xrandr? ( x11-libs/libXrandr )"
 RDEPEND="${DEPEND}
@@ -54,10 +56,10 @@ src_configure() {
 
 	# image format types
 	# xpm is provided by X itself
-	myconf="--enable-xpm $(use_enable png) $(use_enable jpeg) $(use_enable gif) $(use_enable tiff)"
+	myconf="--enable-xpm $(use_enable imagemagick magick) $(use_enable jpeg) $(use_enable gif) $(use_enable png) $(use_enable tiff) $(use_enable webp)"
 
 	# non required X capabilities
-	myconf="${myconf} $(use_enable modelock) $(use_enable xrandr) $(use_enable xinerama)"
+	myconf="${myconf} $(use_enable modelock) $(use_enable xrandr randr) $(use_enable xinerama)"
 
 	if use nls; then
 		[[ -z $LINGUAS ]] && export LINGUAS="`ls po/*.po | sed 's:po/\(.*\)\.po$:\1:'`"
