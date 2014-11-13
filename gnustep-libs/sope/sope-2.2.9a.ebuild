@@ -3,7 +3,6 @@
 # $Header: $
 
 EAPI=5
-
 inherit gnustep-2
 
 DESCRIPTION="An extensive set of frameworks which form a complete Web application server environment"

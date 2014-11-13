@@ -1,0 +1,22 @@
+dev-libs/openssl >=gnustep-libs/sope-2.2.9a[mysql?,postgres?] net-misc/memcached net-nds/openldap >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+dev-libs/openssl >=gnustep-libs/sope-2.2.9a[mysql?,postgres?] net-misc/memcached net-nds/openldap >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
+0
+http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-2.2.9a.tar.gz
+
+http://www.sogo.nu
+GPL-2
+Groupware server built around OpenGroupware.org and the SOPE application server
+~amd64 ~x86
+eutils flag-o-matic gnustep-2 gnustep-base multilib toolchain-funcs user
+postgres mysql debug doc
+|| ( mysql postgres )
+
+
+5
+
+compile configure install postinst prepare setup
+
+
+
+
+

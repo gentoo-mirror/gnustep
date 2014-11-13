@@ -7,10 +7,10 @@ SOGOD_PID=/run/sogo/sogod.pid
 
 depend() {
 	need net
+	need memcached
 	after postgresql mysql
 	after slapd
 	after mta
-	after memcached
 }
 
 start() {

@@ -17,9 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="postgres mysql"
 
-DEPEND="dev-libs/libmemcached
-	dev-libs/openssl
-	gnustep-libs/sope[mysql?,postgres?]
+DEPEND="dev-libs/openssl
+	>=gnustep-libs/sope-${PV}[mysql?,postgres?]
+	net-misc/memcached
 	net-nds/openldap"
 RDEPEND="${DEPEND}"
 
