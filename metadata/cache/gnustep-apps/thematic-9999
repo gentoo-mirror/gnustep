@@ -7,7 +7,7 @@ https://github.com/gnustep/gnustep-thematic
 
 Thematic.app is a theme editor for GNUstep
 
-eutils flag-o-matic git-2 git-r3 gnustep-2 gnustep-base multilib toolchain-funcs
+eutils flag-o-matic git-2 gnustep-2 gnustep-base multilib toolchain-funcs
 debug doc
 
 

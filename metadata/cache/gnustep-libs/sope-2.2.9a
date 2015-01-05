@@ -1,5 +1,5 @@
-dev-libs/libxml2 dev-libs/openssl net-nds/openldap mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base ) sqlite? ( dev-db/sqlite:3 ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
-dev-libs/libxml2 dev-libs/openssl net-nds/openldap mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql-base ) sqlite? ( dev-db/sqlite:3 ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
+dev-libs/libxml2 dev-libs/openssl net-nds/openldap mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) sqlite? ( dev-db/sqlite:3 ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+dev-libs/libxml2 dev-libs/openssl net-nds/openldap mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) sqlite? ( dev-db/sqlite:3 ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
 0
 http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-2.2.9a.tar.gz
 
