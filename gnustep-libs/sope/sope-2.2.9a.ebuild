@@ -15,10 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="mysql postgres sqlite"
 
 DEPEND="dev-libs/libxml2
-	dev-libs/openssl
+	dev-libs/openssl:0=
 	net-nds/openldap
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite:3 )"
 RDEPEND="${DEPEND}"
 
