@@ -1,18 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=5
-inherit autotools eutils git-2
+inherit autotools eutils git-r3
 
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="http://www.windowmaker.org/"
 SRC_URI="http://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
 EGIT_REPO_URI="git://repo.or.cz/wmaker-crm.git"
+EGIT_BRANCH="next"
 
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama xrandr"
+IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama +xpm xrandr"
 KEYWORDS=""
 
 DEPEND="media-libs/fontconfig
@@ -22,7 +23,7 @@ DEPEND="media-libs/fontconfig
 	x11-libs/libXv
 	gif? ( >=media-libs/giflib-4.1.0-r3 )
 	imagemagick? ( media-gfx/imagemagick )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0= )
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
 	webp? ( media-libs/libwebp )
@@ -35,7 +36,7 @@ src_unpack() {
 	# wm-extras
 	unpack ${A}
 
-	git-2_src_unpack
+	git-r3_src_unpack
 }
 
 src_prepare() {
@@ -55,8 +56,7 @@ src_configure() {
 	local myconf
 
 	# image format types
-	# xpm is provided by X itself
-	myconf="--enable-xpm $(use_enable imagemagick magick) $(use_enable jpeg) $(use_enable gif) $(use_enable png) $(use_enable tiff) $(use_enable webp)"
+	myconf="$(use_enable imagemagick magick) $(use_enable jpeg) $(use_enable gif) $(use_enable png) $(use_enable tiff) $(use_enable webp) $(use_enable xpm)"
 
 	# non required X capabilities
 	myconf="${myconf} $(use_enable modelock) $(use_enable xrandr randr) $(use_enable xinerama)"
@@ -73,7 +73,7 @@ src_configure() {
 		--with-x \
 		--enable-usermenu \
 		--with-pixmapdir="${EPREFIX}"/usr/share/pixmaps \
-		--with-nlsdir="${EPREFIX}"/usr/share/locale \
+		--localedir="${EPREFIX}"/usr/share/locale \
 		${myconf}
 
 	cd ../WindowMaker-extra-0.1

@@ -1,6 +1,10 @@
 # ChangeLog for x11-wm/windowmaker
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  27 May 2015; Bernard Cafarelli <voyageur@gentoo.org> windowmaker-9999.ebuild:
+  Sync with current stable ebuild, switch to git-r3 and use upstream next
+  branch
 
   13 Nov 2014; Bernard Cafarelli <voyageur@gentoo.org> windowmaker-9999.ebuild:
   Sync with current stable ebuild
