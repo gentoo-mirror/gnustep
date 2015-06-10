@@ -1,6 +1,9 @@
 # ChangeLog for gnustep-apps/sogo
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  10 Jun 2015; Bernard Cafarelli <voyageur@gentoo.org> sogo-2.2.9a.ebuild:
+  sogo also needs libmemcached, thanks xmw in bug #551390
 
 *sogo-2.1.1b (04 Feb 2014)
 
