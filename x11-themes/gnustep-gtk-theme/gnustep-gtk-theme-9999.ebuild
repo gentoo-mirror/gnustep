@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit git-r3 gnustep-2
 
 DESCRIPTION="a GNUstep theme engine using current Gtk+ theme"
 HOMEPAGE="https://github.com/gnustep/plugins-themes-Gtk"
 SRC_URI=""
-EGIT_REPO_URI="git://github.com/gnustep/plugins-themes-Gtk"
+EGIT_REPO_URI="https://github.com/gnustep/plugins-themes-Gtk.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
