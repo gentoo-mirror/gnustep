@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1
 PROPERTIES=live
 RDEPEND=gnome-base/gconf x11-libs/gtk+:2 virtual/gnustep-back
 SLOT=0
-_eclasses_=git-r3	2358a7b20091609e24bd3a83b3ac5991	toolchain-funcs	fbbbc99d10168de2926e06da7169b8dc	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	be27a904c614cb93ae037762dc69bcc2	gnustep-base	923cb81765be4cd65f6419d3f9019af5	gnustep-2	191cacca9e01ae0fe9b898b09e4555b8
+_eclasses_=git-r3	2358a7b20091609e24bd3a83b3ac5991	toolchain-funcs	fbbbc99d10168de2926e06da7169b8dc	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	e5cc383ea8420f92fe3737be790021dc	gnustep-base	923cb81765be4cd65f6419d3f9019af5	gnustep-2	191cacca9e01ae0fe9b898b09e4555b8
 _md5_=f26c2dc98fa273da4975ab5228e79367
