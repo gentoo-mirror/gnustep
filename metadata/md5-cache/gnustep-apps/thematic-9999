@@ -1,14 +1,14 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl] >=gnustep-base/gnustep-make-2.0
 DEFINED_PHASES=compile configure install postinst prepare setup unpack
-DEPEND=virtual/pkgconfig gnome-base/gconf x11-libs/gtk+:2 virtual/gnustep-back
-DESCRIPTION=a GNUstep theme engine using current Gtk+ theme
-EAPI=7
-HOMEPAGE=https://github.com/gnustep/plugins-themes-Gtk
+DEPEND=virtual/gnustep-back
+DESCRIPTION=Thematic.app is a theme editor for GNUstep
+EAPI=8
+HOMEPAGE=https://github.com/gnustep/apps-thematic
 INHERIT=git-r3 gnustep-2
 IUSE=debug doc
-LICENSE=LGPL-2.1
+LICENSE=GPL-2+
 PROPERTIES=live
-RDEPEND=gnome-base/gconf x11-libs/gtk+:2 virtual/gnustep-back
+RDEPEND=virtual/gnustep-back
 SLOT=0
 _eclasses_=git-r3	fbb2889c81f3a05910c1524db69425c1	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	d309b9713dfc18e754cba88d3ba69653	gnustep-base	2b9571bc4b56a107f4efee592fa2f2a8	gnustep-2	cfafeebb1111f944995a3bb7ae64ce8b
-_md5_=f26c2dc98fa273da4975ab5228e79367
+_md5_=69b73bfe26608cd03c0b05c5a56b939b
