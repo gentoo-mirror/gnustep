@@ -1,13 +1,14 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl] >=gnustep-base/gnustep-make-2.0
 DEFINED_PHASES=compile configure install postinst prepare setup unpack
-DEPEND=>=dev-vcs/git-1.8.2.1[curl] >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+DEPEND=virtual/gnustep-back
 DESCRIPTION=Thematic.app is a theme editor for GNUstep
-EAPI=6
+EAPI=8
 HOMEPAGE=https://github.com/gnustep/apps-thematic
 INHERIT=git-r3 gnustep-2
 IUSE=debug doc
 LICENSE=GPL-2+
 PROPERTIES=live
-RDEPEND=>=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+RDEPEND=virtual/gnustep-back
 SLOT=0
-_eclasses_=git-r3	c57c50c922e121043788de0b40ada60a	desktop	021728fdc1b03b36357dbc89489e0f0d	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	447396341f5f896d722e435a06f87a4f	eqawarn	c9847c43b3253a276ae2eabddedab3d7	toolchain-funcs	6001248ef162a5fa2a21ce132a212f6b	multilib	5ca4e49abed8e3a2f7b56920eadee157	ltprune	97143780d341cc8d8f1d4c6187a36d29	preserve-libs	a8e50acee31b5759b4df1f7707cae54b	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	vcs-clean	d271b7bc7e6a009758d7d4ef749174e3	wrapper	4a1902f969e5718126434fc35f3a0d9c	eutils	8f942ebdcf04334697649d4a0bf65a32	flag-o-matic	514815b1cc0dd4aeac177c2e812b3b1a	gnustep-base	789aee7a4ec1617c8b7e69cd50aa31b9	gnustep-2	191cacca9e01ae0fe9b898b09e4555b8
-_md5_=bd3854855efb96b6be69e93fbd422fde
+_eclasses_=git-r3	fbb2889c81f3a05910c1524db69425c1	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	d309b9713dfc18e754cba88d3ba69653	gnustep-base	2b9571bc4b56a107f4efee592fa2f2a8	gnustep-2	cfafeebb1111f944995a3bb7ae64ce8b
+_md5_=69b73bfe26608cd03c0b05c5a56b939b

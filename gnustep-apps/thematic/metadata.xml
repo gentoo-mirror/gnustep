@@ -7,4 +7,7 @@
 </maintainer>
 <longdescription>Thematic helps the creation of themes by easily managing its resources, properties and by allowing code to be inserted in the correct places.
 Thematic can support editors for managing the theming of specific controls easily.</longdescription>
+<upstream>
+	<remote-id type="github">gnustep/apps-thematic</remote-id>
+</upstream>
 </pkgmetadata>
