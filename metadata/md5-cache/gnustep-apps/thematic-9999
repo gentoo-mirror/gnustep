@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=virtual/gnustep-back
 SLOT=0
-_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81	toolchain-funcs	a6df79c1e9bc84369dbf3d44206ac772	flag-o-matic	a7afe42e95fb46ce9691605acfb24672	gnustep-base	2b9571bc4b56a107f4efee592fa2f2a8	gnustep-2	cfafeebb1111f944995a3bb7ae64ce8b
+_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81	toolchain-funcs	a0b29008c671a362b505f96fa80ce9c0	flag-o-matic	a7afe42e95fb46ce9691605acfb24672	gnustep-base	2b9571bc4b56a107f4efee592fa2f2a8	gnustep-2	cfafeebb1111f944995a3bb7ae64ce8b
 _md5_=69b73bfe26608cd03c0b05c5a56b939b
